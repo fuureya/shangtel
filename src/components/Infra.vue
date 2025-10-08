@@ -37,14 +37,14 @@
             <div class="absolute -bottom-6 -right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/20">
               <div class="text-center">
                 <div class="text-2xl font-bold text-blue-600">{{ formatNumber(radio1000) }}+</div>
-                <div class="text-sm text-gray-600">Radio & VSAT</div>
+                <div class="text-sm text-gray-600">{{ currentInfraData.radioLabel }}</div>
               </div>
             </div>
 
             <div class="absolute -top-6 -left-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/20">
               <div class="text-center">
                 <div class="text-2xl font-bold text-indigo-600">{{ formatNumber(kabel20000) }}+</div>
-                <div class="text-sm text-gray-600">km Kabel Optik</div>
+                <div class="text-sm text-gray-600">{{ currentInfraData.kabelLabel }}</div>
               </div>
             </div>
           </div>
@@ -56,19 +56,19 @@
             <div class="max-w-lg">
               <!-- Badge -->
               <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6">
-                <span class="text-white text-sm font-medium">Infrastruktur Terdepan</span>
+                <span class="text-white text-sm font-medium">{{ currentInfraData.badge }}</span>
               </div>
 
               <!-- Main Title -->
               <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 <span class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
-                  Jaringan Digital Terdepan
+                  {{ currentInfraData.title }}
                 </span>
               </h2>
 
               <!-- Description -->
               <p class="text-lg text-blue-50 mb-8 leading-relaxed">
-                Shangkuriang Telekomunikasi berkomitmen mendukung pertumbuhan bisnis Anda dengan menghadirkan jaringan dan solusi digital terdepan yang dirancang untuk meningkatkan efisiensi, keamanan, dan daya saing perusahaan Anda.
+                {{ currentInfraData.description }}
               </p>
 
               <!-- Statistics Grid -->
@@ -82,8 +82,8 @@
                     </div>
                     <div>
                       <div class="text-2xl font-bold text-gray-900">{{ formatNumber(radio1000) }}+</div>
-                      <div class="text-sm text-gray-600">Radio dan VSAT</div>
-                      <div class="text-xs text-gray-500 mt-1">Telah membangun lebih dari 1.000 jaringan Radio dan VSAT</div>
+                      <div class="text-sm text-gray-600">{{ currentInfraData.radioLabel }}</div>
+                      <div class="text-xs text-gray-500 mt-1">{{ currentInfraData.radioDesc }}</div>
                     </div>
                   </div>
                 </div>
@@ -97,8 +97,8 @@
                     </div>
                     <div>
                       <div class="text-2xl font-bold text-gray-900">{{ formatNumber(kabel20000) }}+</div>
-                      <div class="text-sm text-gray-600">km Kabel Optik</div>
-                      <div class="text-xs text-gray-500 mt-1">Memasang lebih dari 20.000 km kabel serat optik untuk mendukung konektivitas handal di seluruh wilayah</div>
+                      <div class="text-sm text-gray-600">{{ currentInfraData.kabelLabel }}</div>
+                      <div class="text-xs text-gray-500 mt-1">{{ currentInfraData.kabelDesc }}</div>
                     </div>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
               <div class="flex space-x-4">
                 <button class="group bg-gradient-to-r from-white to-blue-50 text-blue-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-white/25 hover:transform hover:scale-105 border border-white/30">
                   <span class="flex items-center">
-                    Pelajari Lebih Lanjut
+                    {{ currentInfraData.buttonText }}
                     <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -129,13 +129,42 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage.js'
 
 const radio1000 = ref(0)
 const kabel20000 = ref(0)
 const isVisible = ref(false)
 const sectionRef = ref(null)
 let observer = null
+
+const { currentLanguage } = useLanguage()
+
+const infraDataIndonesia = {
+  badge: "Infrastruktur Terdepan",
+  title: "Jaringan Digital Terdepan",
+  description: "Shangkuriang Telekomunikasi berkomitmen mendukung pertumbuhan bisnis Anda dengan menghadirkan jaringan dan solusi digital terdepan yang dirancang untuk meningkatkan efisiensi, keamanan, dan daya saing perusahaan Anda.",
+  radioLabel: "Radio dan VSAT",
+  radioDesc: "Telah membangun lebih dari 1.000 jaringan Radio dan VSAT",
+  kabelLabel: "km Kabel Optik",
+  kabelDesc: "Memasang lebih dari 20.000 km kabel serat optik untuk mendukung konektivitas handal di seluruh wilayah",
+  buttonText: "Pelajari Lebih Lanjut"
+}
+
+const infraDataEnglish = {
+  badge: "Leading Infrastructure",
+  title: "Advanced Digital Network",
+  description: "Shangkuriang Telekomunikasi is committed to supporting your business growth by delivering advanced digital networks and solutions designed to enhance efficiency, security, and competitiveness of your company.",
+  radioLabel: "Radio and VSAT",
+  radioDesc: "Built more than 1,000 Radio and VSAT networks",
+  kabelLabel: "km Fiber Optic Cable",
+  kabelDesc: "Installed more than 20,000 km of fiber optic cables to support reliable connectivity throughout the region",
+  buttonText: "Learn More"
+}
+
+const currentInfraData = computed(() => {
+  return currentLanguage.value === 'ID' ? infraDataIndonesia : infraDataEnglish
+})
 
 const animateNumbers = () => {
   if (!isVisible.value) return

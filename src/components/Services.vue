@@ -3,28 +3,37 @@
         <!-- Modern Background Pattern -->
         <div class="absolute inset-0 overflow-hidden">
             <!-- Grid Pattern -->
-            <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+            <div
+                class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10">
+            </div>
 
             <!-- Floating Elements -->
             <div class="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
             <div class="absolute top-40 right-32 w-1 h-1 bg-indigo-400 rounded-full animate-ping delay-1000"></div>
-            <div class="absolute bottom-32 left-16 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping delay-2000"></div>
+            <div class="absolute bottom-32 left-16 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping delay-2000">
+            </div>
             <div class="absolute bottom-20 right-20 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-500"></div>
 
             <!-- Gradient Orbs -->
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-3xl"></div>
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-3xl">
+            </div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
             <!-- Modern Header -->
             <div class="text-center mb-20">
-                <div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-blue-200/50 text-blue-700 text-sm font-semibold mb-8 shadow-lg">
+                <div
+                    class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-blue-200/50 text-blue-700 text-sm font-semibold mb-8 shadow-lg">
                     <i class="fas fa-rocket mr-2"></i>
                     {{ currentServicesData.badge }}
                 </div>
                 <h2 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight">
-                    <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    <span
+                        class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         {{ currentServicesData.title }}
                     </span>
                 </h2>
@@ -33,19 +42,19 @@
                 </p>
 
                 <!-- Stats Row -->
-                <div class="flex justify-center items-center space-x-12 mt-12">
+                <div ref="statsRef" class="flex justify-center items-center space-x-12 mt-12">
                     <div class="text-center">
                         <div class="text-3xl font-bold text-blue-600">24/7</div>
                         <div class="text-sm text-gray-500 uppercase tracking-wide">Support</div>
                     </div>
                     <div class="w-px h-12 bg-gray-300"></div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600">99.9%</div>
+                        <div class="text-3xl font-bold text-indigo-600">{{ formatUptime(animatedUptime) }}%</div>
                         <div class="text-sm text-gray-500 uppercase tracking-wide">Uptime</div>
                     </div>
                     <div class="w-px h-12 bg-gray-300"></div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-purple-600">500+</div>
+                        <div class="text-3xl font-bold text-purple-600">{{ formatClients(animatedClients) }}+</div>
                         <div class="text-sm text-gray-500 uppercase tracking-wide">Clients</div>
                     </div>
                 </div>
@@ -55,45 +64,54 @@
             <div class="relative">
                 <!-- Navigation Arrows -->
                 <button @click="prevSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
-                        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
                     <i class="fas fa-chevron-left text-gray-600 group-hover:text-blue-600 transition-colors"></i>
                 </button>
 
                 <button @click="nextSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
-                        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
                     <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-600 transition-colors"></i>
                 </button>
 
                 <!-- Services Grid with Transform -->
                 <div class="overflow-hidden">
                     <div class="flex gap-8 transition-transform duration-500 ease-in-out"
-                         :style="{ transform: `translateX(-${currentSlideIndex * slideWidth}%)` }">
+                        :style="{ transform: `translateX(-${currentSlideIndex * slideWidth}%)` }">
                         <div v-for="(service, index) in currentServicesData.services" :key="index"
-                             class="group relative flex-shrink-0"
-                             :style="{ width: `calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 32 / cardsPerView}px)` }">
+                            class="group relative flex-shrink-0"
+                            :style="{ width: `calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 32 / cardsPerView}px)` }">
 
                             <!-- Service Card -->
-                            <div class="relative h-full bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-700 hover:transform hover:scale-[1.02] overflow-hidden">
+                            <div
+                                class="relative h-full bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-700 hover:transform hover:scale-[1.02] overflow-hidden">
 
                                 <!-- Card Background Effects -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl">
+                                </div>
 
                                 <!-- Animated Border -->
-                                <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-xl"></div>
+                                <div
+                                    class="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-xl">
+                                </div>
 
                                 <div class="relative z-10">
                                     <!-- Modern Icon Container -->
                                     <div class="relative mb-8">
-                                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                                        <div
+                                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
                                             <i :class="service.icon" class="text-3xl text-white"></i>
                                         </div>
                                         <!-- Icon Glow Effect -->
-                                        <div class="absolute inset-0 w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl"></div>
+                                        <div
+                                            class="absolute inset-0 w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
+                                        </div>
                                     </div>
 
                                     <!-- Service Content -->
                                     <div class="space-y-4">
-                                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
+                                        <h3
+                                            class="text-2xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
                                             {{ service.title }}
                                         </h3>
 
@@ -103,23 +121,38 @@
 
                                         <!-- Tech Stack Indicators -->
                                         <div class="flex flex-wrap gap-2 pt-4">
-                                            <span v-if="service.title.includes('Management') || service.title.includes('Manajemen')"
-                                                  class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infrastructure</span>
-                                            <span v-if="service.title.includes('Security') || service.title.includes('Keamanan')"
-                                                  class="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Cybersecurity</span>
-                                            <span v-if="service.title.includes('Network') || service.title.includes('Jaringan')"
-                                                  class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Networking</span>
+                                            <span
+                                                v-if="service.title.includes('Management') || service.title.includes('Manajemen')"
+                                                class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infrastructure</span>
+                                            <span
+                                                v-if="service.title.includes('Security') || service.title.includes('Keamanan')"
+                                                class="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Cybersecurity</span>
+                                            <span
+                                                v-if="service.title.includes('Network') || service.title.includes('Jaringan')"
+                                                class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Networking</span>
                                             <span v-if="service.title.includes('Cloud')"
-                                                  class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Cloud</span>
-                                            <span v-if="service.title.includes('Consulting') || service.title.includes('Konsultasi')"
-                                                  class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">Strategy</span>
-                                            <span v-if="service.title.includes('Support') || service.title.includes('Dukungan')"
-                                                  class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">24/7</span>
+                                                class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Cloud</span>
+                                            <span
+                                                v-if="service.title.includes('Consulting') || service.title.includes('Konsultasi')"
+                                                class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">Strategy</span>
+                                            <span
+                                                v-if="service.title.includes('Support') || service.title.includes('Dukungan')"
+                                                class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">24/7</span>
+                                            <span
+                                                v-if="service.title.includes('Design') || service.title.includes('Desain')"
+                                                class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">Design</span>
+                                            <span
+                                                v-if="service.title.includes('Multimedia')"
+                                                class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-semibold rounded-full">Multimedia</span>
+                                            <span
+                                                v-if="service.title.includes('Service') || service.title.includes('Layanan')"
+                                                class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Service</span>
                                         </div>
                                     </div>
 
                                     <!-- Hover Arrow -->
-                                    <div class="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                                    <div
+                                        class="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                                         <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                                             <i class="fas fa-arrow-right text-white text-sm"></i>
                                         </div>
@@ -133,11 +166,9 @@
 
                 <!-- Dots Indicator -->
                 <div class="flex justify-center mt-12 space-x-3">
-                    <button v-for="(_, index) in (currentServicesData.services.length - cardsPerView + 1)"
-                            :key="index"
-                            @click="goToSlide(index)"
-                            class="w-3 h-3 rounded-full transition-all duration-300"
-                            :class="index === currentSlideIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'">
+                    <button v-for="(_, index) in Math.ceil(currentServicesData.services.length / cardsPerView)"
+                        :key="index" @click="goToSlide(index)" class="w-3 h-3 rounded-full transition-all duration-300"
+                        :class="index === currentSlideIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'">
                     </button>
                 </div>
             </div>
@@ -172,148 +203,216 @@ const { currentLanguage } = useLanguage()
 const currentSlideIndex = ref(0)
 const cardsPerView = ref(3)
 
+// Stats animation state
+const statsRef = ref(null)
+const animatedUptime = ref(0)
+const animatedClients = ref(0)
+const isStatsVisible = ref(false)
+let statsObserver = null
+
 // Responsive cards per view
 const updateCardsPerView = () => {
-  if (window.innerWidth < 768) {
-    cardsPerView.value = 1
-  } else if (window.innerWidth < 1024) {
-    cardsPerView.value = 2
-  } else {
-    cardsPerView.value = 3
-  }
+    if (window.innerWidth < 768) {
+        cardsPerView.value = 1
+    } else if (window.innerWidth < 1024) {
+        cardsPerView.value = 2
+    } else {
+        cardsPerView.value = 3
+    }
 }
 
 // Slide width calculation
 const slideWidth = computed(() => {
-  return 100 / cardsPerView.value
+    return 100 / cardsPerView.value
 })
 
 // Navigation functions
 const nextSlide = () => {
-  const totalServices = currentServicesData.value.services.length
-  const maxSlide = totalServices - cardsPerView.value
-  if (currentSlideIndex.value < maxSlide) {
-    currentSlideIndex.value++
-  } else {
-    currentSlideIndex.value = 0
-  }
+    const totalServices = currentServicesData.value.services.length
+    const maxSlide = totalServices - cardsPerView.value
+    if (currentSlideIndex.value < maxSlide) {
+        currentSlideIndex.value++
+    } else {
+        currentSlideIndex.value = 0
+    }
 }
 
 const prevSlide = () => {
-  const totalServices = currentServicesData.value.services.length
-  const maxSlide = totalServices - cardsPerView.value
-  if (currentSlideIndex.value > 0) {
-    currentSlideIndex.value--
-  } else {
-    currentSlideIndex.value = maxSlide
-  }
+    const totalServices = currentServicesData.value.services.length
+    const maxSlide = totalServices - cardsPerView.value
+    if (currentSlideIndex.value > 0) {
+        currentSlideIndex.value--
+    } else {
+        currentSlideIndex.value = maxSlide
+    }
 }
 
 const goToSlide = (index) => {
-  currentSlideIndex.value = index
+    currentSlideIndex.value = index
 }
 
 // Auto-slide functionality
 let autoSlideInterval = null
 
 const startAutoSlide = () => {
-  autoSlideInterval = setInterval(() => {
-    nextSlide()
-  }, 5000)
+    autoSlideInterval = setInterval(() => {
+        nextSlide()
+    }, 5000)
 }
 
 const stopAutoSlide = () => {
-  if (autoSlideInterval) {
-    clearInterval(autoSlideInterval)
-    autoSlideInterval = null
-  }
+    if (autoSlideInterval) {
+        clearInterval(autoSlideInterval)
+        autoSlideInterval = null
+    }
+}
+
+// Stats animation functions
+const animateStats = () => {
+    if (!isStatsVisible.value) return
+
+    // Reset stats
+    animatedUptime.value = 0
+    animatedClients.value = 0
+
+    // Animate uptime to 99.9
+    const uptimeTarget = 99.9
+    const uptimeDuration = 2000
+    const uptimeIncrement = uptimeTarget / (uptimeDuration / 16)
+
+    const uptimeAnimation = () => {
+        if (animatedUptime.value < uptimeTarget && isStatsVisible.value) {
+            animatedUptime.value = Math.min(animatedUptime.value + uptimeIncrement, uptimeTarget)
+            requestAnimationFrame(uptimeAnimation)
+        }
+    }
+
+    // Animate clients to 500
+    const clientsTarget = 500
+    const clientsDuration = 2500
+    const clientsIncrement = clientsTarget / (clientsDuration / 16)
+
+    const clientsAnimation = () => {
+        if (animatedClients.value < clientsTarget && isStatsVisible.value) {
+            animatedClients.value = Math.min(animatedClients.value + clientsIncrement, clientsTarget)
+            requestAnimationFrame(clientsAnimation)
+        }
+    }
+
+    // Start animations with slight delay
+    setTimeout(uptimeAnimation, 200)
+    setTimeout(clientsAnimation, 400)
+}
+
+const setupStatsObserver = () => {
+    statsObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    isStatsVisible.value = true
+                    animateStats()
+                } else {
+                    isStatsVisible.value = false
+                }
+            })
+        },
+        {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        }
+    )
+
+    if (statsRef.value) {
+        statsObserver.observe(statsRef.value)
+    }
+}
+
+const formatUptime = (num) => {
+    return num.toFixed(1)
+}
+
+const formatClients = (num) => {
+    return Math.floor(num).toString()
 }
 
 onMounted(() => {
-  updateCardsPerView()
-  window.addEventListener('resize', updateCardsPerView)
-  startAutoSlide()
+    updateCardsPerView()
+    window.addEventListener('resize', updateCardsPerView)
+    startAutoSlide()
+    setupStatsObserver()
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateCardsPerView)
-  stopAutoSlide()
+    window.removeEventListener('resize', updateCardsPerView)
+    stopAutoSlide()
+    if (statsObserver && statsRef.value) {
+        statsObserver.unobserve(statsRef.value)
+    }
 })
 
 const servicesData = [
     {
         lang: "en",
         title: "IT Management",
-        description: "Comprehensive management of IT infrastructure, systems, and resources to ensure optimal business operations and digital transformation.",
-        icon: "fas fa-server"
+        description: "To the practice of controlling and conducting business information, IT systems, IT-enabled operations, services, and resources in an enterprise organization."
     },
     {
         lang: "en",
         title: "Data Security",
-        description: "Advanced cybersecurity solutions protecting critical business data with enterprise-grade firewall, encryption, and threat detection systems.",
-        icon: "fas fa-shield-halved"
+        description: "Process of protecting corporate data and preventing data loss through unauthorized access. This includes protecting your data from attacks that can encrypt or destroy data."
     },
     {
         lang: "en",
         title: "IT Consulting",
-        description: "Strategic technology consulting services helping organizations optimize their IT infrastructure and implement digital transformation initiatives.",
-        icon: "fas fa-user-tie"
+        description: "IT consulting, also referred to as technology consulting, relates to services aimed at helping clients on how they can utilise information technology (IT) and digital to optimally achieve their business goals. The IT consulting segment spans both advisory and implementation services, but excludes transactional IT activities."
     },
     {
         lang: "en",
-        title: "Network Solutions",
-        description: "High-performance network infrastructure design, implementation, and management for reliable enterprise connectivity and communication.",
-        icon: "fas fa-network-wired"
+        title: "IT Design",
+        description: "Generally speaking, it is the process of envisioning and planning the creation of objects, interactive systems, network, company profile, etc."
     },
     {
         lang: "en",
-        title: "Cloud Services",
-        description: "Scalable cloud infrastructure solutions including migration, hosting, backup, and disaster recovery for modern business continuity.",
-        icon: "fas fa-cloud"
+        title: "Multimedia",
+        description: "Computer-assisted integration of text, drawings, still and moving images (videos), graphics, audio, animation, videotron."
     },
     {
         lang: "en",
-        title: "24/7 Support",
-        description: "Round-the-clock technical support and monitoring services ensuring maximum uptime and rapid incident response for critical systems.",
-        icon: "fas fa-headset"
+        title: "Service",
+        description: "Even if they are behind firewalls you don’t control. All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity."
     },
     {
         lang: "id",
         title: "Manajemen IT",
-        description: "Manajemen komprehensif infrastruktur IT, sistem, dan sumber daya untuk memastikan operasional bisnis optimal dan transformasi digital.",
-        icon: "fas fa-server"
+        description: "Praktik mengendalikan dan mengelola informasi bisnis, sistem IT, operasi yang didukung IT, layanan, dan sumber daya dalam organisasi perusahaan."
     },
     {
         lang: "id",
         title: "Keamanan Data",
-        description: "Solusi keamanan siber canggih melindungi data bisnis kritikal dengan firewall enterprise, enkripsi, dan sistem deteksi ancaman.",
-        icon: "fas fa-shield-halved"
+        description: "Proses melindungi data perusahaan dan mencegah kehilangan data akibat akses yang tidak sah. Ini termasuk melindungi data dari serangan yang dapat mengenkripsi atau merusak data."
     },
     {
         lang: "id",
         title: "Konsultasi IT",
-        description: "Layanan konsultasi teknologi strategis membantu organisasi mengoptimalkan infrastruktur IT dan implementasi inisiatif transformasi digital.",
-        icon: "fas fa-user-tie"
+        description: "Konsultasi IT, juga disebut konsultasi teknologi, adalah layanan yang membantu klien memanfaatkan teknologi informasi (IT) dan digital untuk mencapai tujuan bisnis secara optimal. Segmen ini mencakup layanan konsultasi dan implementasi, namun tidak termasuk aktivitas IT transaksional."
     },
     {
         lang: "id",
-        title: "Solusi Jaringan",
-        description: "Desain, implementasi, dan manajemen infrastruktur jaringan performa tinggi untuk konektivitas dan komunikasi enterprise yang handal.",
-        icon: "fas fa-network-wired"
+        title: "Desain IT",
+        description: "Secara umum, ini adalah proses merancang dan merencanakan pembuatan objek, sistem interaktif, jaringan, profil perusahaan, dan sebagainya."
     },
     {
         lang: "id",
-        title: "Layanan Cloud",
-        description: "Solusi infrastruktur cloud yang skalabel termasuk migrasi, hosting, backup, dan disaster recovery untuk kontinuitas bisnis modern.",
-        icon: "fas fa-cloud"
+        title: "Multimedia",
+        description: "Integrasi berbasis komputer dari teks, gambar, gambar diam dan bergerak (video), grafis, audio, animasi, dan videotron."
     },
     {
         lang: "id",
-        title: "Dukungan 24/7",
-        description: "Layanan dukungan teknis dan monitoring 24/7 memastikan uptime maksimal dan respons insiden cepat untuk sistem kritikal.",
-        icon: "fas fa-headset"
+        title: "Layanan",
+        description: "Bahkan jika berada di balik firewall yang tidak Anda kontrol. Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden dan produktivitas tim support."
     }
 ];
+
 
 const servicesDataIndonesia = {
     badge: "Layanan Kami",

@@ -37,10 +37,22 @@
                             class="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-500/20 rounded-full blur-xl animate-pulse delay-1000">
                         </div>
 
-                        <!-- Main Image -->
+                        <!-- Main Image Carousel -->
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
-                            <img src="/img/infra/satelite.jpg" alt="Infrastruktur Shangtel"
-                                class="w-full h-96 lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" />
+                            <div class="relative w-full h-96 lg:h-[500px]">
+                                <!-- Images -->
+                                <img
+                                    v-for="(image, index) in infraImages"
+                                    :key="index"
+                                    :src="image.src"
+                                    :alt="image.alt"
+                                    class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out"
+                                    :class="{
+                                        'opacity-100 scale-100': index === currentImageIndex,
+                                        'opacity-0 scale-105': index !== currentImageIndex
+                                    }"
+                                />
+                            </div>
                             <!-- Image overlay gradient -->
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30">
                             </div>

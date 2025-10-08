@@ -174,18 +174,44 @@
 
             <!-- Enterprise Trust Section -->
             <div class="mt-24 text-center">
-                <div class="inline-flex items-center space-x-2 text-gray-500 mb-8">
+                <div class="inline-flex items-center space-x-2 text-gray-500 mb-12">
                     <div class="w-12 h-px bg-gray-300"></div>
                     <span class="text-sm font-medium uppercase tracking-wide">Trusted by Enterprise</span>
                     <div class="w-12 h-px bg-gray-300"></div>
                 </div>
 
-                <div class="flex justify-center items-center space-x-8 opacity-60">
-                    <font-awesome-icon icon="server" class="text-3xl text-gray-400" />
-                    <font-awesome-icon icon="cloud" class="text-3xl text-gray-400" />
-                    <font-awesome-icon icon="network-wired" class="text-3xl text-gray-400" />
-                    <font-awesome-icon icon="shield" class="text-3xl text-gray-400" />
-                    <font-awesome-icon icon="desktop" class="text-3xl text-gray-400" />
+                <!-- First row - scroll right -->
+                <div class="overflow-hidden mb-8">
+                    <div class="flex space-x-12 animate-scroll-right">
+                        <div v-for="icon in enterpriseIcons" :key="`right-${icon.name}`" class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
+                                <font-awesome-icon :icon="icon.name" class="text-2xl text-gray-600" />
+                            </div>
+                        </div>
+                        <!-- Duplicate for infinite scroll -->
+                        <div v-for="icon in enterpriseIcons" :key="`right-dup-${icon.name}`" class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
+                                <font-awesome-icon :icon="icon.name" class="text-2xl text-gray-600" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second row - scroll left -->
+                <div class="overflow-hidden">
+                    <div class="flex space-x-12 animate-scroll-left">
+                        <div v-for="icon in enterpriseIconsReverse" :key="`left-${icon.name}`" class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg border border-blue-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
+                                <font-awesome-icon :icon="icon.name" class="text-2xl text-blue-600" />
+                            </div>
+                        </div>
+                        <!-- Duplicate for infinite scroll -->
+                        <div v-for="icon in enterpriseIconsReverse" :key="`left-dup-${icon.name}`" class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg border border-blue-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
+                                <font-awesome-icon :icon="icon.name" class="text-2xl text-blue-600" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -447,6 +473,23 @@ const currentServicesData = computed(() => {
 const getIconName = (iconString) => {
     return iconString
 }
+
+// Enterprise icons data
+const enterpriseIcons = [
+    { name: 'server' },
+    { name: 'cloud' },
+    { name: 'network-wired' },
+    { name: 'shield' },
+    { name: 'desktop' },
+    { name: 'lock' },
+    { name: 'wifi' },
+    { name: 'cog' }
+]
+
+// Reverse order for second row
+const enterpriseIconsReverse = computed(() => {
+    return [...enterpriseIcons].reverse()
+})
 </script>
 
 <style scoped>
@@ -498,6 +541,41 @@ const getIconName = (iconString) => {
     .text-2xl {
         font-size: 1.5rem;
     }
+}
+
+/* Infinite scroll animations */
+@keyframes scroll-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-scroll-right {
+    animation: scroll-right 30s linear infinite;
+    width: calc(200% + 12rem); /* Account for gaps */
+}
+
+.animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+    width: calc(200% + 12rem); /* Account for gaps */
+}
+
+/* Pause animation on hover */
+.animate-scroll-right:hover,
+.animate-scroll-left:hover {
+    animation-play-state: paused;
 }
 
 /* Smooth transitions */

@@ -16,30 +16,34 @@
         <div class="hidden lg:block">
           <div class="flex items-center space-x-8">
             <router-link to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">
-              Home
+              {{ currentNavData.home }}
             </router-link>
             <router-link to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">
-              About
+              {{ currentNavData.about }}
             </router-link>
             <router-link to="/service" class="nav-link" :class="{ 'active': $route.path === '/service' }">
-              Services
+              {{ currentNavData.services }}
             </router-link>
             <router-link to="/product" class="nav-link" :class="{ 'active': $route.path === '/product' }">
-              Products
+              {{ currentNavData.products }}
             </router-link>
-            <router-link to="/blog" class="nav-link" :class="{ 'active': $route.path === '/blog' }">
-              Resources
+            <router-link to="/portfolio" class="nav-link" :class="{ 'active': $route.path === '/portfolio' }">
+              {{ currentNavData.portfolio }}
             </router-link>
-
+            <router-link to="/contact" class="nav-link" :class="{ 'active': $route.path === '/contact' }">
+              {{ currentNavData.contact }}
+            </router-link>
             <!-- Language Switcher -->
             <div class="flex items-center space-x-4">
               <button @click="toggleLanguage" class="language-button group">
                 <span class="relative z-10 flex items-center text-sm font-medium">
                   <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
                   {{ currentLanguage }}
-                  <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
@@ -68,35 +72,42 @@
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
               :class="{ 'opacity-100': $route.path === '/' }"></div>
-            Home
+            {{ currentNavData.home }}
           </span>
         </router-link>
         <router-link to="/about" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
               :class="{ 'opacity-100': $route.path === '/about' }"></div>
-            About
+            {{ currentNavData.about }}
           </span>
         </router-link>
         <router-link to="/service" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
               :class="{ 'opacity-100': $route.path === '/service' }"></div>
-            Services
+            {{ currentNavData.services }}
           </span>
         </router-link>
         <router-link to="/product" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
               :class="{ 'opacity-100': $route.path === '/product' }"></div>
-            Products
+            {{ currentNavData.products }}
           </span>
         </router-link>
-        <router-link to="/blog" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        <router-link to="/portfolio" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/blog' }"></div>
-            Resources
+              :class="{ 'opacity-100': $route.path === '/portfolio' }"></div>
+            {{ currentNavData.portfolio }}
+          </span>
+        </router-link>
+        <router-link to="/contact" class="mobile-nav-link" @click="mobileMenuOpen = false">
+          <span class="flex items-center">
+            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
+              :class="{ 'opacity-100': $route.path === '/contact' }"></div>
+            {{ currentNavData.contact }}
           </span>
         </router-link>
 
@@ -104,7 +115,8 @@
           <button @click="toggleLanguage" class="mobile-language-button">
             <span class="flex items-center justify-center">
               <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
               </svg>
               {{ currentLanguage === 'ID' ? 'Bahasa Indonesia' : 'English' }}
               <svg class="ml-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -119,11 +131,34 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
 const { currentLanguage, toggleLanguage } = useLanguage()
+
+// Navigation data
+const navDataIndonesia = {
+  home: "Beranda",
+  about: "Tentang",
+  services: "Layanan",
+  products: "Produk",
+  portfolio: "Portofolio",
+  contact: "Kontak"
+}
+
+const navDataEnglish = {
+  home: "Home",
+  about: "About",
+  services: "Services",
+  products: "Products",
+  portfolio: "Portfolio",
+  contact: "Contact"
+}
+
+const currentNavData = computed(() => {
+  return currentLanguage.value === 'ID' ? navDataIndonesia : navDataEnglish
+})
 </script>
 
 <style scoped>

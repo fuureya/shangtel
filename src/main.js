@@ -19,7 +19,9 @@ import {
   faChartLine,
   faWifi,
   faNetworkWired,
-  faDesktop
+  faDesktop,
+  faChevronRight,
+  faCheck
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add icons to library
@@ -35,7 +37,9 @@ library.add(
   faChartLine,
   faWifi,
   faNetworkWired,
-  faDesktop
+  faDesktop,
+  faChevronRight,
+  faCheck
 )
 
 const app = createApp(App)

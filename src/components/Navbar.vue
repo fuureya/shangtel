@@ -15,24 +15,24 @@
         <!-- Menu Items -->
         <div class="hidden lg:block">
           <div class="flex items-center space-x-8">
-            <router-link to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">
+            <a href="#home" class="nav-link" :class="{ 'active': activeSection === 'home' }" @click="scrollToSection('home')">
               {{ currentNavData.home }}
-            </router-link>
-            <router-link to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">
+            </a>
+            <a href="#about" class="nav-link" :class="{ 'active': activeSection === 'about' }" @click="scrollToSection('about')">
               {{ currentNavData.about }}
-            </router-link>
-            <router-link to="/service" class="nav-link" :class="{ 'active': $route.path === '/service' }">
+            </a>
+            <a href="#services" class="nav-link" :class="{ 'active': activeSection === 'services' }" @click="scrollToSection('services')">
               {{ currentNavData.services }}
-            </router-link>
-            <router-link to="/product" class="nav-link" :class="{ 'active': $route.path === '/product' }">
+            </a>
+            <a href="#products" class="nav-link" :class="{ 'active': activeSection === 'products' }" @click="scrollToSection('products')">
               {{ currentNavData.products }}
-            </router-link>
+            </a>
             <router-link to="/portfolio" class="nav-link" :class="{ 'active': $route.path === '/portfolio' }">
               {{ currentNavData.portfolio }}
             </router-link>
-            <router-link to="/contact" class="nav-link" :class="{ 'active': $route.path === '/contact' }">
+            <a href="#contact" class="nav-link" :class="{ 'active': activeSection === 'contact' }" @click="scrollToSection('contact')">
               {{ currentNavData.contact }}
-            </router-link>
+            </a>
             <!-- Language Switcher -->
             <div class="flex items-center space-x-4">
               <button @click="toggleLanguage" class="language-button group">
@@ -68,34 +68,34 @@
     <!-- Mobile menu -->
     <div v-if="mobileMenuOpen" class="mobile-menu lg:hidden">
       <div class="px-6 py-4 space-y-1">
-        <router-link to="/" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        <a href="#home" class="mobile-nav-link" @click="scrollToSection('home'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/' }"></div>
+              :class="{ 'opacity-100': activeSection === 'home' }"></div>
             {{ currentNavData.home }}
           </span>
-        </router-link>
-        <router-link to="/about" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        </a>
+        <a href="#about" class="mobile-nav-link" @click="scrollToSection('about'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/about' }"></div>
+              :class="{ 'opacity-100': activeSection === 'about' }"></div>
             {{ currentNavData.about }}
           </span>
-        </router-link>
-        <router-link to="/service" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        </a>
+        <a href="#services" class="mobile-nav-link" @click="scrollToSection('services'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/service' }"></div>
+              :class="{ 'opacity-100': activeSection === 'services' }"></div>
             {{ currentNavData.services }}
           </span>
-        </router-link>
-        <router-link to="/product" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        </a>
+        <a href="#products" class="mobile-nav-link" @click="scrollToSection('products'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/product' }"></div>
+              :class="{ 'opacity-100': activeSection === 'products' }"></div>
             {{ currentNavData.products }}
           </span>
-        </router-link>
+        </a>
         <router-link to="/portfolio" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
@@ -103,13 +103,13 @@
             {{ currentNavData.portfolio }}
           </span>
         </router-link>
-        <router-link to="/contact" class="mobile-nav-link" @click="mobileMenuOpen = false">
+        <a href="#contact" class="mobile-nav-link" @click="scrollToSection('contact'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/contact' }"></div>
+              :class="{ 'opacity-100': activeSection === 'contact' }"></div>
             {{ currentNavData.contact }}
           </span>
-        </router-link>
+        </a>
 
         <div class="pt-4 mt-4 border-t border-gray-100">
           <button @click="toggleLanguage" class="mobile-language-button">
@@ -131,11 +131,52 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
+const activeSection = ref('home')
 const { currentLanguage, toggleLanguage } = useLanguage()
+
+// Smooth scroll to section
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
+
+// Handle scroll to detect active section
+const handleScroll = () => {
+  const sections = ['home', 'about', 'services', 'products', 'contact']
+  const scrollPos = window.scrollY + 100
+
+  for (const section of sections) {
+    const element = document.getElementById(section)
+    if (element) {
+      const offsetTop = element.offsetTop
+      const offsetBottom = offsetTop + element.offsetHeight
+
+      if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+        activeSection.value = section
+        break
+      }
+    }
+  }
+}
+
+// Setup scroll listener
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  handleScroll() // Initial check
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 // Navigation data
 const navDataIndonesia = {

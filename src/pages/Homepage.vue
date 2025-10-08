@@ -1,6 +1,8 @@
 <template>
   <Navbar />
-  <Jumbotron />
+  <section id="home">
+    <Jumbotron />
+  </section>
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 py-16">
@@ -16,16 +18,24 @@
   </div>
 
   <!-- Infrastructure Section -->
-  <Infra />
+  <section id="about">
+    <Infra />
+  </section>
 
   <!-- Services Section -->
-  <Services />
+  <section id="services">
+    <Services />
+  </section>
 
   <!-- Products Section -->
-  <Products />
+  <section id="products">
+    <Products />
+  </section>
 
   <!-- Footer -->
-  <Footer />
+  <section id="contact">
+    <Footer />
+  </section>
 
   <!-- Floating CS Button -->
   <FloatingCsButton />

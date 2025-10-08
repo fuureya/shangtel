@@ -15,6 +15,9 @@
     </div>
   </div>
 
+  <!-- Infrastructure Section -->
+  <Infra />
+
   <!-- Footer -->
   <Footer />
 
@@ -26,6 +29,7 @@
 import { computed } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import Jumbotron from '@/components/Jumbotron.vue'
+import Infra from '@/components/Infra.vue'
 import Footer from '@/components/Footer.vue'
 import FloatingCsButton from '@/components/FloatingCsButton.vue'
 import { useLanguage } from '@/composables/useLanguage.js'

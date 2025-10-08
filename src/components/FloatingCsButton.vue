@@ -2,28 +2,13 @@
   <div class="floating-cs-container">
     <!-- Main Floating Button -->
     <div
-      @click="toggleChat"
+      @click="openWhatsApp"
       class="floating-cs-button group"
-      :class="{ 'active': isOpen }"
     >
-      <!-- CS Icon -->
-      <div class="cs-icon" :class="{ 'hidden': isOpen }">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-        </svg>
-      </div>
-
-      <!-- Question Mark Icon -->
-      <div class="question-icon" :class="{ 'hidden': isOpen }">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-        </svg>
-      </div>
-
-      <!-- Close Icon -->
-      <div class="close-icon" :class="{ 'hidden': !isOpen }">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <!-- WhatsApp Icon -->
+      <div class="whatsapp-icon">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.787"/>
         </svg>
       </div>
 
@@ -35,116 +20,60 @@
     <!-- Chat Tooltip -->
     <div
       class="chat-tooltip"
-      :class="{ 'show': showTooltip && !isOpen }"
+      :class="{ 'show': showTooltip }"
       @mouseenter="showTooltip = true"
       @mouseleave="showTooltip = false"
     >
       <div class="tooltip-content">
-        <span class="tooltip-text">Butuh bantuan? Chat dengan kami!</span>
+        <span class="tooltip-text">{{ currentTooltipData.message }}</span>
         <div class="tooltip-arrow"></div>
-      </div>
-    </div>
-
-    <!-- Chat Widget (Example) -->
-    <div
-      class="chat-widget"
-      :class="{ 'show': isOpen }"
-    >
-      <div class="chat-header">
-        <div class="flex items-center space-x-3">
-          <div class="cs-avatar">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Customer Support</h4>
-            <p class="text-blue-100 text-sm">Online - Siap membantu Anda</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-body">
-        <div class="chat-message bot-message">
-          <div class="message-avatar">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="message-content">
-            <p>Halo! Selamat datang di Shangtel. Ada yang bisa kami bantu?</p>
-          </div>
-        </div>
-
-        <div class="quick-actions">
-          <button class="quick-action-btn" @click="sendQuickMessage('Konsultasi IT')">
-            💼 Konsultasi IT
-          </button>
-          <button class="quick-action-btn" @click="sendQuickMessage('Layanan Keamanan')">
-            🔒 Layanan Keamanan
-          </button>
-          <button class="quick-action-btn" @click="sendQuickMessage('Harga & Paket')">
-            💰 Harga & Paket
-          </button>
-        </div>
-      </div>
-
-      <div class="chat-footer">
-        <div class="flex items-center space-x-2">
-          <input
-            v-model="message"
-            @keyup.enter="sendMessage"
-            type="text"
-            placeholder="Ketik pesan Anda..."
-            class="chat-input"
-          />
-          <button @click="sendMessage" class="send-button">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useLanguage } from '@/composables/useLanguage.js'
 
-const isOpen = ref(false)
 const showTooltip = ref(false)
-const message = ref('')
+const { currentLanguage } = useLanguage()
 
-const toggleChat = () => {
-  isOpen.value = !isOpen.value
-  if (isOpen.value) {
-    showTooltip.value = false
-  }
+// WhatsApp number from footer
+const whatsappNumber = '08114499096'
+
+// Tooltip data for both languages
+const tooltipDataIndonesia = {
+  message: "Butuh bantuan? Chat WhatsApp kami!"
 }
 
-const sendMessage = () => {
-  if (message.value.trim()) {
-    // Here you would integrate with your chat system
-    console.log('Sending message:', message.value)
-    message.value = ''
-  }
+const tooltipDataEnglish = {
+  message: "Need help? Chat our WhatsApp!"
 }
 
-const sendQuickMessage = (quickMsg) => {
-  // Handle quick action messages
-  console.log('Quick message:', quickMsg)
+const currentTooltipData = computed(() => {
+  return currentLanguage.value === 'ID' ? tooltipDataIndonesia : tooltipDataEnglish
+})
+
+// Open WhatsApp with predefined message
+const openWhatsApp = () => {
+  const defaultMessage = currentLanguage.value === 'ID'
+    ? 'Halo! Saya tertarik dengan layanan Shangtel. Bisakah Anda memberikan informasi lebih lanjut?'
+    : 'Hello! I am interested in Shangtel services. Can you provide more information?'
+
+  const encodedMessage = encodeURIComponent(defaultMessage)
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+
+  window.open(whatsappUrl, '_blank')
 }
 
 // Auto-show tooltip after 5 seconds
 onMounted(() => {
   setTimeout(() => {
-    if (!isOpen.value) {
-      showTooltip.value = true
-      setTimeout(() => {
-        showTooltip.value = false
-      }, 3000)
-    }
+    showTooltip.value = true
+    setTimeout(() => {
+      showTooltip.value = false
+    }, 3000)
   }, 5000)
 })
 </script>
@@ -162,52 +91,26 @@ onMounted(() => {
   position: relative;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
 .floating-cs-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4);
 }
 
-.floating-cs-button.active {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-}
-
-/* Icons */
-.cs-icon,
-.question-icon,
-.close-icon {
-  position: absolute;
+/* WhatsApp Icon */
+.whatsapp-icon {
   color: white;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cs-icon {
-  transform: scale(1);
-}
-
-.question-icon {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  padding: 2px;
-  transform: scale(0.8);
-}
-
-.hidden {
-  opacity: 0;
-  transform: scale(0);
 }
 
 /* Pulse Animation */
@@ -216,7 +119,7 @@ onMounted(() => {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 2px solid rgba(59, 130, 246, 0.3);
+  border: 2px solid rgba(37, 211, 102, 0.3);
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -255,7 +158,7 @@ onMounted(() => {
 
 .tooltip-content {
   position: relative;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(37, 211, 102, 0.9);
   backdrop-filter: blur(10px);
   color: white;
   padding: 12px 16px;
@@ -271,138 +174,8 @@ onMounted(() => {
   right: 20px;
   width: 12px;
   height: 12px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(37, 211, 102, 0.9);
   transform: rotate(45deg);
-}
-
-/* Chat Widget */
-.chat-widget {
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  width: 320px;
-  height: 400px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.chat-widget.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-.chat-header {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  padding: 16px;
-  color: white;
-}
-
-.cs-avatar {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.chat-body {
-  padding: 16px;
-  height: 280px;
-  overflow-y: auto;
-}
-
-.chat-message {
-  display: flex;
-  align-items: flex-start;
-  space-x: 8px;
-  margin-bottom: 16px;
-}
-
-.message-avatar {
-  width: 32px;
-  height: 32px;
-  background: #3b82f6;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  flex-shrink: 0;
-}
-
-.message-content {
-  background: #f3f4f6;
-  padding: 12px 16px;
-  border-radius: 16px;
-  border-top-left-radius: 4px;
-  max-width: 80%;
-}
-
-.quick-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.quick-action-btn {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  padding: 12px 16px;
-  border-radius: 12px;
-  text-align: left;
-  font-size: 14px;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.quick-action-btn:hover {
-  background: #e2e8f0;
-  border-color: #3b82f6;
-}
-
-.chat-footer {
-  padding: 16px;
-  border-top: 1px solid #e5e7eb;
-}
-
-.chat-input {
-  flex: 1;
-  padding: 12px 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  outline: none;
-  font-size: 14px;
-}
-
-.chat-input:focus {
-  border-color: #3b82f6;
-}
-
-.send-button {
-  width: 40px;
-  height: 40px;
-  background: #3b82f6;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.send-button:hover {
-  background: #1d4ed8;
-  transform: scale(1.05);
 }
 
 /* Responsive Design */
@@ -423,12 +196,6 @@ onMounted(() => {
     height: 56px;
   }
 
-  .chat-widget {
-    width: calc(100vw - 2rem);
-    right: -1rem;
-    height: 450px;
-  }
-
   .tooltip-content {
     font-size: 13px;
     padding: 10px 14px;
@@ -441,13 +208,6 @@ onMounted(() => {
 }
 
 @media (max-width: 480px) {
-  .chat-widget {
-    width: calc(100vw - 1rem);
-    right: -1.5rem;
-    bottom: 70px;
-    height: 400px;
-  }
-
   .floating-cs-button {
     width: 52px;
     height: 52px;

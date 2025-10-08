@@ -5,9 +5,12 @@
     <h1 class="text-4xl font-bold text-indigo-600 text-center">Hello Vue</h1>
     <p class="text-gray-600 text-center mt-4">Selamat datang di website Shangtel!</p>
   </div>
+  <!-- cs button -->
+  <FloatingCsButton />
 </template>
 
 <script setup>
 import Navbar from '@/components/Navbar.vue'
 import Jumbotron from '@/components/Jumbotron.vue';
+import FloatingCsButton from '@/components/FloatingCsButton.vue';
 </script>

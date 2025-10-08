@@ -94,13 +94,7 @@
             </svg>
         </button>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 right-8 z-30 hidden lg:block">
-            <div class="flex flex-col items-center space-y-2 text-white/70">
-                <span class="text-sm font-medium writing-mode-vertical">Scroll</span>
-                <div class="w-px h-16 bg-gradient-to-b from-white/50 to-transparent"></div>
-            </div>
-        </div>
+
     </section>
 </template>
 
@@ -336,31 +330,3 @@ p {
     transform: scale(1.05);
 }
 </style>
-
-
-/*
-
-🖼️ Carousel 1 – “Vision & Identity”
-
-Slogan:
-
-“Integrated IT Solutions for a Connected World.”
-Subtext (optional):
-Empowering businesses with reliable, secure, and efficient technology.
-
-🖼️ Carousel 2 – “Our Core Services”
-
-Slogan:
-
-“From Design to Security — Everything Under Shangtel.”
-Subtext:
-Complete solutions in IT Management, Consulting, Data Security, IT Design, and Multimedia Services.
-
-🖼️ Carousel 3 – “Excellence & Trust”
-
-Slogan:
-
-“Build Smart, Secure, and Future-Ready Systems.”
-Subtext:
-Partner with Shangtel to optimize performance and strengthen your IT infrastructure.
-*/

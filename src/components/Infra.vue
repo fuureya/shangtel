@@ -1,6 +1,19 @@
 <template>
-  <section ref="sectionRef" class="relative min-h-screen overflow-hidden bg-gradient-to-r from-gray-900 via-slate-800 to-white">
-    <div class="max-w-7xl mx-auto">
+  <section ref="sectionRef" class="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-800">
+    <!-- Bokeh Background Effects -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute top-1/2 right-1/3 w-96 h-96 bg-indigo-300/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div class="absolute bottom-1/4 left-1/2 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      <div class="absolute top-1/3 right-1/4 w-48 h-48 bg-blue-300/25 rounded-full blur-2xl animate-pulse delay-500"></div>
+      <div class="absolute bottom-1/3 left-1/4 w-56 h-56 bg-indigo-400/15 rounded-full blur-3xl animate-pulse delay-1500"></div>
+      <div class="absolute top-2/3 right-1/2 w-72 h-72 bg-sky-300/20 rounded-full blur-3xl animate-pulse delay-3000"></div>
+    </div>
+
+    <!-- Overlay for better text readability -->
+    <div class="absolute inset-0 bg-blue-900/30"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 min-h-screen">
         <!-- Left Side - Image -->
         <div class="relative flex items-center justify-center p-8 lg:p-16">
@@ -37,33 +50,30 @@
           </div>
         </div>
 
-        <!-- Right Side - Content with Gradient Background -->
+        <!-- Right Side - Content -->
         <div class="relative flex items-center">
-          <!-- Gradient overlay from left -->
-          <div class="absolute inset-0 bg-gradient-to-r from-slate-800/50 via-slate-600/30 to-white"></div>
-
           <div class="relative z-10 p-8 lg:p-16 w-full">
             <div class="max-w-lg">
               <!-- Badge -->
-              <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-600/10 backdrop-blur-sm border border-blue-400/20 mb-6">
-                <span class="text-blue-600 text-sm font-medium">Infrastruktur Terdepan</span>
+              <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6">
+                <span class="text-white text-sm font-medium">Infrastruktur Terdepan</span>
               </div>
 
               <!-- Main Title -->
-              <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span class="bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
+              <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
                   Jaringan Digital Terdepan
                 </span>
               </h2>
 
               <!-- Description -->
-              <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              <p class="text-lg text-blue-50 mb-8 leading-relaxed">
                 Shangkuriang Telekomunikasi berkomitmen mendukung pertumbuhan bisnis Anda dengan menghadirkan jaringan dan solusi digital terdepan yang dirancang untuk meningkatkan efisiensi, keamanan, dan daya saing perusahaan Anda.
               </p>
 
               <!-- Statistics Grid -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
                   <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                       <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,7 +88,7 @@
                   </div>
                 </div>
 
-                <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
+                <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
                   <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
                       <svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +106,7 @@
 
               <!-- CTA Button -->
               <div class="flex space-x-4">
-                <button class="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 hover:transform hover:scale-105">
+                <button class="group bg-gradient-to-r from-white to-blue-50 text-blue-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-white/25 hover:transform hover:scale-105 border border-white/30">
                   <span class="flex items-center">
                     Pelajari Lebih Lanjut
                     <svg class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

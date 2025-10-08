@@ -5,15 +5,10 @@
         <!-- Logo -->
         <div class="flex-shrink-0 group">
           <div class="flex items-center space-x-3">
-            <div class="relative">
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300">
-              </div>
-              <div class="relative bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-xl">
-                <img class="h-8 w-auto filter brightness-0 invert" src="/img/shangtel.png" alt="Shangtel" />
-              </div>
-            </div>
-
+            <!-- Desktop Logo -->
+            <img class="h-8 w-auto hidden sm:block" src="/img/shangtel.png" alt="Shangtel" />
+            <!-- Mobile Logo -->
+            <img class="h-8 w-auto sm:hidden" src="/img/shangtel-mb.png" alt="Shangtel" />
           </div>
         </div>
 

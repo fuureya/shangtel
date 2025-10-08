@@ -39,20 +39,13 @@
 
                         <!-- Main Image Carousel -->
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
-                            <div class="relative w-full h-96 lg:h-[500px]">
-                                <!-- Images -->
-                                <img
-                                    v-for="(image, index) in infraImages"
-                                    :key="index"
-                                    :src="image.src"
-                                    :alt="image.alt"
-                                    class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out"
-                                    :class="{
-                                        'opacity-100 scale-100': index === currentImageIndex,
-                                        'opacity-0 scale-105': index !== currentImageIndex
-                                    }"
-                                />
-                            </div>
+                            <img
+                                :src="currentImage.src"
+                                :alt="currentImage.alt"
+                                class="w-full h-96 lg:h-[500px] object-cover transition-all duration-1000 ease-in-out"
+                                @load="onImageLoad"
+                                @error="onImageError"
+                            />
                             <!-- Image overlay gradient -->
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30">
                             </div>
@@ -172,16 +165,57 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, TransitionGroup } from 'vue'
 import { useLanguage } from '@/composables/useLanguage.js'
 
 const radio1000 = ref(0)
 const kabel20000 = ref(0)
 const isVisible = ref(false)
 const sectionRef = ref(null)
+const currentImageIndex = ref(0)
 let observer = null
+let imageCarouselInterval = null
 
 const { currentLanguage } = useLanguage()
+
+// Image carousel data
+const infraImages = [
+    {
+        src: '/img/infra/satelite.jpg',
+        alt: 'Infrastruktur Satelit Shangtel'
+    },
+    {
+        src: '/img/infra/fiber.jpg',
+        alt: 'Infrastruktur Fiber Optik Shangtel'
+    },
+    {
+        src: 'https://via.placeholder.com/800x600/3B82F6/FFFFFF?text=Network+Infrastructure',
+        alt: 'Network Infrastructure Placeholder'
+    }
+]
+
+// Auto change images
+const startImageCarousel = () => {
+    imageCarouselInterval = setInterval(() => {
+        currentImageIndex.value = (currentImageIndex.value + 1) % infraImages.length
+    }, 6000) // Change every 6 seconds for smoother viewing
+}
+
+const stopImageCarousel = () => {
+    if (imageCarouselInterval) {
+        clearInterval(imageCarouselInterval)
+        imageCarouselInterval = null
+    }
+}
+
+// Debug image loading
+const onImageLoad = () => {
+    console.log('Image loaded successfully:', currentImage.value.src)
+}
+
+const onImageError = (event) => {
+    console.error('Image failed to load:', currentImage.value.src, event)
+}
 
 const infraDataIndonesia = {
     badge: "Infrastruktur Terdepan",
@@ -207,6 +241,10 @@ const infraDataEnglish = {
 
 const currentInfraData = computed(() => {
     return currentLanguage.value === 'ID' ? infraDataIndonesia : infraDataEnglish
+})
+
+const currentImage = computed(() => {
+    return infraImages[currentImageIndex.value]
 })
 
 const animateNumbers = () => {
@@ -276,17 +314,45 @@ const formatNumber = (num) => {
 }
 
 onMounted(() => {
+    console.log('Infra mounted. Current image:', currentImage.value)
     setupIntersectionObserver()
+    startImageCarousel()
 })
 
 onUnmounted(() => {
     if (observer && sectionRef.value) {
         observer.unobserve(sectionRef.value)
     }
+    stopImageCarousel()
 })
 </script>
 
 <style scoped>
+/* Image Carousel Transitions */
+.image-slide-enter-active {
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-slide-leave-active {
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-slide-enter-from {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.image-slide-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.image-slide-enter-to,
+.image-slide-leave-from {
+    transform: translateX(0);
+    opacity: 1;
+}
+
 /* Custom animations */
 @keyframes float {
 

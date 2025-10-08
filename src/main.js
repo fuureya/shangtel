@@ -1,8 +1,44 @@
 import './assets/main.css'
-import '@fortawesome/fontawesome-free/css/all.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+// FontAwesome imports
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {
+  faShield,
+  faCloud,
+  faUsers,
+  faHeadset,
+  faCog,
+  faLightbulb,
+  faServer,
+  faLock,
+  faChartLine,
+  faWifi,
+  faNetworkWired,
+  faDesktop
+} from '@fortawesome/free-solid-svg-icons'
+
+// Add icons to library
+library.add(
+  faShield,
+  faCloud,
+  faUsers,
+  faHeadset,
+  faCog,
+  faLightbulb,
+  faServer,
+  faLock,
+  faChartLine,
+  faWifi,
+  faNetworkWired,
+  faDesktop
+)
+
+const app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
+app.use(router)
+app.mount('#app')

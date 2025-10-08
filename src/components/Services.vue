@@ -28,12 +28,12 @@
             <div class="text-center mb-20">
                 <div
                     class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-blue-200/50 text-blue-700 text-sm font-semibold mb-8 shadow-lg">
-                    <i class="fas fa-rocket mr-2"></i>
+                    <font-awesome-icon icon="cog" class="mr-2" />
                     {{ currentServicesData.badge }}
                 </div>
-                <h2 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight">
+                <h2 class="text-4xl font-black text-gray-900 mb-6 tracking-tight">
                     <span
-                        class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                        class="bg-gradient-to-r font-bold from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         {{ currentServicesData.title }}
                     </span>
                 </h2>
@@ -65,12 +65,18 @@
                 <!-- Navigation Arrows -->
                 <button @click="prevSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
                     class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
-                    <i class="fas fa-chevron-left text-gray-600 group-hover:text-blue-600 transition-colors"></i>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
                 </button>
 
                 <button @click="nextSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
                     class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
-                    <i class="fas fa-chevron-right text-gray-600 group-hover:text-blue-600 transition-colors"></i>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
                 </button>
 
                 <!-- Services Grid with Transform -->
@@ -99,8 +105,9 @@
                                     <!-- Modern Icon Container -->
                                     <div class="relative mb-8">
                                         <div
-                                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                                            <i :class="service.icon" class="text-3xl text-white"></i>
+                                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 shadow-lg">
+                                            <font-awesome-icon :icon="getIconName(service.icon)"
+                                                class="text-3xl text-white" />
                                         </div>
                                         <!-- Icon Glow Effect -->
                                         <div
@@ -141,8 +148,7 @@
                                             <span
                                                 v-if="service.title.includes('Design') || service.title.includes('Desain')"
                                                 class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">Design</span>
-                                            <span
-                                                v-if="service.title.includes('Multimedia')"
+                                            <span v-if="service.title.includes('Multimedia')"
                                                 class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-semibold rounded-full">Multimedia</span>
                                             <span
                                                 v-if="service.title.includes('Service') || service.title.includes('Layanan')"
@@ -150,13 +156,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Hover Arrow -->
-                                    <div
-                                        class="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-arrow-right text-white text-sm"></i>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -182,11 +181,11 @@
                 </div>
 
                 <div class="flex justify-center items-center space-x-8 opacity-60">
-                    <i class="fab fa-microsoft text-3xl text-gray-400"></i>
-                    <i class="fab fa-aws text-3xl text-gray-400"></i>
-                    <i class="fab fa-google text-3xl text-gray-400"></i>
-                    <i class="fas fa-server text-3xl text-gray-400"></i>
-                    <i class="fab fa-cisco text-3xl text-gray-400"></i>
+                    <font-awesome-icon icon="server" class="text-3xl text-gray-400" />
+                    <font-awesome-icon icon="cloud" class="text-3xl text-gray-400" />
+                    <font-awesome-icon icon="network-wired" class="text-3xl text-gray-400" />
+                    <font-awesome-icon icon="shield" class="text-3xl text-gray-400" />
+                    <font-awesome-icon icon="desktop" class="text-3xl text-gray-400" />
                 </div>
             </div>
         </div>
@@ -354,62 +353,74 @@ const servicesData = [
     {
         lang: "en",
         title: "IT Management",
-        description: "To the practice of controlling and conducting business information, IT systems, IT-enabled operations, services, and resources in an enterprise organization."
+        description: "To the practice of controlling and conducting business information, IT systems, IT-enabled operations, services, and resources in an enterprise organization.",
+        icon: "server"
     },
     {
         lang: "en",
         title: "Data Security",
-        description: "Process of protecting corporate data and preventing data loss through unauthorized access. This includes protecting your data from attacks that can encrypt or destroy data."
+        description: "Process of protecting corporate data and preventing data loss through unauthorized access. This includes protecting your data from attacks that can encrypt or destroy data.",
+        icon: "shield"
     },
     {
         lang: "en",
         title: "IT Consulting",
-        description: "IT consulting, also referred to as technology consulting, relates to services aimed at helping clients on how they can utilise information technology (IT) and digital to optimally achieve their business goals. The IT consulting segment spans both advisory and implementation services, but excludes transactional IT activities."
+        description: "IT consulting, also referred to as technology consulting, relates to services aimed at helping clients on how they can utilise information technology (IT) and digital to optimally achieve their business goals. The IT consulting segment spans both advisory and implementation services, but excludes transactional IT activities.",
+        icon: "users"
     },
     {
         lang: "en",
         title: "IT Design",
-        description: "Generally speaking, it is the process of envisioning and planning the creation of objects, interactive systems, network, company profile, etc."
+        description: "Generally speaking, it is the process of envisioning and planning the creation of objects, interactive systems, network, company profile, etc.",
+        icon: "lightbulb"
     },
     {
         lang: "en",
         title: "Multimedia",
-        description: "Computer-assisted integration of text, drawings, still and moving images (videos), graphics, audio, animation, videotron."
+        description: "Computer-assisted integration of text, drawings, still and moving images (videos), graphics, audio, animation, videotron.",
+        icon: "desktop"
     },
     {
         lang: "en",
         title: "Service",
-        description: "Even if they are behind firewalls you don’t control. All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity."
+        description: "Even if they are behind firewalls you don't control. All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity.",
+        icon: "headset"
     },
     {
         lang: "id",
         title: "Manajemen IT",
-        description: "Praktik mengendalikan dan mengelola informasi bisnis, sistem IT, operasi yang didukung IT, layanan, dan sumber daya dalam organisasi perusahaan."
+        description: "Praktik mengendalikan dan mengelola informasi bisnis, sistem IT, operasi yang didukung IT, layanan, dan sumber daya dalam organisasi perusahaan.",
+        icon: "server"
     },
     {
         lang: "id",
         title: "Keamanan Data",
-        description: "Proses melindungi data perusahaan dan mencegah kehilangan data akibat akses yang tidak sah. Ini termasuk melindungi data dari serangan yang dapat mengenkripsi atau merusak data."
+        description: "Proses melindungi data perusahaan dan mencegah kehilangan data akibat akses yang tidak sah. Ini termasuk melindungi data dari serangan yang dapat mengenkripsi atau merusak data.",
+        icon: "shield"
     },
     {
         lang: "id",
         title: "Konsultasi IT",
-        description: "Konsultasi IT, juga disebut konsultasi teknologi, adalah layanan yang membantu klien memanfaatkan teknologi informasi (IT) dan digital untuk mencapai tujuan bisnis secara optimal. Segmen ini mencakup layanan konsultasi dan implementasi, namun tidak termasuk aktivitas IT transaksional."
+        description: "Konsultasi IT, juga disebut konsultasi teknologi, adalah layanan yang membantu klien memanfaatkan teknologi informasi (IT) dan digital untuk mencapai tujuan bisnis secara optimal. Segmen ini mencakup layanan konsultasi dan implementasi, namun tidak termasuk aktivitas IT transaksional.",
+        icon: "users"
     },
     {
         lang: "id",
         title: "Desain IT",
-        description: "Secara umum, ini adalah proses merancang dan merencanakan pembuatan objek, sistem interaktif, jaringan, profil perusahaan, dan sebagainya."
+        description: "Secara umum, ini adalah proses merancang dan merencanakan pembuatan objek, sistem interaktif, jaringan, profil perusahaan, dan sebagainya.",
+        icon: "lightbulb"
     },
     {
         lang: "id",
         title: "Multimedia",
-        description: "Integrasi berbasis komputer dari teks, gambar, gambar diam dan bergerak (video), grafis, audio, animasi, dan videotron."
+        description: "Integrasi berbasis komputer dari teks, gambar, gambar diam dan bergerak (video), grafis, audio, animasi, dan videotron.",
+        icon: "desktop"
     },
     {
         lang: "id",
         title: "Layanan",
-        description: "Bahkan jika berada di balik firewall yang tidak Anda kontrol. Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden dan produktivitas tim support."
+        description: "Bahkan jika berada di balik firewall yang tidak Anda kontrol. Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden dan produktivitas tim support.",
+        icon: "headset"
     }
 ];
 
@@ -431,6 +442,11 @@ const servicesDataEnglish = {
 const currentServicesData = computed(() => {
     return currentLanguage.value === 'ID' ? servicesDataIndonesia : servicesDataEnglish
 })
+
+// Helper function to get icon name without prefix
+const getIconName = (iconString) => {
+    return iconString
+}
 </script>
 
 <style scoped>

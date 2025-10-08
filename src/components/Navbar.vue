@@ -31,18 +31,19 @@
               Resources
             </router-link>
 
-            <!-- CTA Button -->
+            <!-- Language Switcher -->
             <div class="flex items-center space-x-4">
-              <router-link to="/contact" class="cta-button group">
+              <button @click="toggleLanguage" class="language-button group">
                 <span class="relative z-10 flex items-center text-sm font-medium">
-                  Get Started
-                  <svg class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                  {{ currentLanguage }}
+                  <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
-              </router-link>
+              </button>
             </div>
           </div>
         </div>
@@ -100,14 +101,17 @@
         </router-link>
 
         <div class="pt-4 mt-4 border-t border-gray-100">
-          <router-link to="/contact" class="mobile-cta-button" @click="mobileMenuOpen = false">
+          <button @click="toggleLanguage" class="mobile-language-button">
             <span class="flex items-center justify-center">
-              Get Started
-              <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+              {{ currentLanguage === 'ID' ? 'Bahasa Indonesia' : 'English' }}
+              <svg class="ml-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
-          </router-link>
+          </button>
         </div>
       </div>
     </div>
@@ -116,8 +120,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
+const { currentLanguage, toggleLanguage } = useLanguage()
 </script>
 
 <style scoped>
@@ -173,21 +179,22 @@ const mobileMenuOpen = ref(false)
   width: 100%;
 }
 
-/* CTA Button */
-.cta-button {
+/* Language Button */
+.language-button {
   position: relative;
   background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
   color: white;
-  padding: 0.625rem 1.5rem;
+  padding: 0.625rem 1.25rem;
   border-radius: 0.75rem;
   font-weight: 500;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
 }
 
-.cta-button::before {
+.language-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -198,16 +205,16 @@ const mobileMenuOpen = ref(false)
   transition: left 0.5s;
 }
 
-.cta-button:hover {
+.language-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.4);
 }
 
-.cta-button:hover::before {
+.language-button:hover::before {
   left: 100%;
 }
 
-.cta-button:active {
+.language-button:active {
   transform: translateY(0);
 }
 
@@ -290,20 +297,22 @@ const mobileMenuOpen = ref(false)
   transform: translateX(4px);
 }
 
-.mobile-cta-button {
+.mobile-language-button {
   display: block;
+  width: 100%;
   background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
   color: white;
   padding: 0.875rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 600;
   text-align: center;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
 }
 
-.mobile-cta-button:hover {
+.mobile-language-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.4);
 }

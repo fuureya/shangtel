@@ -99,9 +99,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage.js'
 
-const carouselData = [
+const carouselDataEnglish = [
     {
         id: 1,
         badge: "Vision & Identity",
@@ -123,17 +124,48 @@ const carouselData = [
         subtitle: "Partner with Shangtel to optimize performance and strengthen your IT infrastructure.",
         image: "/img/carousel/c3.jpg"
     }
+];
+
+const carouselDataIndonesia = [
+    {
+        id: 1,
+        badge: "Visi & Identitas",
+        title: "Solusi IT Terintegrasi untuk Dunia yang Terkoneksi",
+        subtitle: "Memberdayakan bisnis dengan teknologi yang andal, aman, dan efisien.",
+        image: "/img/carousel/c1.jpg"
+    },
+    {
+        id: 2,
+        badge: "Layanan Utama Kami",
+        title: "Dari Desain hingga Keamanan — Semua Ada di Shangtel",
+        subtitle: "Solusi lengkap dalam Manajemen IT, Konsultasi, Keamanan Data, Desain IT, dan Layanan Multimedia.",
+        image: "/img/carousel/c2.jpg"
+    },
+    {
+        id: 3,
+        badge: "Keunggulan & Kepercayaan",
+        title: "Bangun Sistem yang Cerdas, Aman, dan Siap untuk Masa Depan",
+        subtitle: "Bermitra dengan Shangtel untuk mengoptimalkan kinerja dan memperkuat infrastruktur IT Anda.",
+        image: "/img/carousel/c3.jpg"
+    }
 ]
+
+const { currentLanguage } = useLanguage()
+
+// Computed property to get the right carousel data based on language
+const carouselData = computed(() => {
+    return currentLanguage.value === 'ID' ? carouselDataIndonesia : carouselDataEnglish
+})
 
 const currentSlide = ref(0)
 let autoplayInterval = null
 
 const nextSlide = () => {
-    currentSlide.value = (currentSlide.value + 1) % carouselData.length
+    currentSlide.value = (currentSlide.value + 1) % carouselData.value.length
 }
 
 const prevSlide = () => {
-    currentSlide.value = currentSlide.value === 0 ? carouselData.length - 1 : currentSlide.value - 1
+    currentSlide.value = currentSlide.value === 0 ? carouselData.value.length - 1 : currentSlide.value - 1
 }
 
 const startAutoplay = () => {

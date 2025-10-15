@@ -64,7 +64,7 @@
                 <div class="relative z-10">
                   <!-- Product Image -->
                   <div class="mb-8 rounded-xl overflow-hidden">
-                    <img src="/img/products/sky.jpg" alt="ShangtelSky Infrastructure"
+                    <img src="/img/products/sky.jpg" alt="Skyaccess Infrastructure"
                       class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
 
@@ -72,7 +72,7 @@
                   <div class="flex items-center justify-between mb-8">
                     <div
                       class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-                      <font-awesome-icon icon="cloud" class="text-3xl text-white" />
+                      <img src="/public/img/skyaccess.png" alt="Skyaccess Logo" class="w-12 h-12 object-contain" />
                     </div>
                     <div class="px-4 py-2 bg-blue-500/10 rounded-full border border-blue-300/20">
                       <span class="text-blue-700 text-sm font-semibold">Enterprise</span>
@@ -81,7 +81,7 @@
 
                   <!-- Product Name -->
                   <h3 class="text-3xl lg:text-4xl font-black text-gray-800 mb-4">
-                    Shangtel<span class="text-blue-600">Sky</span>
+                    Sky<span class="text-blue-600">access</span>
                   </h3>
 
                   <!-- Description -->
@@ -101,14 +101,14 @@
                   </div>
 
                   <!-- CTA Button -->
-                  <button
-                    class="group/btn bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 hover:transform hover:scale-105 w-full">
+                  <a href="https://skyaccess.co.id/" target="_blank"
+                    class="group/btn bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 hover:transform hover:scale-105 w-full block text-center">
                     <span class="flex items-center justify-center">
                       {{ currentProductData.shangtelSky.buttonText }}
                       <font-awesome-icon icon="chevron-right"
                         class="ml-2 transition-transform group-hover/btn:translate-x-1" />
                     </span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
                 <div class="relative z-10">
                   <!-- Product Image -->
                   <div class="mb-8 rounded-xl overflow-hidden">
-                    <img src="/img/products/ftth.jpg" alt="ShangtelHome FTTH"
+                    <img src="/img/products/ftth.jpg" alt="Shangtelhome FTTH"
                       class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
 
@@ -139,7 +139,8 @@
                   <div class="flex items-center justify-between mb-8">
                     <div
                       class="w-20 h-20 bg-gradient-to-br from-indigo-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-                      <font-awesome-icon icon="wifi" class="text-3xl text-white" />
+                      <img src="/public/img/shangtelhome.png" alt="Shangtelhome Logo"
+                        class="w-12 h-12 object-contain" />
                     </div>
                     <div class="px-4 py-2 bg-indigo-500/10 rounded-full border border-indigo-300/20">
                       <span class="text-indigo-700 text-sm font-semibold">Consumer</span>
@@ -168,14 +169,14 @@
                   </div>
 
                   <!-- CTA Button -->
-                  <button
-                    class="group/btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 hover:transform hover:scale-105 w-full">
+                  <a href="https://shangtelhome.com" target="_blank"
+                    class="group/btn bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 hover:transform hover:scale-105 w-full block text-center">
                     <span class="flex items-center justify-center">
                       {{ currentProductData.shangtelHome.buttonText }}
                       <font-awesome-icon icon="chevron-right"
                         class="ml-2 transition-transform group-hover/btn:translate-x-1" />
                     </span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -198,26 +199,27 @@ const productDataIndonesia = {
   title: "Solusi Konektivitas Terdepan",
   subtitle: "Pilihan produk dan layanan telekomunikasi terbaik untuk memenuhi kebutuhan bisnis dan rumah tangga Anda dengan teknologi canggih dan dukungan 24/7.",
   shangtelSky: {
-    description: "Solusi internet enterprise berkecepatan tinggi dengan infrastruktur cloud dan jaringan fiber optik untuk mendukung operasional bisnis skala besar.",
+    description: "Solusi konektivitas satelit terdepan dengan teknologi VSAT untuk area yang sulit dijangkau jaringan konvensional.",
     features: [
-      "Kecepatan hingga 1 Gbps",
-      "Uptime 99.9% SLA",
-      "Dedicated Support 24/7",
-      "Cloud Integration",
-      "Scalable Bandwidth"
+      "Installation",
+      "4K Quality",
+      "Ultra Fast",
+      "Satelite VSAT",
+      "Cheap Plans",
+      "24/7 Support"
     ],
-    buttonText: "Konsultasi Enterprise"
+    buttonText: "Lihat Selengkapnya"
   },
   shangtelHome: {
-    description: "Layanan internet rumahan dengan kecepatan stabil dan harga terjangkau untuk aktivitas browsing, streaming, dan gaming keluarga.",
+    description: "Layanan internet rumahan dengan fokus pada privasi, keamanan, dan kecepatan stabil untuk kebutuhan keluarga modern.",
     features: [
-      "Kecepatan hingga 100 Mbps",
-      "Unlimited Data",
-      "WiFi 6 Router",
-      "Family Protection",
-      "Easy Installation"
+      "Privasi & Keamanan Terjamin",
+      "Kecepatan Stabil 24/7",
+      "Layanan cepat & Responsive",
+      "Infrastruktur Modern",
+      "Support 24/7"
     ],
-    buttonText: "Pilih Paket Home"
+    buttonText: "Lihat Selengkapnya"
   }
 }
 
@@ -226,26 +228,26 @@ const productDataEnglish = {
   title: "Leading Connectivity Solutions",
   subtitle: "Premium telecommunications products and services to meet your business and household needs with advanced technology and 24/7 support.",
   shangtelSky: {
-    description: "High-speed enterprise internet solution with cloud infrastructure and fiber optic network to support large-scale business operations.",
+    description: "Leading satellite connectivity solution with VSAT technology for areas hard to reach by conventional networks.",
     features: [
-      "Speed up to 1 Gbps",
-      "99.9% Uptime SLA",
-      "Dedicated Support 24/7",
-      "Cloud Integration",
-      "Scalable Bandwidth"
+      "Installation",
+      "4K Quality",
+      "Ultra Fast",
+      "Satelite VSAT",
+      "Cheap Plans",
+      "24/7 Support"
     ],
-    buttonText: "Enterprise Consultation"
+    buttonText: "Learn More"
   },
   shangtelHome: {
-    description: "Home internet service with stable speed and affordable pricing for browsing, streaming, and family gaming activities.",
+    description: "Home internet service focused on privacy, security, and stable speed for modern family needs.",
     features: [
-      "Speed up to 100 Mbps",
-      "Unlimited Data",
-      "WiFi 6 Router",
-      "Family Protection",
-      "Easy Installation"
+      "Privacy & Security Guaranteed",
+      "Stable Speed 24/7",
+      "Fast & Responsive Service",
+      "Modern Infrastructure"
     ],
-    buttonText: "Choose Home Package"
+    buttonText: "Learn More"
   }
 }
 

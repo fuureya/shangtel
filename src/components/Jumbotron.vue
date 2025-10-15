@@ -43,7 +43,7 @@
 
                             <!-- CTA Buttons -->
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <button class="cta-primary group">
+                                <a href="https://wa.me/6208114499096?text=Halo%20saya%20ingin%20konsultasi%20tentang%20layanan%20Shangtel" target="_blank" class="cta-primary group">
                                     <span class="relative z-10 flex items-center justify-center">
                                         Get Started
                                         <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
@@ -52,17 +52,7 @@
                                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
                                     </span>
-                                </button>
-                                <button class="cta-secondary group">
-                                    <span class="flex items-center justify-center">
-                                        <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        Watch Demo
-                                    </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -102,6 +92,14 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useLanguage } from '@/composables/useLanguage.js'
 
+// Props to detect if this is carrier page
+const props = defineProps({
+  isCarrierPage: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const carouselDataEnglish = [
     {
         id: 1,
@@ -123,6 +121,23 @@ const carouselDataEnglish = [
         title: "Build Smart, Secure, and Future-Ready Systems",
         subtitle: "Partner with Shangtel to optimize performance and strengthen your IT infrastructure.",
         image: "/img/carousel/c3.jpg"
+    }
+];
+
+const carrierCarouselDataEnglish = [
+    {
+        id: 1,
+        badge: "Carrier Services",
+        title: "Enterprise Telecommunications Infrastructure",
+        subtitle: "Carrier-grade solutions for telecommunications and enterprise connectivity.",
+        image: "/img/karir1.jpg"
+    },
+    {
+        id: 2,
+        badge: "Professional Growth",
+        title: "Join Our Dynamic Team",
+        subtitle: "Build your career with cutting-edge technology and innovative solutions.",
+        image: "/img/karir2.jpg"
     }
 ];
 
@@ -150,10 +165,30 @@ const carouselDataIndonesia = [
     }
 ]
 
+const carrierCarouselDataIndonesia = [
+    {
+        id: 1,
+        badge: "Layanan Carrier",
+        title: "Infrastruktur Telekomunikasi Enterprise",
+        subtitle: "Solusi carrier grade untuk telekomunikasi dan konektivitas enterprise.",
+        image: "/img/karir1.jpg"
+    },
+    {
+        id: 2,
+        badge: "Pengembangan Profesional",
+        title: "Bergabunglah dengan Tim Dinamis Kami",
+        subtitle: "Bangun karir Anda dengan teknologi terdepan dan solusi inovatif.",
+        image: "/img/karir2.jpg"
+    }
+]
+
 const { currentLanguage } = useLanguage()
 
-// Computed property to get the right carousel data based on language
+// Computed property to get the right carousel data based on language and page
 const carouselData = computed(() => {
+    if (props.isCarrierPage) {
+        return currentLanguage.value === 'ID' ? carrierCarouselDataIndonesia : carrierCarouselDataEnglish
+    }
     return currentLanguage.value === 'ID' ? carouselDataIndonesia : carouselDataEnglish
 })
 
@@ -203,6 +238,8 @@ onUnmounted(() => {
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
     border: none;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .cta-primary::before {

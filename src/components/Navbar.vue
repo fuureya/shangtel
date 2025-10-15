@@ -1,55 +1,64 @@
 <template>
-  <nav class="modern-navbar bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
+  <nav class="modern-navbar bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 ">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex items-center  h-20">
         <!-- Logo -->
         <div class="flex-shrink-0 group">
           <div class="flex items-center space-x-3">
             <!-- Desktop Logo -->
-            <img class="h-8 w-auto hidden sm:block" src="/img/shangtel.png" alt="Shangtel" />
+            <img class="h-10 w-auto hidden sm:block" src="/img/shangtel.png" alt="Shangtel" />
             <!-- Mobile Logo -->
             <img class="h-8 w-auto sm:hidden" src="/img/shangtel-mb.png" alt="Shangtel" />
           </div>
         </div>
 
-        <!-- Menu Items -->
-        <div class="hidden lg:block">
-          <div class="flex items-center space-x-8">
-            <a href="#home" class="nav-link" :class="{ 'active': activeSection === 'home' }" @click="scrollToSection('home')">
+        <!-- Menu Items - dengan jarak besar dari logo -->
+        <div class="hidden lg:flex flex-1 justify-center ml-40">
+          <div class="flex items-center ">
+            <a href="#home" class="nav-link" :class="{ 'active': activeSection === 'home' }"
+              @click="scrollToSection('home')">
               {{ currentNavData.home }}
             </a>
-            <a href="#about" class="nav-link" :class="{ 'active': activeSection === 'about' }" @click="scrollToSection('about')">
+            <a href="#about" class="nav-link" :class="{ 'active': activeSection === 'about' }"
+              @click="scrollToSection('about')">
               {{ currentNavData.about }}
             </a>
-            <a href="#services" class="nav-link" :class="{ 'active': activeSection === 'services' }" @click="scrollToSection('services')">
+            <a href="#services" class="nav-link" :class="{ 'active': activeSection === 'services' }"
+              @click="scrollToSection('services')">
               {{ currentNavData.services }}
             </a>
-            <a href="#products" class="nav-link" :class="{ 'active': activeSection === 'products' }" @click="scrollToSection('products')">
+            <a href="#products" class="nav-link" :class="{ 'active': activeSection === 'products' }"
+              @click="scrollToSection('products')">
               {{ currentNavData.products }}
             </a>
             <router-link to="/portfolio" class="nav-link" :class="{ 'active': $route.path === '/portfolio' }">
               {{ currentNavData.portfolio }}
             </router-link>
-            <a href="#contact" class="nav-link" :class="{ 'active': activeSection === 'contact' }" @click="scrollToSection('contact')">
+            <router-link to="/carrier" class="nav-link" :class="{ 'active': $route.path === '/carrier' }">
+              {{ currentNavData.carrier }}
+            </router-link>
+            <a href="#contact" class="nav-link" :class="{ 'active': activeSection === 'contact' }"
+              @click="scrollToSection('contact')">
               {{ currentNavData.contact }}
             </a>
-            <!-- Language Switcher -->
-            <div class="flex items-center space-x-4">
-              <button @click="toggleLanguage" class="language-button group">
-                <span class="relative z-10 flex items-center text-sm font-medium">
-                  <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                  </svg>
-                  {{ currentLanguage }}
-                  <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
-              </button>
-            </div>
           </div>
+        </div>
+
+        <!-- Language Switcher - Right aligned -->
+        <div class="hidden lg:flex items-center">
+          <button @click="toggleLanguage" class="language-button group">
+            <span class="relative z-10 flex items-center text-sm font-medium">
+              <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+              {{ currentLanguage }}
+              <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </button>
         </div>
 
         <!-- Mobile menu button -->
@@ -101,6 +110,13 @@
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
               :class="{ 'opacity-100': $route.path === '/portfolio' }"></div>
             {{ currentNavData.portfolio }}
+          </span>
+        </router-link>
+        <router-link to="/carrier" class="mobile-nav-link" @click="mobileMenuOpen = false">
+          <span class="flex items-center">
+            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
+              :class="{ 'opacity-100': $route.path === '/carrier' }"></div>
+            {{ currentNavData.carrier }}
           </span>
         </router-link>
         <a href="#contact" class="mobile-nav-link" @click="scrollToSection('contact'); mobileMenuOpen = false">
@@ -185,6 +201,7 @@ const navDataIndonesia = {
   services: "Layanan",
   products: "Produk",
   portfolio: "Portofolio",
+  carrier: "Carrier",
   contact: "Kontak"
 }
 
@@ -194,6 +211,7 @@ const navDataEnglish = {
   services: "Services",
   products: "Products",
   portfolio: "Portfolio",
+  carrier: "Carrier",
   contact: "Contact"
 }
 
@@ -217,12 +235,13 @@ const currentNavData = computed(() => {
 .nav-link {
   position: relative;
   color: #374151;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 0.5rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav-link::before {

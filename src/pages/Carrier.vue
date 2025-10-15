@@ -1,0 +1,13 @@
+<template>
+  <div class="min-h-screen">
+    <!-- Navbar -->
+    <Navbar />
+    <!-- Carrier Component -->
+    <Carrier />
+  </div>
+</template>
+
+<script setup>
+import Navbar from '@/components/Navbar.vue'
+import Carrier from '@/components/Carrier.vue'
+</script>

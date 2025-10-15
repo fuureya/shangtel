@@ -211,14 +211,21 @@ const form = ref({
 const submitForm = () => {
   // Handle form submission
   console.log('Form submitted:', form.value)
+
+  // Create WhatsApp message
+  const message = `Halo saya ${form.value.fullname} berasal dari ${form.value.company}. ${form.value.question}`
+  const encodedMessage = encodeURIComponent(message)
+  const whatsappUrl = `https://wa.me/6208114499096?text=${encodedMessage}`
+
+  // Open WhatsApp
+  window.open(whatsappUrl, '_blank')
+
   // Reset form
   form.value = {
     fullname: '',
     company: '',
     question: ''
   }
-  // Show success message (you can implement toast notification here)
-  alert('Message sent successfully!')
 }
 </script>
 

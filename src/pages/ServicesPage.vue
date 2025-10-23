@@ -12,7 +12,7 @@
           <font-awesome-icon icon="cog" class="mr-2" />
           {{ currentContent.badge }}
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-gray-900 tracking-tight">
           <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {{ currentContent.title }}
           </span>
@@ -130,9 +130,9 @@ const servicesData = {
   },
   id: {
     badge: "Layanan Premium Kami",
-    title: "Tingkatkan Bisnis Anda dengan Solusi IT & ISP Terdepan",
+    title: "MAKSIMALKAN POTENSI BISNIS ANDA DENGAN SOLUSI IT & ISP TERDEPAN KAMI!",
     subtitle: "Temukan bagaimana rangkaian solusi IT dan Penyedia Layanan Internet (ISP) komprehensif dari Shangtel dapat mengubah operasional Anda, meningkatkan keamanan, dan mendorong pertumbuhan yang tak tertandingi. Kami adalah mitra strategis Anda dalam keunggulan digital.",
-    cta: "Jelajahi Solusi",
+    cta: "Pelajari Lebih Lanjut",
     services: [
       {
         title: "Manajemen IT Strategis",

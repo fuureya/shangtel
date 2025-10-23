@@ -23,10 +23,10 @@
               @click="scrollToSection('about')">
               {{ currentNavData.about }}
             </a>
-            <a href="#services" class="nav-link" :class="{ 'active': activeSection === 'services' }"
-              @click="scrollToSection('services')">
+
+            <router-link to="/services" class="nav-link" :class="{ 'active': $route.path === '/services' }">
               {{ currentNavData.services }}
-            </a>
+            </router-link>
             <a href="#products" class="nav-link" :class="{ 'active': activeSection === 'products' }"
               @click="scrollToSection('products')">
               {{ currentNavData.products }}
@@ -91,13 +91,13 @@
             {{ currentNavData.about }}
           </span>
         </a>
-        <a href="#services" class="mobile-nav-link" @click="scrollToSection('services'); mobileMenuOpen = false">
+        <router-link to="/services" class="mobile-nav-link" @click="mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': activeSection === 'services' }"></div>
+              :class="{ 'opacity-100': $route.path === '/services' }"></div>
             {{ currentNavData.services }}
           </span>
-        </a>
+        </router-link>
         <a href="#products" class="mobile-nav-link" @click="scrollToSection('products'); mobileMenuOpen = false">
           <span class="flex items-center">
             <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"

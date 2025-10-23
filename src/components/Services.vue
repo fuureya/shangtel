@@ -408,7 +408,7 @@ const servicesData = [
     },
     {
         lang: "en",
-        title: "Service",
+        title: "24/7 Support",
         description: "Even if they are behind firewalls you don't control. All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity.",
         icon: "headset"
     },
@@ -444,7 +444,7 @@ const servicesData = [
     },
     {
         lang: "id",
-        title: "Layanan",
+        title: "Dukungan 24/7",
         description: "Bahkan jika berada di balik firewall yang tidak Anda kontrol. Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden dan produktivitas tim support.",
         icon: "headset"
     }
@@ -452,16 +452,16 @@ const servicesData = [
 
 
 const servicesDataIndonesia = {
-    badge: "Layanan Kami",
-    title: "Solusi IT Enterprise",
-    subtitle: "Penyedia layanan teknologi informasi terpercaya dengan infrastruktur canggih dan dukungan 24/7 untuk transformasi digital perusahaan Anda.",
+    badge: "Layanan ISP & Solusi IT",
+    title: "Inovasi Konektivitas & Solusi IT Terpadu",
+    subtitle: "Sebagai penyedia layanan internet (ISP) dan solusi IT terkemuka, kami menghadirkan konektivitas cepat, stabil, serta beragam solusi teknologi inovatif untuk mendukung pertumbuhan dan efisiensi bisnis Anda.",
     services: servicesData.filter(service => service.lang === 'id')
 }
 
 const servicesDataEnglish = {
-    badge: "Our Services",
-    title: "Enterprise IT Solutions",
-    subtitle: "Trusted technology service provider with advanced infrastructure and 24/7 support for your company's digital transformation.",
+    badge: "ISP & IT Solutions",
+    title: "Innovative Connectivity & Integrated IT Solutions",
+    subtitle: "As a leading Internet Service Provider (ISP) and IT solutions provider, we deliver fast, stable connectivity and a range of innovative technology solutions to support your business growth and efficiency.",
     services: servicesData.filter(service => service.lang === 'en')
 }
 

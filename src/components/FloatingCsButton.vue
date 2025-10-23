@@ -44,11 +44,11 @@ const whatsappNumber = '08114499096'
 
 // Tooltip data for both languages
 const tooltipDataIndonesia = {
-  message: "Butuh bantuan? Chat WhatsApp kami!"
+  message: "Ada pertanyaan tentang layanan ISP/IT kami? Chat sekarang!"
 }
 
 const tooltipDataEnglish = {
-  message: "Need help? Chat our WhatsApp!"
+  message: "Questions about our ISP/IT solutions? Chat now!"
 }
 
 const currentTooltipData = computed(() => {
@@ -58,8 +58,8 @@ const currentTooltipData = computed(() => {
 // Open WhatsApp with predefined message
 const openWhatsApp = () => {
   const defaultMessage = currentLanguage.value === 'ID'
-    ? 'Halo! Saya tertarik dengan layanan Shangtel. Bisakah Anda memberikan informasi lebih lanjut?'
-    : 'Hello! I am interested in Shangtel services. Can you provide more information?'
+    ? 'Halo! Saya ingin bertanya mengenai solusi ISP dan IT dari Shangtel. Bisakah Anda memberikan informasi lebih lanjut?'
+    : 'Hello! I would like to inquire about Shangtel\'s ISP and IT solutions. Can you provide more information?'
 
   const encodedMessage = encodeURIComponent(defaultMessage)
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`

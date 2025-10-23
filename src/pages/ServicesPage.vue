@@ -85,88 +85,88 @@ const { currentLanguage } = useLanguage()
 
 const servicesData = {
   en: {
-    badge: "Our Services",
-    title: "Customized IT Solutions for Your Business",
-    subtitle: "We provide a range of expert services to ensure your technology infrastructure is robust, secure, and perfectly aligned with your business goals.",
-    cta: "Learn More",
+    badge: "Our Premium Services",
+    title: "Elevate Your Business with Cutting-Edge IT & ISP Solutions",
+    subtitle: "Discover how Shangtel's comprehensive suite of IT and Internet Service Provider solutions can transform your operations, enhance security, and drive unparalleled growth. We are your strategic partner in digital excellence.",
+    cta: "Explore Solution",
     services: [
       {
-        title: "IT Management",
-        description: "The practice of controlling and conducting business information, IT systems, IT-enabled operations, services, and resources in an enterprise organization.",
+        title: "Strategic IT Management",
+        description: "Unlock peak operational efficiency with our expert IT Management. We meticulously oversee your entire IT ecosystem, from infrastructure to applications, ensuring seamless performance, proactive problem-solving, and strategic alignment with your business objectives. Experience robust, scalable, and future-proof IT operations.",
         icon: "server",
         image: "/img/services/it-management.jpg"
       },
       {
-        title: "Data Security",
-        description: "Process of protecting corporate data and preventing data loss through unauthorized access. This includes protecting your data from attacks that can encrypt or destroy data.",
+        title: "Advanced Data Security & Cyber Protection",
+        description: "Safeguard your most valuable assets with Shangtel's impenetrable Data Security solutions. We implement multi-layered defenses, advanced threat detection, and stringent protocols to protect your corporate data from unauthorized access, cyber threats, and data breaches. Trust us to maintain your data integrity and business continuity.",
         icon: "shield",
         image: "/img/services/keamanan-data.jpg"
       },
       {
-        title: "IT Consulting",
-        description: "Services aimed at helping clients on how they can utilise information technology (IT) and digital to optimally achieve their business goals.",
+        title: "Expert IT Consulting & Digital Transformation",
+        description: "Navigate the complexities of the digital landscape with our seasoned IT Consulting experts. We provide strategic guidance, technology roadmapping, and innovative solutions to optimize your IT investments, streamline processes, and accelerate your digital transformation journey. Partner with us for informed decisions and measurable results.",
         icon: "users",
         image: "/img/services/it-consultant.jpg"
       },
       {
-        title: "IT Design",
-        description: "The process of envisioning and planning the creation of objects, interactive systems, networks, company profiles, and more to meet strategic objectives.",
+        title: "Innovative IT System Design & Implementation",
+        description: "From concept to deployment, Shangtel specializes in designing and implementing bespoke IT systems that perfectly fit your unique business needs. Whether it's network architecture, interactive platforms, or comprehensive company profiles, our designs are engineered for performance, scalability, and user-centricity, ensuring your technology drives success.",
         icon: "lightbulb",
         image: "/img/services/it-design.jpg"
       },
       {
-        title: "Multimedia",
-        description: "Computer-assisted integration of text, drawings, still and moving images (videos), graphics, audio, animation, and videotron for impactful communication.",
+        title: "Dynamic Multimedia & Digital Content Solutions",
+        description: "Captivate your audience with Shangtel's cutting-edge Multimedia services. We integrate text, stunning visuals, engaging videos, graphics, audio, and animation to create compelling digital experiences. From videotron content to interactive presentations, we help your brand communicate effectively and leave a lasting impression.",
         icon: "desktop",
         image: "/img/services/multimedia.jpg"
       },
       {
-        title: "24/7 Support",
-        description: "All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity.",
+        title: "Dedicated 24/7 Technical Support",
+        description: "Experience uninterrupted operations with Shangtel's round-the-clock Dedicated Technical Support. Our expert team is available 24/7 to provide immediate assistance, troubleshoot issues, and ensure the continuous performance of your IT infrastructure. We're committed to rapid resolution and minimizing downtime, so you can focus on your core business.",
         icon: "headset",
         image: "/img/services/support.jpg"
       }
     ]
   },
   id: {
-    badge: "Layanan Kami",
-    title: "Solusi IT Kustom untuk Bisnis Anda",
-    subtitle: "Kami menyediakan berbagai layanan ahli untuk memastikan infrastruktur teknologi Anda kuat, aman, dan selaras sempurna dengan tujuan bisnis Anda.",
-    cta: "Pelajari Lebih Lanjut",
+    badge: "Layanan Premium Kami",
+    title: "Tingkatkan Bisnis Anda dengan Solusi IT & ISP Terdepan",
+    subtitle: "Temukan bagaimana rangkaian solusi IT dan Penyedia Layanan Internet (ISP) komprehensif dari Shangtel dapat mengubah operasional Anda, meningkatkan keamanan, dan mendorong pertumbuhan yang tak tertandingi. Kami adalah mitra strategis Anda dalam keunggulan digital.",
+    cta: "Jelajahi Solusi",
     services: [
       {
-        title: "Manajemen IT",
-        description: "Praktik mengendalikan dan mengelola informasi bisnis, sistem IT, operasi yang didukung IT, layanan, dan sumber daya dalam organisasi perusahaan.",
+        title: "Manajemen IT Strategis",
+        description: "Raih efisiensi operasional puncak dengan Manajemen IT ahli kami. Kami mengawasi seluruh ekosistem IT Anda, dari infrastruktur hingga aplikasi, memastikan kinerja tanpa hambatan, penyelesaian masalah proaktif, dan keselarasan strategis dengan tujuan bisnis Anda. Rasakan operasional IT yang kuat, skalabel, dan siap masa depan.",
         icon: "server",
         image: "/img/services/it-management.jpg"
       },
       {
-        title: "Keamanan Data",
-        description: "Proses melindungi data perusahaan dan mencegah kehilangan data akibat akses yang tidak sah. Ini termasuk melindungi data dari serangan yang dapat mengenkripsi atau merusak data.",
+        title: "Keamanan Data & Perlindungan Siber Tingkat Lanjut",
+        description: "Lindungi aset Anda yang paling berharga dengan solusi Keamanan Data Shangtel yang tak tertembus. Kami menerapkan pertahanan berlapis, deteksi ancaman canggih, dan protokol ketat untuk melindungi data perusahaan Anda dari akses tidak sah, ancaman siber, dan pelanggaran data. Percayakan kepada kami untuk menjaga integritas data dan kelangsungan bisnis Anda.",
         icon: "shield",
         image: "/img/services/keamanan-data.jpg"
       },
       {
-        title: "Konsultasi IT",
-        description: "Layanan yang membantu klien memanfaatkan teknologi informasi (IT) dan digital untuk mencapai tujuan bisnis secara optimal.",
+        title: "Konsultasi IT & Transformasi Digital Ahli",
+        description: "Jelajahi kompleksitas lanskap digital dengan pakar Konsultasi IT kami yang berpengalaman. Kami memberikan panduan strategis, peta jalan teknologi, dan solusi inovatif untuk mengoptimalkan investasi IT Anda, merampingkan proses, dan mempercepat perjalanan transformasi digital Anda. Bermitra dengan kami untuk keputusan yang terinformasi dan hasil yang terukur.",
         icon: "users",
         image: "/img/services/it-consultant.jpg"
       },
       {
-        title: "Desain IT",
-        description: "Proses merancang dan merencanakan pembuatan objek, sistem interaktif, jaringan, profil perusahaan, dan lainnya untuk memenuhi tujuan strategis.",
+        title: "Desain & Implementasi Sistem IT Inovatif",
+        description: "Dari konsep hingga penerapan, Shangtel berspesialisasi dalam merancang dan mengimplementasikan sistem IT yang dibuat khusus yang sangat sesuai dengan kebutuhan bisnis unik Anda. Baik itu arsitektur jaringan, platform interaktif, atau profil perusahaan yang komprehensif, desain kami direkayasa untuk kinerja, skalabilitas, dan berpusat pada pengguna, memastikan teknologi Anda mendorong kesuksesan.",
         icon: "lightbulb",
         image: "/img/services/it-design.jpg"
       },
       {
-        title: "Multimedia",
-        description: "Integrasi berbasis komputer dari teks, gambar, gambar diam dan bergerak (video), grafis, audio, animasi, dan videotron untuk komunikasi yang berdampak.",
+        title: "Solusi Multimedia & Konten Digital Dinamis",
+        description: "Pikat audiens Anda dengan layanan Multimedia mutakhir Shangtel. Kami mengintegrasikan teks, visual yang memukau, video yang menarik, grafis, audio, dan animasi untuk menciptakan pengalaman digital yang memukau. Dari konten videotron hingga presentasi interaktif, kami membantu merek Anda berkomunikasi secara efektif dan meninggalkan kesan abadi.",
         icon: "desktop",
         image: "/img/services/multimedia.jpg"
       },
       {
-        title: "Dukungan 24/7",
-        description: "Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden.",
+        title: "Dukungan Teknis 24/7 Khusus",
+        description: "Rasakan operasional tanpa henti dengan Dukungan Teknis Khusus 24/7 Shangtel. Tim ahli kami tersedia sepanjang waktu untuk memberikan bantuan segera, memecahkan masalah, dan memastikan kinerja berkelanjutan infrastruktur IT Anda. Kami berkomitmen untuk resolusi cepat dan meminimalkan waktu henti, sehingga Anda dapat fokus pada bisnis inti Anda.",
         icon: "headset",
         image: "/img/services/support.jpg"
       }

@@ -1,12 +1,15 @@
 <template>
+  <Navbar />
   <div class="p-8">
     <h1 class="text-3xl font-bold">Halaman Layanan</h1>
     <p class="mt-4">Ini adalah halaman untuk menampilkan layanan yang tersedia.</p>
   </div>
+  <Footer />
 </template>
 
 <script setup>
-// Tidak ada script khusus untuk saat ini
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 </script>
 
 <style scoped>

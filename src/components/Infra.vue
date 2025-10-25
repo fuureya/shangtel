@@ -218,9 +218,9 @@ const onImageError = (event) => {
 }
 
 const infraDataIndonesia = {
-    badge: "Infrastruktur Terdepan",
-    title: "Jaringan Digital Terdepan",
-    description: "Shangkuriang Telekomunikasi berkomitmen mendukung pertumbuhan bisnis Anda dengan menghadirkan jaringan dan solusi digital terdepan yang dirancang untuk meningkatkan efisiensi, keamanan, dan daya saing perusahaan Anda.",
+    badge: "Infrastruktur Handal",
+    title: "Jaringan Fiber Optic dan Wireless",
+    description: "Kami memiliki pengalaman di beberapa kota besar dan daerah pedesaan dalam hal instalasi jaringan Fiber Optic dan Wireless, memastikan konektivitas yang luas dan handal.",
     radioLabel: "Radio dan VSAT",
     radioDesc: "Telah membangun lebih dari 1.000 jaringan Radio dan VSAT",
     kabelLabel: "km Kabel Optik",
@@ -229,9 +229,9 @@ const infraDataIndonesia = {
 }
 
 const infraDataEnglish = {
-    badge: "Leading Infrastructure",
-    title: "Advanced Digital Network",
-    description: "Shangkuriang Telekomunikasi is committed to supporting your business growth by delivering advanced digital networks and solutions designed to enhance efficiency, security, and competitiveness of your company.",
+    badge: "Reliable Infrastructure",
+    title: "Fiber Optic and Wireless Network",
+    description: "We have experience in several big cities and rural areas in installing Fiber Optic and Wireless networks, ensuring broad and reliable connectivity.",
     radioLabel: "Radio and VSAT",
     radioDesc: "Built more than 1,000 Radio and VSAT networks",
     kabelLabel: "km Fiber Optic Cable",

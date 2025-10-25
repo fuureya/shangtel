@@ -176,39 +176,21 @@
             <div class="mt-24 text-center">
                 <div class="inline-flex items-center space-x-2 text-gray-500 mb-12">
                     <div class="w-12 h-px bg-gray-300"></div>
-                    <span class="text-sm font-medium uppercase tracking-wide">Trusted by Enterprise</span>
+                    <span class="text-sm font-medium uppercase tracking-wide">Trusted by</span>
                     <div class="w-12 h-px bg-gray-300"></div>
                 </div>
 
-                <!-- First row - scroll right -->
-                <div class="overflow-hidden mb-8">
-                    <div class="flex space-x-12 animate-scroll-right">
-                        <div v-for="icon in enterpriseIcons" :key="`right-${icon.name}`" class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
-                                <font-awesome-icon :icon="icon.name" class="text-2xl text-gray-600" />
-                            </div>
-                        </div>
-                        <!-- Duplicate for infinite scroll -->
-                        <div v-for="icon in enterpriseIcons" :key="`right-dup-${icon.name}`" class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
-                                <font-awesome-icon :icon="icon.name" class="text-2xl text-gray-600" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Second row - scroll left -->
                 <div class="overflow-hidden">
-                    <div class="flex space-x-12 animate-scroll-left">
-                        <div v-for="icon in enterpriseIconsReverse" :key="`left-${icon.name}`" class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg border border-blue-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
-                                <font-awesome-icon :icon="icon.name" class="text-2xl text-blue-600" />
+                    <div class="flex space-x-12 animate-scroll-right">
+                        <div v-for="(logo, index) in clientLogos" :key="`client-${index}`" class="flex-shrink-0">
+                            <div class="w-32 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 p-2">
+                                <img :src="`/img/client/${logo}`" :alt="logo" class="h-full w-auto object-contain" />
                             </div>
                         </div>
                         <!-- Duplicate for infinite scroll -->
-                        <div v-for="icon in enterpriseIconsReverse" :key="`left-dup-${icon.name}`" class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg border border-blue-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 opacity-70 hover:opacity-100">
-                                <font-awesome-icon :icon="icon.name" class="text-2xl text-blue-600" />
+                        <div v-for="(logo, index) in clientLogos" :key="`client-dup-${index}`" class="flex-shrink-0">
+                            <div class="w-32 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 p-2">
+                                <img :src="`/img/client/${logo}`" :alt="logo" class="h-full w-auto object-contain" />
                             </div>
                         </div>
                     </div>
@@ -452,16 +434,16 @@ const servicesData = [
 
 
 const servicesDataIndonesia = {
-    badge: "Layanan ISP & Solusi IT",
-    title: "Inovasi Konektivitas & Solusi IT Terpadu",
-    subtitle: "Sebagai penyedia layanan internet (ISP) dan solusi IT terkemuka, kami menghadirkan konektivitas cepat, stabil, serta beragam solusi teknologi inovatif untuk mendukung pertumbuhan dan efisiensi bisnis Anda.",
+    badge: "Layanan Komprehensif",
+    title: "Solusi IT, Managed Service, dan System Integrator",
+    subtitle: "Kami menyediakan layanan IT yang terintegrasi untuk memenuhi berbagai kebutuhan bisnis, dari konsultasi hingga dukungan teknis 24/7.",
     services: servicesData.filter(service => service.lang === 'id')
 }
 
 const servicesDataEnglish = {
-    badge: "ISP & IT Solutions",
-    title: "Innovative Connectivity & Integrated IT Solutions",
-    subtitle: "As a leading Internet Service Provider (ISP) and IT solutions provider, we deliver fast, stable connectivity and a range of innovative technology solutions to support your business growth and efficiency.",
+    badge: "Comprehensive Services",
+    title: "IT Solutions, Managed Services, and System Integrator",
+    subtitle: "We provide integrated IT services to meet various business needs, from consulting to 24/7 technical support.",
     services: servicesData.filter(service => service.lang === 'en')
 }
 
@@ -474,22 +456,23 @@ const getIconName = (iconString) => {
     return iconString
 }
 
-// Enterprise icons data
-const enterpriseIcons = [
-    { name: 'server' },
-    { name: 'cloud' },
-    { name: 'network-wired' },
-    { name: 'shield' },
-    { name: 'desktop' },
-    { name: 'lock' },
-    { name: 'wifi' },
-    { name: 'cog' }
+const clientLogos = [
+    'alimhome.webp',
+    'asanabiak.png',
+    'aston.png',
+    'balmon.jpeg',
+    'brin.png',
+    'budi-starch-sweentener.png',
+    'bumi-pundi-karsa.jpeg',
+    'capitol.webp',
+    'diskominfo-papua-barat.png',
+    'hotel-mariat-sorong.jpg',
+    'mitra-kreasi-darma.webp',
+    'polbangtan-manokwari.png',
+    'rrri.png',
+    'sjam.webp',
+    'swissbell-manokwari.jpeg'
 ]
-
-// Reverse order for second row
-const enterpriseIconsReverse = computed(() => {
-    return [...enterpriseIcons].reverse()
-})
 </script>
 
 <style scoped>

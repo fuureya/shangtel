@@ -195,9 +195,9 @@ import { useLanguage } from '@/composables/useLanguage.js'
 const { currentLanguage } = useLanguage()
 
 const productDataIndonesia = {
-  badge: "Produk & Layanan",
-  title: "Solusi Konektivitas Terdepan",
-  subtitle: "Pilihan produk dan layanan telekomunikasi terbaik untuk memenuhi kebutuhan bisnis dan rumah tangga Anda dengan teknologi canggih dan dukungan 24/7.",
+  badge: "Distributor Resmi",
+  title: "Distributor Eksklusif Peralatan Wireless",
+  subtitle: "Berkat kepercayaan dari produsen mancanegara, kami menjadi distributor eksklusif untuk peralatan wireless di Asia Pasifik, sambil terus mengembangkan merek kami sendiri.",
   shangtelSky: {
     description: "Solusi konektivitas satelit terdepan dengan teknologi VSAT untuk area yang sulit dijangkau jaringan konvensional.",
     features: [
@@ -224,9 +224,9 @@ const productDataIndonesia = {
 }
 
 const productDataEnglish = {
-  badge: "Products & Services",
-  title: "Leading Connectivity Solutions",
-  subtitle: "Premium telecommunications products and services to meet your business and household needs with advanced technology and 24/7 support.",
+  badge: "Official Distributor",
+  title: "Exclusive Distributor of Wireless Equipment",
+  subtitle: "Thanks to the trust of international manufacturers, we have become the exclusive distributor for wireless equipment in the Asia Pacific, while continuing to develop our own brands.",
   shangtelSky: {
     description: "Leading satellite connectivity solution with VSAT technology for areas hard to reach by conventional networks.",
     features: [

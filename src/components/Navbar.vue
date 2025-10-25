@@ -80,9 +80,7 @@
         <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('products') }">
           {{ currentNavData.products }}
         </router-link>
-        <router-link to="/portfolio" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/portfolio') }">
-          {{ currentNavData.portfolio }}
-        </router-link>
+
         <router-link to="/carrier" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/carrier') }">
           {{ currentNavData.carrier }}
         </router-link>
@@ -161,7 +159,6 @@ const navDataIndonesia = {
   about: "Tentang",
   services: "Layanan",
   products: "Produk",
-  portfolio: "Portofolio",
   carrier: "Carrier",
   contact: "Kontak"
 }
@@ -171,7 +168,6 @@ const navDataEnglish = {
   about: "About",
   services: "Services",
   products: "Products",
-  portfolio: "Portfolio",
   carrier: "Carrier",
   contact: "Contact"
 }

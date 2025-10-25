@@ -55,15 +55,15 @@ import { useLanguage } from '@/composables/useLanguage.js'
 const welcomeData = [
   {
     lang: "id",
-    title: "Selamat Datang di Shangkuriang Telekomunikasi",
-    content: "Shangtel adalah mitra terpercaya dalam menghadirkan solusi IT inovatif, layanan terkelola profesional, dan integrasi sistem yang andal. Dengan tim ahli problem solver, kami berkomitmen memberikan dukungan cepat, analisis produk yang kreatif, serta solusi teknologi yang efisien untuk mendukung pertumbuhan bisnis Anda.",
-    tagline: "Shangtel — Solusi IT, Layanan Terkelola, dan Integrasi Sistem Terbaik."
+    title: "Selamat Datang di PT. Shangkuriang Telekomunikasi Indonesia",
+    content: "Kami adalah perusahaan yang bergerak di bidang IT Solution, Manage Service, dan System Integrator, dengan fokus utama pada penyediaan jaringan internet. Dengan pengalaman di berbagai kota besar dan daerah pedesaan, kami siap menjadi mitra terpercaya Anda.",
+    tagline: "“We Do IT With Passion” — Melayani Anda 24x7"
   },
   {
     lang: "en",
-    title: "Welcome to Shangkuriang Telekomunikasi",
-    content: "Shangtel is your trusted partner in delivering innovative IT solutions, professional managed services, and reliable system integration. With a team of expert problem solvers, we are committed to providing fast support, creative product analysis, and efficient technology solutions to empower your business growth.",
-    tagline: "Shangtel — IT Solution, Managed Service, and System Integration at Its Best."
+    title: "Welcome to PT. Shangkuriang Telekomunikasi Indonesia",
+    content: "We are a company engaged in IT Solutions, Managed Services, and System Integrators, with a primary focus on providing internet networks. With experience in various big cities and rural areas, we are ready to be your trusted partner.",
+    tagline: "“We Do IT With Passion” — Serving you 24/7"
   }
 ]
 

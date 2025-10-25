@@ -4,47 +4,38 @@
       <div class="flex items-center  h-20">
         <!-- Logo -->
         <div class="flex-shrink-0 group">
-          <div class="flex items-center space-x-3">
-            <!-- Desktop Logo -->
+          <router-link to="/" class="flex items-center space-x-3">
             <img class="h-10 w-auto hidden sm:block" src="/img/shangtel.png" alt="Shangtel" />
-            <!-- Mobile Logo -->
             <img class="h-8 w-auto sm:hidden" src="/img/shangtel-mb.png" alt="Shangtel" />
-          </div>
+          </router-link>
         </div>
 
-        <!-- Menu Items - dengan jarak besar dari logo -->
+        <!-- Menu Items -->
         <div class="hidden lg:flex flex-1 justify-center ml-40">
           <div class="flex items-center ">
-            <a href="#home" class="nav-link" :class="{ 'active': activeSection === 'home' }"
-              @click="scrollToSection('home')">
+            <router-link :to="{ path: '/', hash: '#home' }" class="nav-link" :class="{ 'active': isLinkActive('home') }">
               {{ currentNavData.home }}
-            </a>
-            <a href="#about" class="nav-link" :class="{ 'active': activeSection === 'about' }"
-              @click="scrollToSection('about')">
+            </router-link>
+            <router-link to="/tentang-kami" class="nav-link" :class="{ 'active': isLinkActive('/tentang-kami') }">
               {{ currentNavData.about }}
-            </a>
-
-            <router-link to="/services" class="nav-link" :class="{ 'active': $route.path === '/services' }">
+            </router-link>
+            <router-link to="/services" class="nav-link" :class="{ 'active': isLinkActive('/services') }">
               {{ currentNavData.services }}
             </router-link>
-            <a href="#products" class="nav-link" :class="{ 'active': activeSection === 'products' }"
-              @click="scrollToSection('products')">
+            <router-link :to="{ path: '/', hash: '#products' }" class="nav-link" :class="{ 'active': isLinkActive('products') }">
               {{ currentNavData.products }}
-            </a>
-            <router-link to="/portfolio" class="nav-link" :class="{ 'active': $route.path === '/portfolio' }">
-              {{ currentNavData.portfolio }}
             </router-link>
-            <router-link to="/carrier" class="nav-link" :class="{ 'active': $route.path === '/carrier' }">
+
+            <router-link to="/carrier" class="nav-link" :class="{ 'active': isLinkActive('/carrier') }">
               {{ currentNavData.carrier }}
             </router-link>
-            <a href="#contact" class="nav-link" :class="{ 'active': activeSection === 'contact' }"
-              @click="scrollToSection('contact')">
+            <router-link :to="{ path: '/', hash: '#contact' }" class="nav-link" :class="{ 'active': isLinkActive('contact') }">
               {{ currentNavData.contact }}
-            </a>
+            </router-link>
           </div>
         </div>
 
-        <!-- Language Switcher - Right aligned -->
+        <!-- Language Switcher -->
         <div class="hidden lg:flex items-center">
           <button @click="toggleLanguage" class="language-button group">
             <span class="relative z-10 flex items-center text-sm font-medium">
@@ -77,117 +68,87 @@
     <!-- Mobile menu -->
     <div v-if="mobileMenuOpen" class="mobile-menu lg:hidden">
       <div class="px-6 py-4 space-y-1">
-        <a href="#home" class="mobile-nav-link" @click="scrollToSection('home'); mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': activeSection === 'home' }"></div>
-            {{ currentNavData.home }}
-          </span>
-        </a>
-        <a href="#about" class="mobile-nav-link" @click="scrollToSection('about'); mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': activeSection === 'about' }"></div>
-            {{ currentNavData.about }}
-          </span>
-        </a>
-        <router-link to="/services" class="mobile-nav-link" @click="mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/services' }"></div>
-            {{ currentNavData.services }}
-          </span>
+        <router-link :to="{ path: '/', hash: '#home' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('home') }">
+          {{ currentNavData.home }}
         </router-link>
-        <a href="#products" class="mobile-nav-link" @click="scrollToSection('products'); mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': activeSection === 'products' }"></div>
-            {{ currentNavData.products }}
-          </span>
-        </a>
-        <router-link to="/portfolio" class="mobile-nav-link" @click="mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/portfolio' }"></div>
-            {{ currentNavData.portfolio }}
-          </span>
+        <router-link to="/tentang-kami" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/tentang-kami') }">
+          {{ currentNavData.about }}
         </router-link>
-        <router-link to="/carrier" class="mobile-nav-link" @click="mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': $route.path === '/carrier' }"></div>
-            {{ currentNavData.carrier }}
-          </span>
+        <router-link to="/services" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/services') }">
+          {{ currentNavData.services }}
         </router-link>
-        <a href="#contact" class="mobile-nav-link" @click="scrollToSection('contact'); mobileMenuOpen = false">
-          <span class="flex items-center">
-            <div class="w-1 h-6 bg-blue-600 rounded-full mr-3 opacity-0 transition-opacity"
-              :class="{ 'opacity-100': activeSection === 'contact' }"></div>
-            {{ currentNavData.contact }}
-          </span>
-        </a>
-
-        <div class="pt-4 mt-4 border-t border-gray-100">
-          <button @click="toggleLanguage" class="mobile-language-button">
-            <span class="flex items-center justify-center">
-              <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-              </svg>
-              {{ currentLanguage === 'ID' ? 'Bahasa Indonesia' : 'English' }}
-              <svg class="ml-2 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </span>
-          </button>
-        </div>
+        <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('products') }">
+          {{ currentNavData.products }}
+        </router-link>
+        <router-link to="/portfolio" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/portfolio') }">
+          {{ currentNavData.portfolio }}
+        </router-link>
+        <router-link to="/carrier" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/carrier') }">
+          {{ currentNavData.carrier }}
+        </router-link>
+        <router-link :to="{ path: '/', hash: '#contact' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('contact') }">
+          {{ currentNavData.contact }}
+        </router-link>
+        <!-- Mobile Language Switcher -->
       </div>
     </div>
   </nav>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
 const activeSection = ref('home')
 const { currentLanguage, toggleLanguage } = useLanguage()
+const route = useRoute()
 
-// Smooth scroll to section
-const scrollToSection = (sectionId) => {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
+const isLinkActive = (identifier) => {
+  if (identifier.startsWith('/')) {
+    // It's a page route
+    return route.path === identifier
+  } else {
+    // It's a homepage section
+    return route.path === '/' && activeSection.value === identifier
   }
 }
 
-// Handle scroll to detect active section
 const handleScroll = () => {
-  const sections = ['home', 'about', 'services', 'products', 'contact']
-  const scrollPos = window.scrollY + 100
+  if (route.path === '/') {
+    const sections = ['home', 'products', 'contact']
+    const scrollPos = window.scrollY + 150
+    let currentSection = ''
 
-  for (const section of sections) {
-    const element = document.getElementById(section)
-    if (element) {
-      const offsetTop = element.offsetTop
-      const offsetBottom = offsetTop + element.offsetHeight
-
-      if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
-        activeSection.value = section
+    for (const sectionId of sections) {
+      const sectionEl = document.getElementById(sectionId)
+      if (sectionEl && scrollPos >= sectionEl.offsetTop && scrollPos < sectionEl.offsetTop + sectionEl.offsetHeight) {
+        currentSection = sectionId
         break
       }
     }
+    
+    if (!currentSection && window.scrollY < 200) {
+        currentSection = 'home'
+    }
+
+    activeSection.value = currentSection
+  } else {
+    activeSection.value = ''
   }
 }
 
-// Setup scroll listener
+watch(() => route.path, (newPath) => {
+  if (newPath !== '/') {
+    activeSection.value = ''
+  }
+  handleScroll()
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  handleScroll() // Initial check
+  handleScroll()
 })
 
 onUnmounted(() => {
@@ -392,6 +353,12 @@ const currentNavData = computed(() => {
   transform: translateX(4px);
 }
 
+.mobile-nav-link.active {
+    color: #1d4ed8;
+    font-weight: 600;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
 .mobile-language-button {
   display: block;
   width: 100%;
@@ -423,28 +390,5 @@ const currentNavData = computed(() => {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .nav-link {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-
-/* Glassmorphism effect on scroll */
-.modern-navbar.scrolled {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(229, 231, 235, 0.3);
-}
-
-/* Subtle gradient text for logo */
-.logo-gradient {
-  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 </style>

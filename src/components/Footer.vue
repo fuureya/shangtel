@@ -20,8 +20,6 @@
               <router-link to="/" class="footer-link">Home</router-link>
               <router-link to="/about" class="footer-link">About</router-link>
               <router-link to="/service" class="footer-link">Services</router-link>
-              <router-link to="/product" class="footer-link">Portfolios</router-link>
-              <router-link to="/blog" class="footer-link">Blog</router-link>
               <router-link to="/contact" class="footer-link">Contact</router-link>
             </nav>
           </div>

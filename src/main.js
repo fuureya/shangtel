@@ -42,6 +42,11 @@ library.add(
   faCheck
 )
 
+import { register } from 'swiper/element/bundle';
+
+// register Swiper custom elements
+register();
+
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)

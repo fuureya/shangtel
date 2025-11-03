@@ -1,5 +1,5 @@
 <template>
-    <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+    <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
         <!-- Modern Background Pattern -->
         <div class="absolute inset-0 overflow-hidden">
             <!-- Grid Pattern -->
@@ -60,142 +60,69 @@
                 </div>
             </div>
 
-            <!-- Modern Services Carousel -->
-            <div class="relative">
-                <!-- Navigation Arrows -->
-                <button @click="prevSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
-                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
-                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
+            <!-- Modern Services Carousel with Swiper -->
+            <swiper-container v-bind="swiperParams" init="false" class="w-full">
+                <swiper-slide v-for="(service, index) in currentServicesData.services" :key="index" class="h-full p-2">
+                    <!-- Service Card -->
+                    <div
+                        class="group relative h-full bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-700 hover:transform hover:scale-[1.02] overflow-hidden flex flex-col">
 
-                <button @click="nextSlide" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide"
-                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200/50 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group">
-                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
+                        <!-- Card Background Effects -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl">
+                        </div>
 
-                <!-- Services Grid with Transform -->
-                <div class="overflow-hidden">
-                    <div class="flex gap-8 transition-transform duration-500 ease-in-out"
-                        :style="{ transform: `translateX(-${currentSlideIndex * slideWidth}%)` }">
-                        <div v-for="(service, index) in currentServicesData.services" :key="index"
-                            class="group relative flex-shrink-0"
-                            :style="{ width: `calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 32 / cardsPerView}px)` }">
-
-                            <!-- Service Card -->
-                            <div
-                                class="relative h-full bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-700 hover:transform hover:scale-[1.02] overflow-hidden">
-
-                                <!-- Card Background Effects -->
+                        <div class="relative z-10 flex-grow flex flex-col">
+                            <!-- Modern Icon Container -->
+                            <div class="relative mb-8">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl">
+                                    class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 shadow-lg">
+                                    <font-awesome-icon :icon="getIconName(service.icon)" class="text-3xl text-white" />
                                 </div>
+                            </div>
 
-                                <!-- Animated Border -->
-                                <div
-                                    class="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-xl">
+                            <!-- Service Content -->
+                            <div class="space-y-4 flex-grow flex flex-col">
+                                <h3
+                                    class="text-2xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
+                                    {{ service.title }}
+                                </h3>
+
+                                <p class="text-gray-600 leading-relaxed line-clamp-4 flex-grow">
+                                    {{ service.description }}
+                                </p>
+
+                                <!-- Tech Stack Indicators -->
+                                <div class="flex flex-wrap gap-2 pt-4">
+                                    <span
+                                        v-if="service.title.includes('Management') || service.title.includes('Manajemen')"
+                                        class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infrastructure</span>
+                                    <span
+                                        v-if="service.title.includes('Security') || service.title.includes('Keamanan')"
+                                        class="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Cybersecurity</span>
+                                    <span
+                                        v-if="service.title.includes('Network') || service.title.includes('Jaringan')"
+                                        class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Networking</span>
+                                    <span v-if="service.title.includes('Cloud')"
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Cloud</span>
+                                    <span
+                                        v-if="service.title.includes('Consulting') || service.title.includes('Konsultasi')"
+                                        class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">Strategy</span>
+                                    <span
+                                        v-if="service.title.includes('Support') || service.title.includes('Dukungan')"
+                                        class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">24/7</span>
+                                    <span v-if="service.title.includes('Design') || service.title.includes('Desain')"
+                                        class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">Design</span>
+                                    <span v-if="service.title.includes('Multimedia')"
+                                        class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-semibold rounded-full">Multimedia</span>
+                                    <span v-if="service.title.includes('Service') || service.title.includes('Layanan')"
+                                        class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Service</span>
                                 </div>
-
-                                <div class="relative z-10">
-                                    <!-- Modern Icon Container -->
-                                    <div class="relative mb-8">
-                                        <div
-                                            class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 shadow-lg">
-                                            <font-awesome-icon :icon="getIconName(service.icon)"
-                                                class="text-3xl text-white" />
-                                        </div>
-                                        <!-- Icon Glow Effect -->
-                                        <div
-                                            class="absolute inset-0 w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
-                                        </div>
-                                    </div>
-
-                                    <!-- Service Content -->
-                                    <div class="space-y-4">
-                                        <h3
-                                            class="text-2xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
-                                            {{ service.title }}
-                                        </h3>
-
-                                        <p class="text-gray-600 leading-relaxed line-clamp-4">
-                                            {{ service.description }}
-                                        </p>
-
-                                        <!-- Tech Stack Indicators -->
-                                        <div class="flex flex-wrap gap-2 pt-4">
-                                            <span
-                                                v-if="service.title.includes('Management') || service.title.includes('Manajemen')"
-                                                class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infrastructure</span>
-                                            <span
-                                                v-if="service.title.includes('Security') || service.title.includes('Keamanan')"
-                                                class="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Cybersecurity</span>
-                                            <span
-                                                v-if="service.title.includes('Network') || service.title.includes('Jaringan')"
-                                                class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Networking</span>
-                                            <span v-if="service.title.includes('Cloud')"
-                                                class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Cloud</span>
-                                            <span
-                                                v-if="service.title.includes('Consulting') || service.title.includes('Konsultasi')"
-                                                class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">Strategy</span>
-                                            <span
-                                                v-if="service.title.includes('Support') || service.title.includes('Dukungan')"
-                                                class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">24/7</span>
-                                            <span
-                                                v-if="service.title.includes('Design') || service.title.includes('Desain')"
-                                                class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">Design</span>
-                                            <span v-if="service.title.includes('Multimedia')"
-                                                class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-semibold rounded-full">Multimedia</span>
-                                            <span
-                                                v-if="service.title.includes('Service') || service.title.includes('Layanan')"
-                                                class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Service</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Dots Indicator -->
-                <div class="flex justify-center mt-12 space-x-3">
-                    <button v-for="(_, index) in Math.ceil(currentServicesData.services.length / cardsPerView)"
-                        :key="index" @click="goToSlide(index)" class="w-3 h-3 rounded-full transition-all duration-300"
-                        :class="index === currentSlideIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'">
-                    </button>
-                </div>
-            </div>
-
-            <!-- Enterprise Trust Section -->
-            <div class="mt-24 text-center">
-                <div class="inline-flex items-center space-x-2 text-gray-500 mb-12">
-                    <div class="w-12 h-px bg-gray-300"></div>
-                    <span class="text-sm font-medium uppercase tracking-wide">Trusted by</span>
-                    <div class="w-12 h-px bg-gray-300"></div>
-                </div>
-
-                <div class="overflow-hidden">
-                    <div class="flex space-x-12 animate-scroll-right">
-                        <div v-for="(logo, index) in clientLogos" :key="`client-${index}`" class="flex-shrink-0">
-                            <div class="w-32 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 p-2">
-                                <img :src="`/img/client/${logo}`" :alt="logo" class="h-full w-auto object-contain" />
-                            </div>
-                        </div>
-                        <!-- Duplicate for infinite scroll -->
-                        <div v-for="(logo, index) in clientLogos" :key="`client-dup-${index}`" class="flex-shrink-0">
-                            <div class="w-32 h-16 bg-white rounded-xl shadow-lg border border-gray-200 flex items-center justify-center hover:shadow-xl transition-all duration-300 p-2">
-                                <img :src="`/img/client/${logo}`" :alt="logo" class="h-full w-auto object-contain" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </swiper-slide>
+            </swiper-container>
         </div>
     </section>
 </template>
@@ -206,9 +133,41 @@ import { useLanguage } from '@/composables/useLanguage.js'
 
 const { currentLanguage } = useLanguage()
 
-// Carousel state
-const currentSlideIndex = ref(0)
-const cardsPerView = ref(3)
+// Swiper parameters
+const swiperParams = {
+    grabCursor: true,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            centeredSlides: true,
+        },
+        768: {
+            slidesPerView: 2.5,
+            spaceBetween: 30,
+            centeredSlides: false,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+            centeredSlides: false,
+        },
+    },
+};
+
 
 // Stats animation state
 const statsRef = ref(null)
@@ -216,63 +175,6 @@ const animatedUptime = ref(0)
 const animatedClients = ref(0)
 const isStatsVisible = ref(false)
 let statsObserver = null
-
-// Responsive cards per view
-const updateCardsPerView = () => {
-    if (window.innerWidth < 768) {
-        cardsPerView.value = 1
-    } else if (window.innerWidth < 1024) {
-        cardsPerView.value = 2
-    } else {
-        cardsPerView.value = 3
-    }
-}
-
-// Slide width calculation
-const slideWidth = computed(() => {
-    return 100 / cardsPerView.value
-})
-
-// Navigation functions
-const nextSlide = () => {
-    const totalServices = currentServicesData.value.services.length
-    const maxSlide = totalServices - cardsPerView.value
-    if (currentSlideIndex.value < maxSlide) {
-        currentSlideIndex.value++
-    } else {
-        currentSlideIndex.value = 0
-    }
-}
-
-const prevSlide = () => {
-    const totalServices = currentServicesData.value.services.length
-    const maxSlide = totalServices - cardsPerView.value
-    if (currentSlideIndex.value > 0) {
-        currentSlideIndex.value--
-    } else {
-        currentSlideIndex.value = maxSlide
-    }
-}
-
-const goToSlide = (index) => {
-    currentSlideIndex.value = index
-}
-
-// Auto-slide functionality
-let autoSlideInterval = null
-
-const startAutoSlide = () => {
-    autoSlideInterval = setInterval(() => {
-        nextSlide()
-    }, 5000)
-}
-
-const stopAutoSlide = () => {
-    if (autoSlideInterval) {
-        clearInterval(autoSlideInterval)
-        autoSlideInterval = null
-    }
-}
 
 // Stats animation functions
 const animateStats = () => {
@@ -343,15 +245,15 @@ const formatClients = (num) => {
 }
 
 onMounted(() => {
-    updateCardsPerView()
-    window.addEventListener('resize', updateCardsPerView)
-    startAutoSlide()
     setupStatsObserver()
+    const swiperEl = document.querySelector('swiper-container');
+    if (swiperEl) {
+        Object.assign(swiperEl, swiperParams);
+        swiperEl.initialize();
+    }
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', updateCardsPerView)
-    stopAutoSlide()
     if (statsObserver && statsRef.value) {
         statsObserver.unobserve(statsRef.value)
     }
@@ -456,26 +358,23 @@ const getIconName = (iconString) => {
     return iconString
 }
 
-const clientLogos = [
-    'alimhome.webp',
-    'asanabiak.png',
-    'aston.png',
-    'balmon.jpeg',
-    'brin.png',
-    'budi-starch-sweentener.png',
-    'bumi-pundi-karsa.jpeg',
-    'capitol.webp',
-    'diskominfo-papua-barat.png',
-    'hotel-mariat-sorong.jpg',
-    'mitra-kreasi-darma.webp',
-    'polbangtan-manokwari.png',
-    'rrri.png',
-    'sjam.webp',
-    'swissbell-manokwari.jpeg'
-]
 </script>
 
-<style scoped>
+<style>
+/* Custom Swiper Styles */
+swiper-container {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px; /* Space for pagination */
+}
+
+swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
 /* Custom animations */
 @keyframes float {
 
@@ -524,41 +423,6 @@ const clientLogos = [
     .text-2xl {
         font-size: 1.5rem;
     }
-}
-
-/* Infinite scroll animations */
-@keyframes scroll-right {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes scroll-left {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.animate-scroll-right {
-    animation: scroll-right 30s linear infinite;
-    width: calc(200% + 12rem); /* Account for gaps */
-}
-
-.animate-scroll-left {
-    animation: scroll-left 30s linear infinite;
-    width: calc(200% + 12rem); /* Account for gaps */
-}
-
-/* Pause animation on hover */
-.animate-scroll-right:hover,
-.animate-scroll-left:hover {
-    animation-play-state: paused;
 }
 
 /* Smooth transitions */

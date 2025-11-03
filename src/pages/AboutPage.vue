@@ -13,7 +13,7 @@
   </section>
 
   <!-- About Us Content with Image -->
-  <section class="py-20 bg-white">
+  <section class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-8 md:mb-0">
@@ -33,7 +33,7 @@
   </section>
 
   <!-- Visi & Misi Section with Image -->
-  <section class="py-20 bg-gray-50">
+  <section class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0">
@@ -45,7 +45,8 @@
             </p>
           </div>
           <div>
-            <h3 class="text-2xl font-semibold text-blue-600 mb-3">{{ currentAboutData.visionMission.mission.title }}</h3>
+            <h3 class="text-2xl font-semibold text-blue-600 mb-3">{{ currentAboutData.visionMission.mission.title }}
+            </h3>
             <ul class="text-gray-600 leading-relaxed list-disc list-inside space-y-2">
               <li v-for="item in currentAboutData.visionMission.mission.items" :key="item">{{ item }}</li>
             </ul>
@@ -58,11 +59,37 @@
     </div>
   </section>
 
+  <!-- Clients Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-gray-800 mb-12">{{ currentLanguage === 'ID' ? 'Klien Kami' : 'Our Clients' }}</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
+        <div v-for="client in displayedClients" :key="client"
+          class="flex justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+          <img :src="client" alt="Client Logo"
+            class="h-14 object-contain transition-all duration-300">
+        </div>
+      </div>
+      <!-- Loading Spinner -->
+      <div v-if="isLoading" class="flex justify-center items-center mt-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600"></div>
+      </div>
+      <!-- View More Button -->
+      <div v-if="!showAllClients && !isLoading && clientLogos.length > 6" class="mt-12">
+        <button @click="loadMoreClients"
+          class="inline-flex items-center gap-3 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-105 bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500">
+          <span>{{ currentLanguage === 'ID' ? 'Lihat Lebih Lengkap' : 'View More' }}</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <Footer />
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
 import { useLanguage } from '@/composables/useLanguage.js'
@@ -76,8 +103,8 @@ const aboutDataIndonesia = {
   },
   about: {
     title: "We Do IT With Passion",
-    paragraph1: "PT. Shangkuriang Telekomunikasi Indonesia adalah perusahaan yang bergerak di bidang IT Solution, Manage Service, dan System Integrator, khususnya dalam penyediaan jaringan internet. Kami berpengalaman dalam instalasi jaringan Fiber Optic dan Wireless di berbagai kota besar dan daerah pedesaan.",
-    paragraph2: "Kepercayaan dari produsen Wireless Equipment mancanegara telah menjadikan kami distributor eksklusif di Asia Pasifik. Dengan lebih dari 300 klien domestik dan internasional, motto “We Do IT With Passion” menjadi landasan kami untuk memberikan pelayanan 24x7."
+    paragraph1: "PT. Shangkuriang Telekomunikasi Indonesia adalah perusahaan yang bergerak di bidang IT Solution, Managed Service, dan System Integration, dengan fokus utama pada penyediaan layanan jaringan internet yang berkualitas dan berkelanjutan.",
+    paragraph2: "Didukung oleh tenaga ahli berpengalaman dan jaringan kerja yang luas, kami berkomitmen untuk memberikan layanan profesional, solusi teknologi inovatif, serta dukungan terbaik bagi pelanggan di berbagai sektor. kami berkomitmen untuk menghadirkan konektivitas berkualitas tinggi, layanan profesional, serta solusi teknologi terintegrasi yang mendukung transformasi digital di Indonesia. Bersama kami, wujudkan konektivitas tanpa batas untuk masa depan yang lebih cerdas dan terhubung."
   },
   visionMission: {
     title: "Visi & Misi",
@@ -105,8 +132,8 @@ const aboutDataEnglish = {
   },
   about: {
     title: "We Do IT With Passion",
-    paragraph1: "PT. Shangkuriang Telekomunikasi Indonesia is a company engaged in IT Solutions, Managed Services, and System Integrators, especially in the provision of internet networks. We have experience in installing Fiber Optic and Wireless networks in various big cities and rural areas.",
-    paragraph2: "The trust from foreign Wireless Equipment manufacturers has made us the exclusive distributor in the Asia Pacific. With more than 300 domestic and international clients, the motto “We Do IT With Passion” is our foundation for providing 24/7 service."
+    paragraph1: "PT. Shangkuriang Telekomunikasi Indonesia is a company engaged in IT Solutions, Managed Services, and System Integration, with a primary focus on providing high-quality and sustainable internet network services.",
+    paragraph2: "Supported by experienced experts and an extensive work network, we are committed to providing professional services, innovative technology solutions, and the best support for customers in various sectors. We are committed to delivering high-quality connectivity, professional services, and integrated technology solutions that support digital transformation in Indonesia. With us, realize limitless connectivity for a smarter and more connected future."
   },
   visionMission: {
     title: "Vision & Mission",
@@ -130,6 +157,47 @@ const aboutDataEnglish = {
 const currentAboutData = computed(() => {
   return currentLanguage.value === 'ID' ? aboutDataIndonesia : aboutDataEnglish
 })
+
+const clientLogos = ref([
+  '/img/client/aston.png',
+  '/img/client/diskominfo-papua-barat.png',
+  '/img/client/capitol.webp',
+  '/img/client/swissbell-manokwari.jpeg',
+  '/img/client/pc24-telekomunikasi.png',
+  '/img/client/Manokwari_City_Mall_logo.jpg',
+  '/img/client/sjam.webp',
+  '/img/client/rrri.png',
+  '/img/client/polbangtan-manokwari.png',
+  '/img/client/mitra-kreasi-darma.webp',
+  '/img/client/hotel-mariat-sorong.jpg',
+  '/img/client/bumi-pundi-karsa.jpeg',
+  '/img/client/budi-starch-sweentener.png',
+  '/img/client/brin.png',
+  '/img/client/balmon.jpeg',
+  '/img/client/asanabiak.png',
+  '/img/client/alimhome.webp',
+  '/img/client/medcopapua.png',
+  '/img/client/bkhit.jpg',
+  '/img/client/iconplus.webp'
+]);
+
+const showAllClients = ref(false);
+const isLoading = ref(false);
+
+const displayedClients = computed(() => {
+  if (showAllClients.value) {
+    return clientLogos.value;
+  }
+  return clientLogos.value.slice(0, 6);
+});
+
+const loadMoreClients = () => {
+  isLoading.value = true;
+  setTimeout(() => {
+    showAllClients.value = true;
+    isLoading.value = false;
+  }, 1500); // 1.5 second delay
+};
 </script>
 
 <style scoped>

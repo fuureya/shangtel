@@ -199,7 +199,7 @@ const productDataIndonesia = {
   title: "Distributor Eksklusif Peralatan Wireless",
   subtitle: "Berkat kepercayaan dari produsen mancanegara, kami menjadi distributor eksklusif untuk peralatan wireless di Asia Pasifik, sambil terus mengembangkan merek kami sendiri.",
   shangtelSky: {
-    description: "Solusi konektivitas satelit terdepan dengan teknologi VSAT untuk area yang sulit dijangkau jaringan konvensional.",
+    description: "SkyAccess Solusi enterprise merupakan produk Shangkuriang yang diciptakan untuk memenuhi kebutuhan kompleks dari berbagai segmen, mulai dari bisnis korporasi, pemerintahan, hingga pelaku bisnis yang membutuhkan sarana koneksi internet paling terkini. Solusi ini mencakup paket layanan terlengkap seperti fixed network connectivity, serta manajemen layanan dan monitoring terlengkap.",
     features: [
       "Installation",
       "4K Quality",
@@ -211,7 +211,7 @@ const productDataIndonesia = {
     buttonText: "Lihat Selengkapnya"
   },
   shangtelHome: {
-    description: "Layanan internet rumahan dengan fokus pada privasi, keamanan, dan kecepatan stabil untuk kebutuhan keluarga modern.",
+    description: "ShangtelHome adalah produk unggulan dari PT. Shangkuriang Telekomunikasi Indonesia yang berfokus pada layanan internet berbasis Fiber To The Home (FTTH). Kami hadir untuk memberikan akses internet cepat, stabil, dan terjangkau bagi masyarakat, mendukung kebutuhan digital mulai dari hiburan, pendidikan, hingga bisnis.",
     features: [
       "Privasi & Keamanan Terjamin",
       "Kecepatan Stabil 24/7",
@@ -228,24 +228,25 @@ const productDataEnglish = {
   title: "Exclusive Distributor of Wireless Equipment",
   subtitle: "Thanks to the trust of international manufacturers, we have become the exclusive distributor for wireless equipment in the Asia Pacific, while continuing to develop our own brands.",
   shangtelSky: {
-    description: "Leading satellite connectivity solution with VSAT technology for areas hard to reach by conventional networks.",
+    description: "The SkyAccess Enterprise Solution is a Shangkuriang product created to meet the complex needs of various segments, from corporate businesses and government to business players who require the most up-to-date internet connection facilities. This solution includes a complete service package such as fixed network connectivity, as well as comprehensive service management and monitoring.",
     features: [
       "Installation",
       "4K Quality",
       "Ultra Fast",
-      "Satelite VSAT",
-      "Cheap Plans",
+      "Satellite VSAT",
+      "Affordable Plans",
       "24/7 Support"
     ],
     buttonText: "Learn More"
   },
   shangtelHome: {
-    description: "Home internet service focused on privacy, security, and stable speed for modern family needs.",
+    description: "ShangtelHome is a flagship product of PT. Shangkuriang Telekomunikasi Indonesia that focuses on Fiber To The Home (FTTH) based internet services. We are here to provide fast, stable, and affordable internet access for the community, supporting digital needs from entertainment and education to business.",
     features: [
-      "Privacy & Security Guaranteed",
+      "Guaranteed Privacy & Security",
       "Stable Speed 24/7",
       "Fast & Responsive Service",
-      "Modern Infrastructure"
+      "Modern Infrastructure",
+      "24/7 Support"
     ],
     buttonText: "Learn More"
   }

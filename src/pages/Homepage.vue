@@ -56,13 +56,13 @@ const welcomeData = [
   {
     lang: "id",
     title: "Selamat Datang di PT. Shangkuriang Telekomunikasi Indonesia",
-    content: "Kami adalah perusahaan yang bergerak di bidang IT Solution, Manage Service, dan System Integrator, dengan fokus utama pada penyediaan jaringan internet. Dengan pengalaman di berbagai kota besar dan daerah pedesaan, kami siap menjadi mitra terpercaya Anda.",
+    content: "PT. Shangkuriang Telekomunikasi Indonesia adalah perusahaan yang bergerak di bidang IT Solution, Managed Service, dan System Integration, dengan fokus utama pada penyediaan layanan jaringan internet yang berkualitas dan berkelanjutan. Dengan pengalaman di berbagai kota besar dan daerah pedesaan, kami siap menjadi mitra terpercaya Anda.",
     tagline: "“We Do IT With Passion” — Melayani Anda 24x7"
   },
   {
     lang: "en",
     title: "Welcome to PT. Shangkuriang Telekomunikasi Indonesia",
-    content: "We are a company engaged in IT Solutions, Managed Services, and System Integrators, with a primary focus on providing internet networks. With experience in various big cities and rural areas, we are ready to be your trusted partner.",
+    content: "PT. Shangkuriang Telekomunikasi Indonesia is a company engaged in IT Solutions, Managed Services, and System Integration, with a primary focus on providing quality and sustainable internet network services.",
     tagline: "“We Do IT With Passion” — Serving you 24/7"
   }
 ]

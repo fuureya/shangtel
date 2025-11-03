@@ -13,7 +13,8 @@
         <!-- Menu Items -->
         <div class="hidden lg:flex flex-1 justify-center ml-40">
           <div class="flex items-center ">
-            <router-link :to="{ path: '/', hash: '#home' }" class="nav-link" :class="{ 'active': isLinkActive('home') }">
+            <router-link :to="{ path: '/', hash: '#home' }" class="nav-link"
+              :class="{ 'active': isLinkActive('home') }">
               {{ currentNavData.home }}
             </router-link>
             <router-link to="/tentang-kami" class="nav-link" :class="{ 'active': isLinkActive('/tentang-kami') }">
@@ -22,14 +23,16 @@
             <router-link to="/services" class="nav-link" :class="{ 'active': isLinkActive('/services') }">
               {{ currentNavData.services }}
             </router-link>
-            <router-link :to="{ path: '/', hash: '#products' }" class="nav-link" :class="{ 'active': isLinkActive('products') }">
+            <router-link :to="{ path: '/', hash: '#products' }" class="nav-link"
+              :class="{ 'active': isLinkActive('products') }">
               {{ currentNavData.products }}
             </router-link>
 
             <router-link to="/carrier" class="nav-link" :class="{ 'active': isLinkActive('/carrier') }">
               {{ currentNavData.carrier }}
             </router-link>
-            <router-link :to="{ path: '/', hash: '#contact' }" class="nav-link" :class="{ 'active': isLinkActive('contact') }">
+            <router-link :to="{ path: '/', hash: '#contact' }" class="nav-link"
+              :class="{ 'active': isLinkActive('contact') }">
               {{ currentNavData.contact }}
             </router-link>
           </div>
@@ -68,23 +71,29 @@
     <!-- Mobile menu -->
     <div v-if="mobileMenuOpen" class="mobile-menu lg:hidden">
       <div class="px-6 py-4 space-y-1">
-        <router-link :to="{ path: '/', hash: '#home' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('home') }">
+        <router-link :to="{ path: '/', hash: '#home' }" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('home') }">
           {{ currentNavData.home }}
         </router-link>
-        <router-link to="/tentang-kami" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/tentang-kami') }">
+        <router-link to="/tentang-kami" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('/tentang-kami') }">
           {{ currentNavData.about }}
         </router-link>
-        <router-link to="/services" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/services') }">
+        <router-link to="/services" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('/services') }">
           {{ currentNavData.services }}
         </router-link>
-        <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('products') }">
+        <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('products') }">
           {{ currentNavData.products }}
         </router-link>
 
-        <router-link to="/carrier" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('/carrier') }">
+        <router-link to="/carrier" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('/carrier') }">
           {{ currentNavData.carrier }}
         </router-link>
-        <router-link :to="{ path: '/', hash: '#contact' }" @click="mobileMenuOpen = false" class="mobile-nav-link" :class="{ 'active': isLinkActive('contact') }">
+        <router-link :to="{ path: '/', hash: '#contact' }" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('contact') }">
           {{ currentNavData.contact }}
         </router-link>
         <!-- Mobile Language Switcher -->
@@ -126,9 +135,9 @@ const handleScroll = () => {
         break
       }
     }
-    
+
     if (!currentSection && window.scrollY < 200) {
-        currentSection = 'home'
+      currentSection = 'home'
     }
 
     activeSection.value = currentSection
@@ -159,7 +168,7 @@ const navDataIndonesia = {
   about: "Tentang",
   services: "Layanan",
   products: "Produk",
-  carrier: "Carrier",
+  carrier: "Karir",
   contact: "Kontak"
 }
 
@@ -350,9 +359,9 @@ const currentNavData = computed(() => {
 }
 
 .mobile-nav-link.active {
-    color: #1d4ed8;
-    font-weight: 600;
-    background-color: rgba(59, 130, 246, 0.1);
+  color: #1d4ed8;
+  font-weight: 600;
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 .mobile-language-button {

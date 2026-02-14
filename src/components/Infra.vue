@@ -41,45 +41,67 @@
               class="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-500/20 rounded-full blur-xl animate-pulse delay-1000"
             ></div>
 
-            <!-- Main Image Carousel -->
-            <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
-              <img
-                :src="currentImage.src"
-                :alt="currentImage.alt"
-                class="w-full h-96 lg:h-[500px] object-cover transition-all duration-1000 ease-in-out"
-                @load="onImageLoad"
-                @error="onImageError"
-              />
-              <!-- Image overlay gradient -->
+            <!-- Main Image Grid -->
+            <div class="grid grid-cols-2 gap-3">
               <div
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30"
-              ></div>
-            </div>
-
-            <!-- Floating stats cards -->
-            <div
-              class="absolute -bottom-6 -right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/20"
-            >
-              <div class="text-center">
-                <div class="text-2xl font-bold text-blue-600">
-                  {{ formatNumber(radio1000) }}+
-                </div>
-                <div class="text-sm text-gray-600">
-                  {{ currentInfraData.radioLabel }}
-                </div>
+                class="col-span-2 relative overflow-hidden rounded-2xl shadow-xl group h-64"
+              >
+                <img
+                  src="/img/service1.jpg"
+                  alt="Infrastructure Service 1"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                ></div>
               </div>
-            </div>
-
-            <div
-              class="absolute -top-6 -left-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/20"
-            >
-              <div class="text-center">
-                <div class="text-2xl font-bold text-indigo-600">
-                  {{ formatNumber(kabel20000) }}+
-                </div>
-                <div class="text-sm text-gray-600">
-                  {{ currentInfraData.kabelLabel }}
-                </div>
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg group h-40"
+              >
+                <img
+                  src="/img/service2.jpg"
+                  alt="Infrastructure Service 2"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                ></div>
+              </div>
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg group h-40"
+              >
+                <img
+                  src="/img/service3.jpg"
+                  alt="Infrastructure Service 3"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                ></div>
+              </div>
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg group h-40"
+              >
+                <img
+                  src="/img/service4.jpg"
+                  alt="Infrastructure Service 4"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                ></div>
+              </div>
+              <div
+                class="relative overflow-hidden rounded-xl shadow-lg group h-40"
+              >
+                <img
+                  src="/img/service5.jpg"
+                  alt="Infrastructure Service 5"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+                ></div>
               </div>
             </div>
           </div>
@@ -228,58 +250,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed, TransitionGroup } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useLanguage } from "@/composables/useLanguage.js";
 
 const radio1000 = ref(0);
 const kabel20000 = ref(0);
 const isVisible = ref(false);
 const sectionRef = ref(null);
-const currentImageIndex = ref(0);
 let observer = null;
-let imageCarouselInterval = null;
 
 const { currentLanguage } = useLanguage();
-
-// Image carousel data
-const infraImages = [
-  {
-    src: "/img/infra/satelite.jpg",
-    alt: "Infrastruktur Satelit Shangtel",
-  },
-  {
-    src: "/img/infra/fiber.jpg",
-    alt: "Infrastruktur Fiber Optik Shangtel",
-  },
-  {
-    src: "https://via.placeholder.com/800x600/3B82F6/FFFFFF?text=Network+Infrastructure",
-    alt: "Network Infrastructure Placeholder",
-  },
-];
-
-// Auto change images
-const startImageCarousel = () => {
-  imageCarouselInterval = setInterval(() => {
-    currentImageIndex.value =
-      (currentImageIndex.value + 1) % infraImages.length;
-  }, 6000); // Change every 6 seconds for smoother viewing
-};
-
-const stopImageCarousel = () => {
-  if (imageCarouselInterval) {
-    clearInterval(imageCarouselInterval);
-    imageCarouselInterval = null;
-  }
-};
-
-// Debug image loading
-const onImageLoad = () => {
-  console.log("Image loaded successfully:", currentImage.value.src);
-};
-
-const onImageError = (event) => {
-  console.error("Image failed to load:", currentImage.value.src, event);
-};
 
 const infraDataIndonesia = {
   badge: "Infrastruktur Handal",
@@ -309,10 +289,6 @@ const infraDataEnglish = {
 
 const currentInfraData = computed(() => {
   return currentLanguage.value === "ID" ? infraDataIndonesia : infraDataEnglish;
-});
-
-const currentImage = computed(() => {
-  return infraImages[currentImageIndex.value];
 });
 
 const animateNumbers = () => {
@@ -392,45 +368,17 @@ const formatNumber = (num) => {
 };
 
 onMounted(() => {
-  console.log("Infra mounted. Current image:", currentImage.value);
   setupIntersectionObserver();
-  startImageCarousel();
 });
 
 onUnmounted(() => {
   if (observer && sectionRef.value) {
     observer.unobserve(sectionRef.value);
   }
-  stopImageCarousel();
 });
 </script>
 
 <style scoped>
-/* Image Carousel Transitions */
-.image-slide-enter-active {
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.image-slide-leave-active {
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.image-slide-enter-from {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-.image-slide-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-.image-slide-enter-to,
-.image-slide-leave-from {
-  transform: translateX(0);
-  opacity: 1;
-}
-
 /* Custom animations */
 @keyframes float {
   0%,

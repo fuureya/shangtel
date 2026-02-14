@@ -1,4 +1,5 @@
 import './assets/main.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -21,7 +22,10 @@ import {
   faNetworkWired,
   faDesktop,
   faChevronRight,
-  faCheck
+  faCheck,
+  faSatelliteDish,
+  faTools,
+  faHouseSignal
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add icons to library
@@ -39,7 +43,10 @@ library.add(
   faNetworkWired,
   faDesktop,
   faChevronRight,
-  faCheck
+  faCheck,
+  faSatelliteDish,
+  faTools,
+  faHouseSignal
 )
 
 import { register } from 'swiper/element/bundle';

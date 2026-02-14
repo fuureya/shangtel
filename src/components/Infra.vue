@@ -143,19 +143,10 @@
                     <div
                       class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"
                     >
-                      <svg
-                        class="w-6 h-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
-                        />
-                      </svg>
+                      <font-awesome-icon
+                        :icon="['fas', 'satellite-dish']"
+                        class="text-blue-600 text-xl"
+                      />
                     </div>
                     <div>
                       <div class="text-2xl font-bold text-gray-900">
@@ -163,9 +154,6 @@
                       </div>
                       <div class="text-sm text-gray-600">
                         {{ currentInfraData.radioLabel }}
-                      </div>
-                      <div class="text-xs text-gray-500 mt-1">
-                        {{ currentInfraData.radioDesc }}
                       </div>
                     </div>
                   </div>
@@ -178,19 +166,10 @@
                     <div
                       class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center"
                     >
-                      <svg
-                        class="w-6 h-6 text-indigo-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
+                      <font-awesome-icon
+                        :icon="['fas', 'network-wired']"
+                        class="text-indigo-600 text-xl"
+                      />
                     </div>
                     <div>
                       <div class="text-2xl font-bold text-gray-900">
@@ -199,12 +178,36 @@
                       <div class="text-sm text-gray-600">
                         {{ currentInfraData.kabelLabel }}
                       </div>
-                      <div class="text-xs text-gray-500 mt-1">
-                        {{ currentInfraData.kabelDesc }}
-                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <!-- Services List -->
+              <div class="mb-10">
+                <h3 class="text-white font-bold text-xl mb-4 flex items-center">
+                  <span class="mr-2">🔹</span>
+                  {{ currentInfraData.servicesTitle }}
+                </h3>
+                <ul class="space-y-4">
+                  <li
+                    v-for="(service, index) in currentInfraData.services"
+                    :key="index"
+                    class="flex items-center text-blue-50 bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/10 hover:bg-white/20 transition-all duration-300"
+                  >
+                    <div
+                      class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center mr-4 shrink-0"
+                    >
+                      <font-awesome-icon
+                        :icon="service.icon"
+                        class="text-white text-sm"
+                      />
+                    </div>
+                    <span class="text-sm md:text-md font-medium">{{
+                      service.text
+                    }}</span>
+                  </li>
+                </ul>
               </div>
 
               <!-- CTA Button -->
@@ -263,9 +266,29 @@ const { currentLanguage } = useLanguage();
 
 const infraDataIndonesia = {
   badge: "Infrastruktur Handal",
-  title: "Jaringan Fiber Optic dan Wireless",
+  title: "Jaringan Fiber Optic & Wireless Terpercaya",
   description:
-    "Kami memiliki pengalaman di beberapa kota besar dan daerah pedesaan dalam hal instalasi jaringan Fiber Optic dan Wireless, memastikan konektivitas yang luas dan handal.",
+    "Kami menghadirkan solusi infrastruktur telekomunikasi berbasis Fiber Optic dan Wireless yang dirancang untuk memastikan konektivitas stabil, cepat, dan aman. Dengan pengalaman pembangunan jaringan di berbagai wilayah, kami berkomitmen memberikan layanan berkualitas tinggi yang mendukung pertumbuhan bisnis dan transformasi digital. Didukung tenaga ahli berpengalaman serta standar implementasi profesional, setiap proyek kami kerjakan dengan perencanaan matang dan pengawasan ketat untuk menjamin performa maksimal dan keberlanjutan jaringan.",
+  servicesTitle: "Layanan Utama Kami:",
+  services: [
+    {
+      text: "Pembangunan Backbone & Distribusi Fiber Optic",
+      icon: ["fas", "network-wired"],
+    },
+    {
+      text: "Instalasi Radio Wireless & VSAT",
+      icon: ["fas", "satellite-dish"],
+    },
+    {
+      text: "Network Operation Center (NOC) Monitoring",
+      icon: ["fas", "desktop"],
+    },
+    { text: "Maintenance & Support 24/7", icon: ["fas", "tools"] },
+    {
+      text: "Solusi FTTH untuk Perumahan & Korporasi",
+      icon: ["fas", "house-signal"],
+    },
+  ],
   radioLabel: "Radio dan VSAT",
   radioDesc: "Telah membangun lebih dari 1.000 jaringan Radio dan VSAT",
   kabelLabel: "km Kabel Optik",
@@ -276,9 +299,29 @@ const infraDataIndonesia = {
 
 const infraDataEnglish = {
   badge: "Reliable Infrastructure",
-  title: "Fiber Optic and Wireless Network",
+  title: "Trusted Fiber Optic & Wireless Network",
   description:
-    "We have experience in several big cities and rural areas in installing Fiber Optic and Wireless networks, ensuring broad and reliable connectivity.",
+    "We provide Fiber Optic and Wireless-based telecommunications infrastructure solutions designed to ensure stable, fast, and secure connectivity. With extensive network construction experience across various regions, we are committed to delivering high-quality services that support business growth and digital transformation. Supported by experienced experts and professional implementation standards, every project is executed with careful planning and strict supervision to guarantee maximum performance and network sustainability.",
+  servicesTitle: "Our Main Services:",
+  services: [
+    {
+      text: "Backbone & Fiber Optic Distribution Construction",
+      icon: ["fas", "network-wired"],
+    },
+    {
+      text: "Radio Wireless & VSAT Installation",
+      icon: ["fas", "satellite-dish"],
+    },
+    {
+      text: "Network Operation Center (NOC) Monitoring",
+      icon: ["fas", "desktop"],
+    },
+    { text: "Maintenance & Support 24/7", icon: ["fas", "tools"] },
+    {
+      text: "FTTH Solutions for Residential & Corporate",
+      icon: ["fas", "house-signal"],
+    },
+  ],
   radioLabel: "Radio and VSAT",
   radioDesc: "Built more than 1,000 Radio and VSAT networks",
   kabelLabel: "km Fiber Optic Cable",

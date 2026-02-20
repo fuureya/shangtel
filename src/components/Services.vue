@@ -62,63 +62,41 @@
 
             <!-- Modern Services Carousel with Swiper -->
             <swiper-container v-bind="swiperParams" init="false" class="w-full">
-                <swiper-slide v-for="(service, index) in currentServicesData.services" :key="index" class="h-full p-2">
+                <swiper-slide v-for="(service, index) in currentServicesData.services" :key="index" class="h-full p-4">
                     <!-- Service Card -->
                     <div
-                        class="group relative h-full bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 shadow-xl hover:shadow-2xl transition-all duration-700 hover:transform hover:scale-[1.02] overflow-hidden flex flex-col">
-
-                        <!-- Card Background Effects -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl">
+                        class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-blue-500/20">
+                        
+                        <!-- Background Image with Overlay -->
+                        <div class="absolute inset-0 z-0">
+                            <img :src="getImageUrl(service.image)" :alt="service.title" 
+                                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-500"></div>
                         </div>
 
-                        <div class="relative z-10 flex-grow flex flex-col">
-                            <!-- Modern Icon Container -->
-                            <div class="relative mb-8">
-                                <div
-                                    class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 shadow-lg">
-                                    <font-awesome-icon :icon="getIconName(service.icon)" class="text-3xl text-white" />
+                        <!-- Content Overlay (Glassmorphism) -->
+                        <div class="absolute inset-x-4 bottom-4 z-10 p-6 rounded-3xl bg-gray-900/75 backdrop-blur-xl border border-white/10 transform transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-blue-600/30 flex items-center justify-center backdrop-blur-lg border border-white/30">
+                                    <font-awesome-icon :icon="getIconName(service.icon)" class="text-xl text-white" />
                                 </div>
-                            </div>
-
-                            <!-- Service Content -->
-                            <div class="space-y-4 flex-grow flex flex-col">
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-white tracking-wide">
                                     {{ service.title }}
                                 </h3>
-
-                                <p class="text-gray-600 leading-relaxed line-clamp-4 flex-grow">
-                                    {{ service.description }}
-                                </p>
-
-                                <!-- Tech Stack Indicators -->
-                                <div class="flex flex-wrap gap-2 pt-4">
-                                    <span
-                                        v-if="service.title.includes('Management') || service.title.includes('Manajemen')"
-                                        class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Infrastructure</span>
-                                    <span
-                                        v-if="service.title.includes('Security') || service.title.includes('Keamanan')"
-                                        class="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Cybersecurity</span>
-                                    <span
-                                        v-if="service.title.includes('Network') || service.title.includes('Jaringan')"
-                                        class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Networking</span>
-                                    <span v-if="service.title.includes('Cloud')"
-                                        class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Cloud</span>
-                                    <span
-                                        v-if="service.title.includes('Consulting') || service.title.includes('Konsultasi')"
-                                        class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full">Strategy</span>
-                                    <span
-                                        v-if="service.title.includes('Support') || service.title.includes('Dukungan')"
-                                        class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded-full">24/7</span>
-                                    <span v-if="service.title.includes('Design') || service.title.includes('Desain')"
-                                        class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded-full">Design</span>
-                                    <span v-if="service.title.includes('Multimedia')"
-                                        class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-semibold rounded-full">Multimedia</span>
-                                    <span v-if="service.title.includes('Service') || service.title.includes('Layanan')"
-                                        class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Service</span>
-                                </div>
                             </div>
+                            
+                            <p class="text-gray-200 text-sm leading-relaxed line-clamp-3 mb-4 transition-opacity duration-700">
+                                {{ service.description }}
+                            </p>
+
+                            <div class="flex items-center text-blue-400 text-xs font-bold uppercase tracking-widest mt-2">
+                                <span class="bg-blue-500/20 px-3 py-1 rounded-full border border-blue-400/30">Explore Service</span>
+                            </div>
+                        </div>
+
+                        <!-- Corner Accent -->
+                        <div class="absolute top-6 right-6 z-10 w-12 h-12 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/20 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
+                           <span class="text-white font-black text-lg">0{{ index + 1 }}</span>
                         </div>
                     </div>
                 </swiper-slide>
@@ -261,97 +239,144 @@ onUnmounted(() => {
 
 const servicesData = [
     {
-        lang: "en",
-        title: "IT Management",
-        description: "To the practice of controlling and conducting business information, IT systems, IT-enabled operations, services, and resources in an enterprise organization.",
-        icon: "server"
-    },
-    {
-        lang: "en",
-        title: "Data Security",
-        description: "Process of protecting corporate data and preventing data loss through unauthorized access. This includes protecting your data from attacks that can encrypt or destroy data.",
-        icon: "shield"
-    },
-    {
-        lang: "en",
-        title: "IT Consulting",
-        description: "IT consulting, also referred to as technology consulting, relates to services aimed at helping clients on how they can utilise information technology (IT) and digital to optimally achieve their business goals. The IT consulting segment spans both advisory and implementation services, but excludes transactional IT activities.",
-        icon: "users"
-    },
-    {
-        lang: "en",
-        title: "IT Design",
-        description: "Generally speaking, it is the process of envisioning and planning the creation of objects, interactive systems, network, company profile, etc.",
-        icon: "lightbulb"
-    },
-    {
-        lang: "en",
-        title: "Multimedia",
-        description: "Computer-assisted integration of text, drawings, still and moving images (videos), graphics, audio, animation, videotron.",
-        icon: "desktop"
-    },
-    {
-        lang: "en",
-        title: "24/7 Support",
-        description: "Even if they are behind firewalls you don't control. All supported platforms are included in the core product, so you can consolidate and standardize support, improving incident handling time and support rep productivity.",
-        icon: "headset"
+        lang: "id",
+        title: "Dukungan 24 Jam",
+        description: "Layanan bantuan teknis siaga 24/7 untuk memastikan kelancaran operasional bisnis Anda tanpa henti, kapanpun dibutuhkan.",
+        icon: "headset",
+        image: "s1.jpeg"
     },
     {
         lang: "id",
-        title: "Manajemen IT",
-        description: "Praktik mengendalikan dan mengelola informasi bisnis, sistem IT, operasi yang didukung IT, layanan, dan sumber daya dalam organisasi perusahaan.",
-        icon: "server"
+        title: "Fiber Optic Network",
+        description: "Solusi jaringan internet berkecepatan tinggi berbasis fiber optik yang stabil dan handal untuk konektivitas masa depan.",
+        icon: "network-wired",
+        image: "s2.jpeg"
     },
     {
         lang: "id",
-        title: "Keamanan Data",
-        description: "Proses melindungi data perusahaan dan mencegah kehilangan data akibat akses yang tidak sah. Ini termasuk melindungi data dari serangan yang dapat mengenkripsi atau merusak data.",
-        icon: "shield"
+        title: "Enterprise Sistem IT",
+        description: "Pengembangan sistem IT terpadu berskala perusahaan yang dirancang untuk efisiensi dan skalabilitas bisnis jangka panjang.",
+        icon: "server",
+        image: "s3.jpeg"
     },
     {
         lang: "id",
-        title: "Konsultasi IT",
-        description: "Konsultasi IT, juga disebut konsultasi teknologi, adalah layanan yang membantu klien memanfaatkan teknologi informasi (IT) dan digital untuk mencapai tujuan bisnis secara optimal. Segmen ini mencakup layanan konsultasi dan implementasi, namun tidak termasuk aktivitas IT transaksional.",
-        icon: "users"
+        title: "Server & Storage",
+        description: "Layanan penyediaan, pengelolaan, dan pengoptimalan infrastruktur server serta penyimpanan data yang aman dan cepat.",
+        icon: "database",
+        image: "s4.jpeg"
+    },
+    {
+        lang: "id",
+        title: "Security & Monitoring",
+        description: "Sistem keamanan siber dan pemantauan infrastruktur yang proaktif untuk melindungi aset digital Anda dari ancaman luar.",
+        icon: "shield-halved",
+        image: "s5.jpeg"
+    },
+    {
+        lang: "id",
+        title: "Multimedia Solutions",
+        description: "Integrasi solusi multimedia modern, mulai dari videotron hingga sistem audio visual interaktif untuk publikasi yang memukau.",
+        icon: "desktop",
+        image: "s6.jpeg"
+    },
+    {
+        lang: "id",
+        title: "Konsultan IT",
+        description: "Layanan konsultasi strategis oleh para ahli untuk membantu Anda merancang blueprint teknologi yang tepat bagi bisnis.",
+        icon: "user-tie",
+        image: "s7.jpeg"
     },
     {
         lang: "id",
         title: "Desain IT",
-        description: "Secara umum, ini adalah proses merancang dan merencanakan pembuatan objek, sistem interaktif, jaringan, profil perusahaan, dan sebagainya.",
-        icon: "lightbulb"
+        description: "Perancangan arsitektur sistem dan desain infrastruktur digital yang efisien, modern, serta tepat guna.",
+        icon: "lightbulb",
+        image: "s8.jpeg"
+    },
+    // English Version fallback
+    {
+        lang: "en",
+        title: "24/7 Support",
+        description: "24/7 standby technical assistance to ensure smooth business operations without interruption, whenever needed.",
+        icon: "headset",
+        image: "s1.jpeg"
     },
     {
-        lang: "id",
-        title: "Multimedia",
-        description: "Integrasi berbasis komputer dari teks, gambar, gambar diam dan bergerak (video), grafis, audio, animasi, dan videotron.",
-        icon: "desktop"
+        lang: "en",
+        title: "Fiber Optic Network",
+        description: "High-speed, stable, and reliable fiber optic-based internet network solutions for future connectivity.",
+        icon: "network-wired",
+        image: "s2.jpeg"
     },
     {
-        lang: "id",
-        title: "Dukungan 24/7",
-        description: "Bahkan jika berada di balik firewall yang tidak Anda kontrol. Semua platform yang didukung termasuk dalam produk inti, sehingga Anda dapat mengkonsolidasikan dan menstandarisasi dukungan, meningkatkan waktu penanganan insiden dan produktivitas tim support.",
-        icon: "headset"
+        lang: "en",
+        title: "Enterprise IT Systems",
+        description: "Development of integrated enterprise-scale IT systems designed for long-term business efficiency and scalability.",
+        icon: "server",
+        image: "s3.jpeg"
+    },
+    {
+        lang: "en",
+        title: "Server & Storage",
+        description: "Provision, management, and optimization services for secure and fast server infrastructure and data storage.",
+        icon: "database",
+        image: "s4.jpeg"
+    },
+    {
+        lang: "en",
+        title: "Security & Monitoring",
+        description: "Proactive cybersecurity and infrastructure monitoring systems to protect your digital assets from external threats.",
+        icon: "shield-halved",
+        image: "s5.jpeg"
+    },
+    {
+        lang: "en",
+        title: "Multimedia Solutions",
+        description: "Integration of modern multimedia solutions, from videotron to interactive audio-visual systems for stunning publications.",
+        icon: "desktop",
+        image: "s6.jpeg"
+    },
+    {
+        lang: "en",
+        title: "IT Consultant",
+        description: "Strategic consulting services by experts to help you design the right technology blueprint for your business.",
+        icon: "user-tie",
+        image: "s7.jpeg"
+    },
+    {
+        lang: "en",
+        title: "IT Design",
+        description: "Architecture system design and digital infrastructure design that is efficient, modern, and effective.",
+        icon: "lightbulb",
+        image: "s8.jpeg"
     }
 ];
 
 
 const servicesDataIndonesia = {
-    badge: "Layanan Komprehensif",
-    title: "Solusi IT, Managed Service, dan System Integrator",
-    subtitle: "Kami menyediakan layanan IT yang terintegrasi untuk memenuhi berbagai kebutuhan bisnis, dari konsultasi hingga dukungan teknis 24/7.",
+    badge: "Layanan Unggulan",
+    title: "Solusi IT & Infrastruktur Modern",
+    subtitle: "Kami menghadirkan layanan IT komprehensif mulai dari jaringan fiber optik hingga sistem keamanan tingkat perusahaan untuk mendukung transformasi digital Anda.",
     services: servicesData.filter(service => service.lang === 'id')
 }
 
 const servicesDataEnglish = {
-    badge: "Comprehensive Services",
-    title: "IT Solutions, Managed Services, and System Integrator",
-    subtitle: "We provide integrated IT services to meet various business needs, from consulting to 24/7 technical support.",
+    badge: "Premier Services",
+    title: "Modern IT & Infrastructure Solutions",
+    subtitle: "We provide comprehensive IT services from fiber optic networks to enterprise-level security systems to support your digital transformation.",
     services: servicesData.filter(service => service.lang === 'en')
 }
 
 const currentServicesData = computed(() => {
     return currentLanguage.value === 'ID' ? servicesDataIndonesia : servicesDataEnglish
 })
+
+// Helper function to get image URL
+const getImageUrl = (name) => {
+    return new URL(`../assets/img/${name}`, import.meta.url).href
+}
+
 
 // Helper function to get icon name without prefix
 const getIconName = (iconString) => {

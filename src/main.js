@@ -25,7 +25,10 @@ import {
   faCheck,
   faSatelliteDish,
   faTools,
-  faHouseSignal
+  faHouseSignal,
+  faDatabase,
+  faShieldHalved,
+  faUserTie
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add icons to library
@@ -46,7 +49,10 @@ library.add(
   faCheck,
   faSatelliteDish,
   faTools,
-  faHouseSignal
+  faHouseSignal,
+  faDatabase,
+  faShieldHalved,
+  faUserTie
 )
 
 import { register } from 'swiper/element/bundle';

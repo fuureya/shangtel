@@ -65,7 +65,7 @@
                   <!-- Product Image -->
                   <div class="mb-8 rounded-xl overflow-hidden">
                     <img src="/img/products/sky.jpg" alt="Skyaccess Infrastructure"
-                      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
+                      class="w-full h-50 object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
 
                   <!-- Icon & Badge -->
@@ -132,7 +132,7 @@
                   <!-- Product Image -->
                   <div class="mb-8 rounded-xl overflow-hidden">
                     <img src="/img/products/ftth.jpg" alt="Shangtelhome FTTH"
-                      class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
+                      class="w-full h-50 object-cover transition-transform duration-300 group-hover:scale-105" />
                   </div>
 
                   <!-- Icon & Badge -->

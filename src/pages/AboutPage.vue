@@ -17,7 +17,7 @@
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <img src="/img/infra/fiber.jpg" alt="Fiber Optic" class="rounded-lg shadow-2xl w-full">
+          <img src="@/assets/img/a1.jpg" alt="Fiber Optic" class="rounded-lg shadow-2xl w-full">
         </div>
         <div class="md:w-1/2 md:pl-12">
           <h2 class="text-4xl font-bold text-gray-800 mb-6">{{ currentAboutData.about.title }}</h2>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="md:w-1/2">
-          <img src="/img/infra/satelite.jpg" alt="Satelite" class="rounded-lg shadow-2xl w-full">
+          <img src="@/assets/img/a2.jpg" alt="Satelite" class="rounded-lg shadow-2xl w-full">
         </div>
       </div>
     </div>

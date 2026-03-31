@@ -1,19 +1,19 @@
 <template>
   <Navbar />
 
-  <main class="bg-gray-50">
+  <main class="bg-gray-50 dark:bg-zinc-900 transition-colors duration-300">
     <!-- Hero Section -->
-    <section class="relative bg-white pt-32 pb-24 border-b border-gray-100">
+    <section class="relative bg-white dark:bg-zinc-950 pt-32 pb-24 border-b border-gray-100 dark:border-zinc-800 transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <div
           class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red/10 text-telkom-red text-xs font-black uppercase tracking-widest mb-8"
         >
           {{ currentContent.badge }}
         </div>
-        <h1 class="text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter mb-8 max-w-4xl mx-auto">
+        <h1 class="text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tighter mb-8 max-w-4xl mx-auto">
           {{ currentContent.title }}
         </h1>
-        <p class="max-w-3xl mx-auto text-xl text-gray-500 leading-relaxed font-medium">
+        <p class="max-w-3xl mx-auto text-xl text-gray-500 dark:text-zinc-400 leading-relaxed font-medium">
           {{ currentContent.subtitle }}
         </p>
       </div>
@@ -64,17 +64,17 @@
                       {{ currentContent.serviceTypeLabel }}
                     </div>
                     <h2
-                      class="text-4xl lg:text-5xl font-black text-gray-900 mb-6 tracking-tight"
+                      class="text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight"
                     >
                       {{ service.title }}
                     </h2>
-                    <div class="text-xl font-bold text-gray-700 mb-6 flex items-center">
+                    <div class="text-xl font-bold text-gray-700 dark:text-zinc-300 mb-6 flex items-center">
                       <span class="w-8 h-1 bg-telkom-red mr-4"></span>
                       {{ service.subtitle }}
                     </div>
                   </div>
                   <p
-                    class="text-lg text-gray-500 leading-relaxed mb-10 font-medium"
+                    class="text-lg text-gray-500 dark:text-zinc-400 leading-relaxed mb-10 font-medium"
                   >
                     {{ service.description }}
                   </p>
@@ -84,20 +84,20 @@
                     <div
                       v-for="(point, pIndex) in service.points"
                       :key="pIndex"
-                      class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-gray-100 shadow-sm"
+                      class="flex items-center space-x-3 bg-white dark:bg-zinc-800 p-4 rounded-xl border border-gray-100 dark:border-zinc-700 shadow-sm"
                     >
                       <font-awesome-icon
                         icon="check"
                         class="text-telkom-red font-black"
                       />
-                      <span class="text-xs font-black text-gray-700 uppercase tracking-widest">{{ point }}</span>
+                      <span class="text-xs font-black text-gray-700 dark:text-zinc-300 uppercase tracking-widest">{{ point }}</span>
                     </div>
                   </div>
 
                   <a
                     :href="getWhatsAppLink(service.title)"
                     target="_blank"
-                    class="inline-block bg-zinc-900 text-white px-8 py-4 rounded-lg font-black uppercase tracking-widest text-sm transition-all hover:bg-telkom-red hover:shadow-xl"
+                    class="inline-block bg-zinc-900 dark:bg-zinc-800 dark:hover:bg-telkom-red text-white px-8 py-4 rounded-lg font-black uppercase tracking-widest text-sm transition-all hover:bg-telkom-red hover:shadow-xl"
                   >
                     {{ currentContent.cta }}
                     <font-awesome-icon

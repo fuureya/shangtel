@@ -1,5 +1,5 @@
 <template>
-  <nav class="modern-navbar bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 ">
+  <nav class="modern-navbar bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center  h-20">
         <!-- Logo -->
@@ -38,19 +38,20 @@
           </div>
         </div>
 
-        <!-- Language Switcher -->
-        <div class="hidden lg:flex items-center">
+        <!-- Actions -->
+        <div class="hidden lg:flex items-center space-x-4">
+          <!-- Theme Toggle -->
+          <button @click="toggleDark" class="theme-toggle-button" aria-label="Toggle Theme">
+            <font-awesome-icon v-if="isDark" icon="sun" class="text-yellow-400" />
+            <font-awesome-icon v-else icon="moon" class="text-zinc-600" />
+          </button>
+
+          <!-- Language Switcher -->
           <button @click="toggleLanguage" class="language-button group">
             <span class="relative z-10 flex items-center text-sm font-bold">
-              <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-              </svg>
+              <font-awesome-icon icon="globe" class="mr-2" />
               {{ currentLanguage }}
-              <svg class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <font-awesome-icon icon="chevron-down" class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" />
             </span>
           </button>
         </div>
@@ -109,8 +110,20 @@ import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
 const activeSection = ref('home')
+const isDark = ref(false)
 const { currentLanguage, toggleLanguage } = useLanguage()
 const route = useRoute()
+
+const toggleDark = () => {
+  isDark.value = !isDark.value
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
+}
 
 const isLinkActive = (identifier) => {
   if (identifier.startsWith('/')) {
@@ -156,6 +169,18 @@ watch(() => route.path, (newPath) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   handleScroll()
+  
+  // Check for saved theme
+  const savedTheme = localStorage.getItem('theme')
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
+  } else {
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+  }
 })
 
 onUnmounted(() => {
@@ -210,6 +235,10 @@ const currentNavData = computed(() => {
   white-space: nowrap;
 }
 
+.dark .nav-link {
+  color: #a1a1aa; /* zinc-400 equivalent */
+}
+
 .nav-link::before {
   content: '';
   position: absolute;
@@ -234,6 +263,10 @@ const currentNavData = computed(() => {
 .nav-link.active {
   color: #E42313;
   font-weight: 700;
+}
+
+.dark .nav-link.active {
+  color: #E42313;
 }
 
 .nav-link.active::before {
@@ -264,6 +297,33 @@ const currentNavData = computed(() => {
   transform: translateY(0);
 }
 
+/* Theme Toggle Button */
+.theme-toggle-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #f3f4f6;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .theme-toggle-button {
+  background-color: #18181b;
+  border-color: #27272a;
+}
+
+.theme-toggle-button:hover {
+  background-color: #e5e7eb;
+  transform: rotate(-12deg);
+}
+
+.dark .theme-toggle-button:hover {
+  background-color: #27272a;
+}
+
 /* Mobile Menu Button */
 .mobile-menu-button {
   padding: 0.5rem;
@@ -290,6 +350,10 @@ const currentNavData = computed(() => {
   border-radius: 1px;
   position: absolute;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .hamburger-line span {
+  background: #e4e4e7; /* zinc-200 equivalent */
 }
 
 .hamburger-line span:nth-child(1) {
@@ -321,10 +385,15 @@ const currentNavData = computed(() => {
 
 /* Mobile Menu */
 .mobile-menu {
-  background: rgba(255, 255, 255, 0.95);
+  background: white;
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(229, 231, 235, 0.5);
   animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .mobile-menu {
+  background: rgba(9, 9, 11, 0.95);
+  border-top-color: #27272a;
 }
 
 .mobile-nav-link {
@@ -335,6 +404,10 @@ const currentNavData = computed(() => {
   border-radius: 0.5rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+}
+
+.dark .mobile-nav-link {
+  color: #a1a1aa;
 }
 
 .mobile-nav-link:hover {

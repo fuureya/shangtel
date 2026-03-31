@@ -1,7 +1,7 @@
 <template>
   <section
     ref="sectionRef"
-    class="relative py-24 bg-white overflow-hidden"
+    class="relative py-24 bg-white dark:bg-zinc-950 overflow-hidden transition-colors duration-300"
   >
     <!-- Minimalist Background -->
     <div class="absolute inset-0 pointer-events-none">
@@ -18,7 +18,7 @@
               class="absolute -top-4 -left-4 w-24 h-24 bg-telkom-red/10 rounded-full blur-xl"
             ></div>
             <div
-              class="absolute -bottom-8 -right-8 w-32 h-32 bg-gray-200/50 rounded-full blur-xl"
+              class="absolute -bottom-8 -right-8 w-32 h-32 bg-gray-200/50 dark:bg-zinc-800/30 rounded-full blur-xl"
             ></div>
 
             <!-- Main Image Grid -->
@@ -99,19 +99,19 @@
               </div>
 
               <!-- Main Title -->
-              <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+              <h2 class="text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tight">
                 {{ currentInfraData.title }}
               </h2>
 
               <!-- Description -->
-              <p class="text-lg text-gray-500 mb-8 leading-relaxed font-medium">
+              <p class="text-lg text-gray-500 dark:text-zinc-400 mb-8 leading-relaxed font-medium">
                 {{ currentInfraData.description }}
               </p>
 
               <!-- Statistics Grid -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div
-                  class="bg-white rounded-xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-gray-100 dark:border-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div class="flex items-center space-x-4">
                     <div
@@ -123,10 +123,10 @@
                       />
                     </div>
                     <div>
-                      <div class="text-2xl font-black text-gray-900">
+                      <div class="text-2xl font-black text-gray-900 dark:text-white">
                         {{ formatNumber(radio1000) }}+
                       </div>
-                      <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">
+                      <div class="text-xs text-gray-400 dark:text-zinc-500 font-bold uppercase tracking-widest">
                         {{ currentInfraData.radioLabel }}
                       </div>
                     </div>
@@ -134,7 +134,7 @@
                 </div>
 
                 <div
-                  class="bg-white rounded-xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-gray-100 dark:border-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div class="flex items-center space-x-4">
                     <div
@@ -146,10 +146,10 @@
                       />
                     </div>
                     <div>
-                      <div class="text-2xl font-black text-gray-900">
+                      <div class="text-2xl font-black text-gray-900 dark:text-white">
                         {{ formatNumber(kabel20000) }}+
                       </div>
-                      <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">
+                      <div class="text-xs text-gray-400 dark:text-zinc-500 font-bold uppercase tracking-widest">
                         {{ currentInfraData.kabelLabel }}
                       </div>
                     </div>
@@ -159,14 +159,14 @@
 
               <!-- Services List -->
               <div class="mb-10">
-                <h3 class="text-gray-900 font-black text-xl mb-6 border-l-4 border-telkom-red pl-4">
+                <h3 class="text-gray-900 dark:text-white font-black text-xl mb-6 border-l-4 border-telkom-red pl-4">
                   {{ currentInfraData.servicesTitle }}
                 </h3>
                 <div class="grid grid-cols-1 gap-3">
                   <div
                     v-for="(service, index) in currentInfraData.services"
                     :key="index"
-                    class="flex items-center text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-100 hover:bg-white hover:shadow-md transition-all duration-300"
+                    class="flex items-center text-gray-600 dark:text-zinc-300 bg-gray-50 dark:bg-zinc-900 p-4 rounded-xl border border-gray-100 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800 hover:shadow-md transition-all duration-300"
                   >
                     <div
                       class="w-10 h-10 rounded-lg bg-telkom-red/10 flex items-center justify-center mr-4 shrink-0"

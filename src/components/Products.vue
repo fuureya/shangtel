@@ -1,8 +1,8 @@
 <template>
-  <section class="relative py-24 bg-zinc-50 overflow-hidden">
+  <section class="relative py-24 bg-zinc-50 dark:bg-zinc-950 overflow-hidden transition-colors duration-300">
     <!-- Minimalist Background Pattern -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     </div>
 
     <!-- Content -->
@@ -14,11 +14,11 @@
           {{ currentProductData.badge }}
         </div>
 
-        <h2 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight">
+        <h2 class="text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
           {{ currentProductData.title }}
         </h2>
 
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
+        <p class="text-xl text-gray-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed font-medium">
           {{ currentProductData.subtitle }}
         </p>
       </div>
@@ -31,11 +31,11 @@
             <!-- ShangtelSky Card -->
             <div class="group">
               <div
-                class="relative bg-white rounded-2xl p-8 lg:p-10 border border-gray-100 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                class="relative bg-white dark:bg-zinc-900 rounded-2xl p-8 lg:p-10 border border-gray-100 dark:border-zinc-800 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
 
                 <div class="relative z-10">
                   <!-- Product Image -->
-                  <div class="mb-8 rounded-xl overflow-hidden aspect-video bg-gray-100">
+                  <div class="mb-8 rounded-xl overflow-hidden aspect-video bg-gray-100 dark:bg-zinc-800">
                     <img src="/img/products/sky.jpg" alt="Skyaccess Infrastructure"
                       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   </div>
@@ -43,16 +43,16 @@
                   <!-- Icon & Title -->
                   <div class="flex items-center space-x-6 mb-8">
                     <div
-                      class="w-16 h-16 bg-white border border-gray-100 rounded-xl flex items-center justify-center shadow-lg p-3">
+                      class="w-16 h-16 bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-800 rounded-xl flex items-center justify-center shadow-lg p-3">
                       <img src="/public/img/skyaccess.png" alt="Skyaccess Logo" class="w-full h-full object-contain" />
                     </div>
-                    <h3 class="text-3xl font-black text-gray-900">
+                    <h3 class="text-3xl font-black text-gray-900 dark:text-white">
                       Sky<span class="text-telkom-red">access</span>
                     </h3>
                   </div>
 
                   <!-- Description -->
-                  <p class="text-gray-500 text-lg leading-relaxed mb-8 font-medium">
+                  <p class="text-gray-500 dark:text-zinc-400 text-lg leading-relaxed mb-8 font-medium">
                     {{ currentProductData.shangtelSky.description }}
                   </p>
 
@@ -61,7 +61,7 @@
                     <div v-for="feature in currentProductData.shangtelSky.features" :key="feature"
                       class="flex items-center space-x-3 text-sm">
                       <font-awesome-icon icon="check" class="text-telkom-red font-black" />
-                      <span class="text-gray-700 font-bold uppercase tracking-wider text-[10px]">{{ feature }}</span>
+                      <span class="text-gray-700 dark:text-zinc-400 font-bold uppercase tracking-wider text-[10px]">{{ feature }}</span>
                     </div>
                   </div>
 
@@ -78,11 +78,11 @@
             <!-- ShangtelHome Card -->
             <div class="group">
               <div
-                class="relative bg-white rounded-2xl p-8 lg:p-10 border border-gray-100 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                class="relative bg-white dark:bg-zinc-900 rounded-2xl p-8 lg:p-10 border border-gray-100 dark:border-zinc-800 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
 
                 <div class="relative z-10">
                   <!-- Product Image -->
-                  <div class="mb-8 rounded-xl overflow-hidden aspect-video bg-gray-100">
+                  <div class="mb-8 rounded-xl overflow-hidden aspect-video bg-gray-100 dark:bg-zinc-800">
                     <img src="/img/products/ftth.jpg" alt="Shangtelhome FTTH"
                       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   </div>
@@ -90,17 +90,17 @@
                   <!-- Icon & Title -->
                   <div class="flex items-center space-x-6 mb-8">
                     <div
-                      class="w-16 h-16 bg-white border border-gray-100 rounded-xl flex items-center justify-center shadow-lg p-3">
+                      class="w-16 h-16 bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-800 rounded-xl flex items-center justify-center shadow-lg p-3">
                       <img src="/public/img/shangtelhome.png" alt="Shangtelhome Logo"
                         class="w-full h-full object-contain" />
                     </div>
-                    <h3 class="text-3xl font-black text-gray-900">
+                    <h3 class="text-3xl font-black text-gray-900 dark:text-white">
                       Shangtel<span class="text-telkom-red">Home</span>
                     </h3>
                   </div>
 
                   <!-- Description -->
-                  <p class="text-gray-500 text-lg leading-relaxed mb-8 font-medium">
+                  <p class="text-gray-500 dark:text-zinc-400 text-lg leading-relaxed mb-8 font-medium">
                     {{ currentProductData.shangtelHome.description }}
                   </p>
 
@@ -109,7 +109,7 @@
                     <div v-for="feature in currentProductData.shangtelHome.features" :key="feature"
                       class="flex items-center space-x-3 text-sm">
                       <font-awesome-icon icon="check" class="text-telkom-red font-black" />
-                      <span class="text-gray-700 font-bold uppercase tracking-wider text-[10px]">{{ feature }}</span>
+                      <span class="text-gray-700 dark:text-zinc-400 font-bold uppercase tracking-wider text-[10px]">{{ feature }}</span>
                     </div>
                   </div>
 

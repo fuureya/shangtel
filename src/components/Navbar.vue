@@ -1,5 +1,5 @@
 <template>
-  <nav class="modern-navbar bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-300">
+  <nav class="modern-navbar bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center  h-20">
         <!-- Logo -->
@@ -22,6 +22,9 @@
             </router-link>
             <router-link to="/services" class="nav-link" :class="{ 'active': isLinkActive('/services') }">
               {{ currentNavData.services }}
+            </router-link>
+            <router-link to="/portfolio" class="nav-link" :class="{ 'active': isLinkActive('/portfolio') }">
+              {{ currentNavData.portfolio }}
             </router-link>
             <router-link :to="{ path: '/', hash: '#products' }" class="nav-link"
               :class="{ 'active': isLinkActive('products') }">
@@ -97,6 +100,10 @@
         <router-link to="/services" @click="mobileMenuOpen = false" class="mobile-nav-link"
           :class="{ 'active': isLinkActive('/services') }">
           {{ currentNavData.services }}
+        </router-link>
+        <router-link to="/portfolio" @click="mobileMenuOpen = false" class="mobile-nav-link"
+          :class="{ 'active': isLinkActive('/portfolio') }">
+          {{ currentNavData.portfolio }}
         </router-link>
         <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link"
           :class="{ 'active': isLinkActive('products') }">
@@ -240,6 +247,7 @@ const navDataIndonesia = {
   home: "Beranda",
   about: "Tentang",
   services: "Layanan",
+  portfolio: "Portfolio",
   products: "Produk",
   carrier: "Karir",
   contact: "Kontak"
@@ -249,6 +257,7 @@ const navDataEnglish = {
   home: "Home",
   about: "About",
   services: "Services",
+  portfolio: "Portfolio",
   products: "Products",
   carrier: "Carrier",
   contact: "Contact"

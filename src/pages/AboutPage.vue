@@ -15,7 +15,7 @@
   </section>
 
   <!-- About Us Content with Image -->
-  <section class="py-16 md:py-24 bg-white dark:bg-zinc-950 transition-colors duration-300">
+  <section class="py-16 md:py-24 bg-white dark:bg-zinc-900 transition-colors duration-300">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-12 md:mb-0 relative">
@@ -73,7 +73,7 @@
   </section>
 
   <!-- Clients Section -->
-  <section class="py-16 md:py-24 bg-white dark:bg-zinc-950 transition-colors duration-300">
+  <section class="py-16 md:py-24 bg-white dark:bg-zinc-900 transition-colors duration-300">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">{{ currentLanguage === 'ID' ? 'Klien Kami' : 'Our Clients' }}</h2>
       <div class="w-20 h-1.5 bg-telkom-red mx-auto mb-16"></div>

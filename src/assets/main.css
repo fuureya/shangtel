@@ -14,7 +14,7 @@ body {
 }
 
 .dark body {
-  background-color: #09090b;
+  background-color: #111111; /* Softer than zinc-950 */
   color: #f4f4f5;
 }
 

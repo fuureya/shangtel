@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center h-screen bg-zinc-50 dark:bg-zinc-950 px-6 transition-colors duration-300">
+  <div class="flex items-center justify-center h-screen bg-zinc-50 dark:bg-zinc-900 px-6 transition-colors duration-300">
     <div class="text-center max-w-md">
       <h1 class="text-9xl font-black text-gray-200 dark:text-zinc-800 mb-4 tracking-tighter transition-colors duration-300">404</h1>
       <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">Halaman Tidak Ditemukan</h2>

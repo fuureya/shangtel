@@ -1,5 +1,5 @@
 <template>
-  <section class="relative py-24 bg-zinc-50 dark:bg-zinc-950 overflow-hidden transition-colors duration-300">
+  <section id="products" class="relative py-24 bg-white dark:bg-zinc-900 overflow-hidden transition-colors duration-300">
     <!-- Minimalist Background Pattern -->
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px]"></div>

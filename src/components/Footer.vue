@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-section bg-zinc-950 text-gray-300 relative">
+  <footer class="footer-section bg-zinc-900 text-white relative transition-colors duration-300">
     <!-- Map Background -->
     <div class="absolute inset-0 opacity-5">
       <div
@@ -18,9 +18,10 @@
             <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">Managed Services</h3>
             <nav class="grid grid-cols-2 gap-x-4 gap-y-3">
               <router-link to="/" class="footer-link">Home</router-link>
-              <router-link to="/about" class="footer-link">About</router-link>
-              <router-link to="/service" class="footer-link">Services</router-link>
-              <router-link to="/contact" class="footer-link">Contact</router-link>
+              <router-link to="/tentang-kami" class="footer-link">About</router-link>
+              <router-link to="/services" class="footer-link">Services</router-link>
+              <router-link to="/portfolio" class="footer-link">Portfolio</router-link>
+              <router-link :to="{ path: '/', hash: '#contact' }" class="footer-link">Contact</router-link>
             </nav>
           </div>
 
@@ -42,7 +43,7 @@
         <div class="space-y-6">
           <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">Contact Info</h3>
 
-          <div class="space-y-4 text-gray-400">
+          <div class="space-y-4 text-white">
             <!-- Address -->
             <div class="flex items-start space-x-3">
               <div class="contact-icon bg-telkom-red">
@@ -85,7 +86,7 @@
           <form @submit.prevent="submitForm" class="space-y-4">
             <!-- Full Name -->
             <div>
-              <label for="fullname" class="block text-sm font-medium text-gray-700 mb-2">
+              <label for="fullname" class="block text-sm font-medium text-white mb-2">
                 Full Name
               </label>
               <input
@@ -100,7 +101,7 @@
 
             <!-- Company -->
             <div>
-              <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
+              <label for="company" class="block text-sm font-medium text-white mb-2">
                 Company
               </label>
               <input
@@ -115,7 +116,7 @@
 
             <!-- Question -->
             <div>
-              <label for="question" class="block text-sm font-medium text-gray-700 mb-2">
+              <label for="question" class="block text-sm font-medium text-white mb-2">
                 Your Question
               </label>
               <textarea
@@ -143,16 +144,16 @@
     </div>
 
     <!-- Bottom Bar -->
-    <div class="border-t border-white/10 bg-black/50 backdrop-blur-sm">
+    <div class="border-t border-white/10 bg-black/30 backdrop-blur-sm">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-gray-500">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-white">
           <div class="flex items-center space-x-3">
             <img src="/img/shangtel.png" alt="Shangtel" class="h-8 w-auto brightness-0 invert" />
             <p class="text-sm">
               © 2024 Shangtel. All rights reserved.
             </p>
           </div>
-          <div class="flex space-x-6 text-sm">
+          <div class="flex space-x-6 text-sm text-white">
             <a href="#" class="hover:text-telkom-red transition-colors">Privacy Policy</a>
             <a href="#" class="hover:text-telkom-red transition-colors">Terms of Service</a>
             <a href="#" class="hover:text-telkom-red transition-colors">Sitemap</a>
@@ -195,14 +196,24 @@ const submitForm = () => {
 
 <style scoped>
 .footer-section {
-  background: #09090b;
+  background: #18181b !important; /* Force dark background */
+  color: #ffffff !important; /* Force white text */
   position: relative;
   overflow: hidden;
 }
 
+.footer-section h3, 
+.footer-section h4,
+.footer-section p,
+.footer-section span,
+.footer-section label,
+.footer-section div {
+  color: #ffffff !important;
+}
+
 .footer-link {
   display: block;
-  color: #a1a1aa;
+  color: #ffffff !important;
   font-weight: 500;
   transition: all 0.2s;
   padding: 0.25rem 0;
@@ -219,8 +230,8 @@ const submitForm = () => {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   border-radius: 50%;
   transition: all 0.3s;
 }
@@ -244,19 +255,25 @@ const submitForm = () => {
 
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.07);
   color: white;
   transition: all 0.2s;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+}
+
+.form-input::placeholder {
+  color: #ffffff !important; /* pure white for placeholder */
+  opacity: 0.7 !important;
 }
 
 .form-input:focus {
   outline: none;
   border-color: #E42313;
-  box-shadow: 0 0 0 3px rgba(228, 35, 19, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(228, 35, 19, 0.15);
 }
 
 .submit-button {

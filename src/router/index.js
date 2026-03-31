@@ -4,6 +4,7 @@ import Homepage from "@/pages/Homepage.vue";
 import Carrier from "@/pages/CarrierPage.vue";
 import ServicesPage from "@/pages/ServicesPage.vue";
 import AboutPage from "@/pages/AboutPage.vue";
+import PortfolioPage from "@/pages/PortfolioPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 const routes = [
@@ -17,7 +18,11 @@ const routes = [
     name: "TentangKami",
     component: AboutPage,
   },
-
+  {
+    path: "/portfolio",
+    name: "Portfolio",
+    component: PortfolioPage,
+  },
   {
     path: "/carrier",
     name: "Carrier",

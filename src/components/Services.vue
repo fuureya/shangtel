@@ -1,5 +1,5 @@
 <template>
-    <section class="py-24 bg-white dark:bg-zinc-950 relative overflow-hidden transition-colors duration-300">
+    <section id="services" class="py-24 bg-gray-50 dark:bg-zinc-900 relative overflow-hidden transition-colors duration-300">
         <!-- Minimalist Background -->
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>

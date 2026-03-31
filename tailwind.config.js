@@ -6,12 +6,14 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    extend: {
       colors: {
         'telkom-red': '#E42313',
       },
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
       },
+    },
   },
   plugins: [],
 }

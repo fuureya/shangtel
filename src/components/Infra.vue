@@ -1,7 +1,7 @@
 <template>
   <section
     ref="sectionRef"
-    class="relative py-24 bg-white dark:bg-zinc-950 overflow-hidden transition-colors duration-300"
+    class="relative py-24 bg-white dark:bg-zinc-900 overflow-hidden transition-colors duration-300"
   >
     <!-- Minimalist Background -->
     <div class="absolute inset-0 pointer-events-none">

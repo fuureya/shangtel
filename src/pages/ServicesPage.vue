@@ -3,7 +3,7 @@
 
   <main class="bg-gray-50 dark:bg-zinc-900 transition-colors duration-300">
     <!-- Hero Section -->
-    <section class="relative bg-white dark:bg-zinc-950 pt-32 pb-24 border-b border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+    <section class="relative bg-white dark:bg-zinc-900 pt-32 pb-24 border-b border-gray-100 dark:border-zinc-800 transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <div
           class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red/10 text-telkom-red text-xs font-black uppercase tracking-widest mb-8"
@@ -137,52 +137,52 @@ const servicesData = {
     serviceTypeLabel: "SERVICE MENU",
     services: [
       {
-        title: "Managed IT Services",
+        title: "Managed IT Services & 24/7 Support",
         subtitle: "Professional and Sustainable Infrastructure Management",
         description:
-          "We provide comprehensive IT system management services, from maintenance and troubleshooting to performance optimization. Ensuring operations run stably, efficiently, and with minimum downtime.",
+          "We provide comprehensive IT system management services, from maintenance and troubleshooting to performance optimization. Our 24/7 standby technical assistance ensures smooth business operations without interruption, whenever needed.",
         points: [
-          "24/7 Monitoring",
+          "24/7 Monitoring & Support",
           "Preventive Maintenance",
           "System Optimization",
           "Enterprise Technical Support",
         ],
-        icon: "server",
+        icon: "headset",
         image: "/img/ly1.jpeg",
       },
       {
         title: "Cyber Security & Data Protection",
         subtitle: "Maximum Protection for Your Digital Assets",
         description:
-          "Security is the top priority. We deliver layered security solutions to protect strategic corporate networks, systems, and data from cyber threats.",
+          "Security is the top priority. We deliver layered security solutions to protect strategic corporate networks, systems, and data from cyber threats. Our proactive monitoring systems protect your digital assets from external threats.",
         points: [
           "Firewall & Network Security",
           "Data Encryption",
-          "Access Control Management",
           "Threat Detection & Mitigation",
+          "Security Monitoring",
         ],
-        icon: "shield",
+        icon: "shield-halved",
         image: "/img/ly2.jpeg",
       },
       {
         title: "IT Infrastructure & Network Design",
         subtitle: "Tough and Scalable System Architecture",
         description:
-          "Planning and implementation of IT infrastructure designed to suit your business needs, with enterprise standards and long-term expansion readiness.",
+          "Planning and implementation of IT infrastructure designed to suit your business needs, with enterprise standards and long-term expansion readiness. We design architectures that are efficient, modern, and effective.",
         points: [
           "Network Architecture Design",
-          "Server & Data Center Setup",
           "Fiber Optic & Structured Cabling",
           "System Integration",
+          "Scalable Infrastructure",
         ],
         icon: "network-wired",
         image: "/img/ly3.jpeg",
       },
       {
-        title: "Internet Service Provider (ISP) & Connectivity Solutions",
+        title: "Internet Service Provider (ISP) Solutions",
         subtitle: "Stable, Fast, and Reliable Connection",
         description:
-          "As an internet service provider, Shangtel ensures your business connectivity remains stable with professional technical support and measurable SLAs.",
+          "As an internet service provider, Shangtel ensures your business connectivity remains stable with professional technical support and measurable SLAs. High-speed fiber optic-based solutions for future connectivity.",
         points: [
           "Dedicated Internet",
           "Corporate Broadband",
@@ -191,6 +191,62 @@ const servicesData = {
         ],
         icon: "wifi",
         image: "/img/ly4.jpeg",
+      },
+      {
+        title: "Server & Storage Solutions",
+        subtitle: "Secure and Fast Data Infrastructure",
+        description:
+          "Provision, management, and optimization services for secure and fast server infrastructure and data storage. We ensure your data is always accessible and protected with the latest storage technology.",
+        points: [
+          "Cloud & Physical Servers",
+          "Data Backup Solutions",
+          "High-Performance Storage",
+          "Server Optimization",
+        ],
+        icon: "database",
+        image: "/assets/img/s4.jpeg",
+      },
+      {
+        title: "Enterprise IT Systems",
+        subtitle: "Scalable Enterprise Solutions",
+        description:
+          "Development of integrated enterprise-scale IT systems designed for long-term business efficiency and scalability. We help you streamline your business processes with custom software and system integration.",
+        points: [
+          "ERP & CRM Integration",
+          "Custom Software Development",
+          "Workflow Automation",
+          "Enterprise Scalability",
+        ],
+        icon: "server",
+        image: "/assets/img/s3.jpeg",
+      },
+      {
+        title: "Multimedia & Visual Solutions",
+        subtitle: "Modern Interactive Multimedia",
+        description:
+          "Integration of modern multimedia solutions, from videotron to interactive audio-visual systems for stunning publications. We provide high-quality visual experiences for your corporate and public communications.",
+        points: [
+          "Videotron & LED Displays",
+          "Interactive AV Systems",
+          "Digital Signage Solutions",
+          "Multimedia Integration",
+        ],
+        icon: "desktop",
+        image: "/assets/img/s6.jpeg",
+      },
+      {
+        title: "IT Strategic Consulting",
+        subtitle: "Expert Technology Blueprinting",
+        description:
+          "Strategic consulting services by experts to help you design the right technology blueprint for your business. We provide insights and recommendations to align your IT strategy with your business goals.",
+        points: [
+          "IT Roadmap Development",
+          "Digital Transformation",
+          "Technology Assessment",
+          "Cost Optimization",
+        ],
+        icon: "user-tie",
+        image: "/assets/img/s7.jpeg",
       },
     ],
   },
@@ -203,61 +259,117 @@ const servicesData = {
     serviceTypeLabel: "MENU LAYANAN",
     services: [
       {
-        title: "Managed IT Services",
+        title: "Managed IT Services & Dukungan 24/7",
         subtitle:
           "Pengelolaan Infrastruktur Secara Profesional dan Berkelanjutan",
         description:
-          "Kami menyediakan layanan pengelolaan sistem IT secara menyeluruh, mulai dari maintenance, troubleshooting, hingga optimalisasi performa. Memastikan operasional berjalan stabil, efisien, dan minim downtime.",
+          "Kami menyediakan layanan pengelolaan sistem IT secara menyeluruh, mulai dari maintenance, troubleshooting, hingga optimalisasi performa. Layanan bantuan teknis siaga 24/7 kami memastikan operasional bisnis berjalan stabil tanpa gangguan.",
         points: [
-          "Monitoring 24/7",
+          "Monitoring & Support 24/7",
           "Preventive Maintenance",
-          "System Optimization",
+          "Optimalisasi Sistem",
           "Technical Support Enterprise",
         ],
-        icon: "server",
+        icon: "headset",
         image: "/img/ly1.jpeg",
       },
       {
-        title: "Cyber Security & Data Protection",
+        title: "Cyber Security & Perlindungan Data",
         subtitle: "Perlindungan Maksimal untuk Aset Digital Anda",
         description:
-          "Keamanan adalah prioritas utama. Kami menghadirkan solusi keamanan berlapis untuk melindungi jaringan, sistem, dan data strategis perusahaan dari ancaman siber.",
+          "Keamanan adalah prioritas utama. Kami menghadirkan solusi keamanan berlapis untuk melindungi jaringan, sistem, dan data strategis perusahaan dari ancaman siber. Sistem pemantauan proaktif kami melindungi aset digital Anda.",
         points: [
           "Firewall & Network Security",
-          "Data Encryption",
-          "Access Control Management",
-          "Threat Detection & Mitigation",
+          "Enkripsi Data",
+          "Deteksi & Mitigasi Ancaman",
+          "Pemantauan Keamanan",
         ],
-        icon: "shield",
+        icon: "shield-halved",
         image: "/img/ly2.jpeg",
       },
       {
-        title: "IT Infrastructure & Network Design",
+        title: "Infrastruktur IT & Desain Jaringan",
         subtitle: "Arsitektur Sistem yang Tangguh dan Scalable",
         description:
-          "Perencanaan dan implementasi infrastruktur IT yang dirancang sesuai kebutuhan bisnis Anda, dengan standar enterprise dan kesiapan ekspansi jangka panjang.",
+          "Perencanaan dan implementasi infrastruktur IT yang dirancang sesuai kebutuhan bisnis Anda, dengan standar enterprise dan kesiapan ekspansi jangka panjang. Kami merancang arsitektur yang efisien dan modern.",
         points: [
-          "Network Architecture Design",
-          "Server & Data Center Setup",
-          "Fiber Optic & Structured Cabling",
-          "System Integration",
+          "Desain Arsitektur Jaringan",
+          "Fiber Optik & Structured Cabling",
+          "Integrasi Sistem",
+          "Infrastruktur Terukur",
         ],
         icon: "network-wired",
         image: "/img/ly3.jpeg",
       },
       {
-        title: "Internet Service Provider (ISP) & Connectivity Solutions",
+        title: "Solusi Internet Service Provider (ISP)",
         subtitle: "Koneksi Stabil, Cepat, dan Andal",
         description:
-          "Sebagai penyedia layanan internet, Shangtel memastikan konektivitas bisnis Anda tetap stabil dengan dukungan teknis profesional dan SLA yang terukur.",
+          "Sebagai penyedia layanan internet, Shangtel memastikan konektivitas bisnis Anda tetap stabil dengan dukungan teknis profesional dan SLA yang terukur. Solusi berbasis fiber optik untuk konektivitas masa depan.",
         points: [
-          "Dedicated Internet",
-          "Corporate Broadband",
-          "Backup Link & Redundancy",
-          "SLA Guarantee",
+          "Internet Dedicated",
+          "Broadband Korporasi",
+          "Link Cadangan & Redundansi",
+          "Jaminan SLA",
         ],
         icon: "wifi",
         image: "/img/ly4.jpeg",
+      },
+      {
+        title: "Solusi Server & Penyimpanan",
+        subtitle: "Infrastruktur Data yang Aman dan Cepat",
+        description:
+          "Layanan penyediaan, pengelolaan, dan pengoptimalan infrastruktur server serta penyimpanan data yang aman dan cepat. Kami memastikan data Anda selalu dapat diakses dan terlindungi dengan teknologi penyimpanan terbaru.",
+        points: [
+          "Server Cloud & Fisik",
+          "Solusi Backup Data",
+          "Penyimpanan Performa Tinggi",
+          "Optimalisasi Server",
+        ],
+        icon: "database",
+        image: "/assets/img/s4.jpeg",
+      },
+      {
+        title: "Sistem IT Enterprise",
+        subtitle: "Solusi Berorientasi Bisnis Skala Besar",
+        description:
+          "Pengembangan sistem IT terpadu berskala perusahaan yang dirancang untuk efisiensi dan skalabilitas bisnis jangka panjang. Kami membantu merampingkan proses bisnis dengan software kustom dan integrasi sistem.",
+        points: [
+          "Integrasi ERP & CRM",
+          "Pengembangan Software Kustom",
+          "Otomasi Alur Kerja",
+          "Skalabilitas Perusahaan",
+        ],
+        icon: "server",
+        image: "/assets/img/s3.jpeg",
+      },
+      {
+        title: "Solusi Multimedia & Visual",
+        subtitle: "Multimedia Interaktif Modern",
+        description:
+          "Integrasi solusi multimedia modern, mulai dari videotron hingga sistem audio visual interaktif untuk publikasi yang memukau. Kami memberikan pengalaman visual berkualitas tinggi untuk komunikasi korporat dan publik.",
+        points: [
+          "Videotron & Layar LED",
+          "Sistem AV Interaktif",
+          "Solusi Digital Signage",
+          "Integrasi Multimedia",
+        ],
+        icon: "desktop",
+        image: "/assets/img/s6.jpeg",
+      },
+      {
+        title: "Konsultasi IT Strategis",
+        subtitle: "Blueprinting Teknologi oleh Para Ahli",
+        description:
+          "Layanan konsultasi strategis oleh para ahli untuk membantu Anda merancang blueprint teknologi yang tepat bagi bisnis. Kami memberikan wawasan dan rekomendasi untuk menyelaraskan strategi IT dengan tujuan bisnis.",
+        points: [
+          "Pengembangan Roadmap IT",
+          "Transformasi Digital",
+          "Asesmen Teknologi",
+          "Optimalisasi Biaya",
+        ],
+        icon: "user-tie",
+        image: "/assets/img/s7.jpeg",
       },
     ],
   },

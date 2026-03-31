@@ -306,10 +306,12 @@ onUnmounted(() => {
 /* Typography animations */
 h1 {
     animation: slideInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff !important;
 }
 
 p {
     animation: slideInUp 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff !important;
 }
 
 .cta-primary,
@@ -359,6 +361,7 @@ p {
 .inline-flex {
     border-left: 4px solid #E42313;
     padding-left: 1rem;
+    color: #ffffff !important;
 }
 
 /* Scroll indicator animation */

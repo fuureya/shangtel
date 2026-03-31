@@ -1,5 +1,5 @@
 <template>
-    <section class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+    <section class="relative min-h-screen overflow-hidden bg-black">
         <!-- Background Overlay -->
         <div class="absolute inset-0 bg-black/20 z-10"></div>
 
@@ -24,20 +24,17 @@
                         <div class="max-w-3xl">
                             <!-- Badge -->
                             <div
-                                class="inline-flex items-center px-4 py-2 rounded-full bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 mb-6">
-                                <span class="text-blue-300 text-sm font-medium">{{ slide.badge }}</span>
+                                class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red text-white mb-6 uppercase tracking-widest text-xs font-black">
+                                <span>{{ slide.badge }}</span>
                             </div>
 
                             <!-- Main Title -->
-                            <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                                <span
-                                    class="bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
-                                    {{ slide.title }}
-                                </span>
+                            <h1 class="text-6xl lg:text-8xl font-black text-white mb-6 leading-[1.1] tracking-tight">
+                                {{ slide.title }}
                             </h1>
 
                             <!-- Subtitle -->
-                            <p class="text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed">
+                            <p class="text-xl lg:text-2xl text-gray-200 mb-10 leading-relaxed font-medium">
                                 {{ slide.subtitle }}
                             </p>
 
@@ -227,58 +224,47 @@ onUnmounted(() => {
 /* CTA Buttons */
 .cta-primary {
     position: relative;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    background: #E42313;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
+    padding: 1.25rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 900;
     font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 30px rgba(228, 35, 19, 0.3);
     border: none;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
 }
 
-.cta-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
 .cta-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
-}
-
-.cta-primary:hover::before {
-    left: 100%;
+    background: #C31E10;
+    box-shadow: 0 20px 40px rgba(228, 35, 19, 0.4);
 }
 
 .cta-secondary {
     position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 2px solid white;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
+    padding: 1.25rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 900;
     font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
 
 .cta-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: white;
+    color: black;
     transform: translateY(-2px);
 }
 
@@ -369,19 +355,10 @@ p {
     }
 }
 
-/* Badge glow effect */
+/* Badge animation */
 .inline-flex {
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-    }
-
-    to {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
-    }
+    border-left: 4px solid #E42313;
+    padding-left: 1rem;
 }
 
 /* Scroll indicator animation */

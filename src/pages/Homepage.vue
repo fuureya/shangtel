@@ -5,15 +5,19 @@
   </section>
 
   <!-- Main Content -->
-  <div class="container mx-auto px-4 py-16">
-    <div class="text-center px-10 mx-auto ">
-      <h1 class="text-4xl font-bold text-gray-900 mb-6">{{ currentWelcomeData.title }}</h1>
-      <p class="text-xl text-gray-600 leading-relaxed mb-8">
-        {{ currentWelcomeData.content }}
-      </p>
-      <p class="text-lg font-semibold text-blue-600">
-        {{ currentWelcomeData.tagline }}
-      </p>
+  <div class="bg-gray-50 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-8 tracking-tight">{{ currentWelcomeData.title }}</h2>
+        <p class="text-xl text-gray-600 leading-relaxed mb-10 font-medium">
+          {{ currentWelcomeData.content }}
+        </p>
+        <div class="inline-block border-l-4 border-telkom-red pl-6 py-2">
+          <p class="text-lg font-black text-telkom-red uppercase tracking-widest italic">
+            {{ currentWelcomeData.tagline }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 

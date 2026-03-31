@@ -1,32 +1,12 @@
 <template>
   <section
     ref="sectionRef"
-    class="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-900 via-blue-600 to-indigo-800"
+    class="relative py-24 bg-white overflow-hidden"
   >
-    <!-- Bokeh Background Effects -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div
-        class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-pulse"
-      ></div>
-      <div
-        class="absolute top-1/2 right-1/3 w-96 h-96 bg-indigo-300/15 rounded-full blur-3xl animate-pulse delay-1000"
-      ></div>
-      <div
-        class="absolute bottom-1/4 left-1/2 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl animate-pulse delay-2000"
-      ></div>
-      <div
-        class="absolute top-1/3 right-1/4 w-48 h-48 bg-blue-300/25 rounded-full blur-2xl animate-pulse delay-500"
-      ></div>
-      <div
-        class="absolute bottom-1/3 left-1/4 w-56 h-56 bg-indigo-400/15 rounded-full blur-3xl animate-pulse delay-1500"
-      ></div>
-      <div
-        class="absolute top-2/3 right-1/2 w-72 h-72 bg-sky-300/20 rounded-full blur-3xl animate-pulse delay-3000"
-      ></div>
+    <!-- Minimalist Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 opacity-[0.03] bg-[url('/img/map.png')] bg-cover bg-center"></div>
     </div>
-
-    <!-- Overlay for better text readability -->
-    <div class="absolute inset-0 bg-blue-900/30"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 min-h-screen">
@@ -35,10 +15,10 @@
           <div class="relative">
             <!-- Background decorative elements -->
             <div
-              class="absolute -top-4 -left-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl animate-pulse"
+              class="absolute -top-4 -left-4 w-24 h-24 bg-telkom-red/10 rounded-full blur-xl"
             ></div>
             <div
-              class="absolute -bottom-8 -right-8 w-32 h-32 bg-indigo-500/20 rounded-full blur-xl animate-pulse delay-1000"
+              class="absolute -bottom-8 -right-8 w-32 h-32 bg-gray-200/50 rounded-full blur-xl"
             ></div>
 
             <!-- Main Image Grid -->
@@ -109,50 +89,44 @@
 
         <!-- Right Side - Content -->
         <div class="relative flex items-center">
-          <div class="relative z-10 p-8 lg:p-16 w-full">
-            <div class="max-w-lg">
+          <div class="relative z-10 p-8 lg:p-16 w-full text-left">
+            <div class="max-w-xl">
               <!-- Badge -->
               <div
-                class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red/10 text-telkom-red text-xs font-black uppercase tracking-widest mb-6"
               >
-                <span class="text-white text-sm font-medium">{{
-                  currentInfraData.badge
-                }}</span>
+                <span>{{ currentInfraData.badge }}</span>
               </div>
 
               <!-- Main Title -->
-              <h2 class="text-4xl font-black text-white mb-6 leading-tight">
-                <span
-                  class="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent font-bold"
-                >
-                  {{ currentInfraData.title }}
-                </span>
+              <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                {{ currentInfraData.title }}
               </h2>
 
               <!-- Description -->
-              <p class="text-lg text-blue-50 mb-8 leading-relaxed">
+              <p class="text-lg text-gray-500 mb-8 leading-relaxed font-medium">
                 {{ currentInfraData.description }}
               </p>
 
               <!-- Statistics Grid -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div
-                  class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
+                  class="bg-white rounded-xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div class="flex items-center space-x-4">
                     <div
-                      class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"
+                      class="w-12 h-12 bg-telkom-red text-white rounded-lg flex items-center justify-center shadow-lg shadow-telkom-red/20"
                     >
                       <font-awesome-icon
                         :icon="['fas', 'satellite-dish']"
-                        class="text-blue-600 text-xl"
+                        class="text-xl"
                       />
                     </div>
                     <div>
-                      <div class="text-2xl font-bold text-gray-900">
+                      <div class="text-2xl font-black text-gray-900">
                         {{ formatNumber(radio1000) }}+
                       </div>
-                      <div class="text-sm text-gray-600">
+                      <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">
                         {{ currentInfraData.radioLabel }}
                       </div>
                     </div>
@@ -160,22 +134,22 @@
                 </div>
 
                 <div
-                  class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105"
+                  class="bg-white rounded-xl p-6 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div class="flex items-center space-x-4">
                     <div
-                      class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center"
+                      class="w-12 h-12 bg-telkom-red text-white rounded-lg flex items-center justify-center shadow-lg shadow-telkom-red/20"
                     >
                       <font-awesome-icon
                         :icon="['fas', 'network-wired']"
-                        class="text-indigo-600 text-xl"
+                        class="text-xl"
                       />
                     </div>
                     <div>
-                      <div class="text-2xl font-bold text-gray-900">
+                      <div class="text-2xl font-black text-gray-900">
                         {{ formatNumber(kabel20000) }}+
                       </div>
-                      <div class="text-sm text-gray-600">
+                      <div class="text-xs text-gray-400 font-bold uppercase tracking-widest">
                         {{ currentInfraData.kabelLabel }}
                       </div>
                     </div>
@@ -185,52 +159,40 @@
 
               <!-- Services List -->
               <div class="mb-10">
-                <h3 class="text-white font-bold text-xl mb-4 flex items-center">
-                  <span class="mr-2">🔹</span>
+                <h3 class="text-gray-900 font-black text-xl mb-6 border-l-4 border-telkom-red pl-4">
                   {{ currentInfraData.servicesTitle }}
                 </h3>
-                <ul class="space-y-4">
-                  <li
+                <div class="grid grid-cols-1 gap-3">
+                  <div
                     v-for="(service, index) in currentInfraData.services"
                     :key="index"
-                    class="flex items-center text-blue-50 bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/10 hover:bg-white/20 transition-all duration-300"
+                    class="flex items-center text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-100 hover:bg-white hover:shadow-md transition-all duration-300"
                   >
                     <div
-                      class="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center mr-4 shrink-0"
+                      class="w-10 h-10 rounded-lg bg-telkom-red/10 flex items-center justify-center mr-4 shrink-0"
                     >
                       <font-awesome-icon
                         :icon="service.icon"
-                        class="text-white text-sm"
+                        class="text-telkom-red text-sm"
                       />
                     </div>
-                    <span class="text-sm md:text-md font-medium">{{
+                    <span class="text-sm md:text-md font-bold uppercase tracking-wider text-[11px]">{{
                       service.text
                     }}</span>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
 
               <!-- CTA Button -->
               <div class="flex space-x-4">
                 <button
-                  class="group bg-gradient-to-r from-white to-blue-50 text-blue-900 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-white/25 hover:transform hover:scale-105 border border-white/30"
+                  class="bg-telkom-red text-white px-10 py-4 rounded-lg font-black uppercase tracking-widest text-sm transition-all duration-300 hover:bg-black hover:shadow-xl shadow-lg shadow-telkom-red/20"
                 >
-                  <span class="flex items-center">
-                    {{ currentInfraData.buttonText }}
-                    <svg
-                      class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
+                  {{ currentInfraData.buttonText }}
+                  <font-awesome-icon
+                    icon="arrow-right"
+                    class="ml-2"
+                  />
                 </button>
               </div>
             </div>

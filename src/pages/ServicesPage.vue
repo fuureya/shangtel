@@ -3,33 +3,17 @@
 
   <main class="bg-gray-50">
     <!-- Hero Section -->
-    <section
-      class="relative bg-gradient-to-b from-white to-gray-50 pt-24 pb-20 lg:pt-32 lg:pb-28"
-    >
-      <div class="absolute inset-0 overflow-hidden">
+    <section class="relative bg-white pt-32 pb-24 border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <div
-          class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"
-        ></div>
-      </div>
-      <div class="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
-        <div
-          class="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-blue-200/50 text-blue-700 text-sm font-semibold mb-6 shadow-md"
+          class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red/10 text-telkom-red text-xs font-black uppercase tracking-widest mb-8"
         >
-          <font-awesome-icon icon="cog" class="mr-2" />
           {{ currentContent.badge }}
         </div>
-        <h1
-          class="text-4xl sm:text-5xl lg:text-5xl font-bold text-gray-900 tracking-tight font-semi-bold"
-        >
-          <span
-            class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent font-bold"
-          >
-            {{ currentContent.title }}
-          </span>
+        <h1 class="text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter mb-8 max-w-4xl mx-auto">
+          {{ currentContent.title }}
         </h1>
-        <p
-          class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed font-medium"
-        >
+        <p class="max-w-3xl mx-auto text-xl text-gray-500 leading-relaxed font-medium">
           {{ currentContent.subtitle }}
         </p>
       </div>
@@ -50,17 +34,13 @@
             >
               <!-- Image Container -->
               <div class="w-full lg:w-1/2">
-                <div
-                  class="relative aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-in-out group-hover:shadow-blue-200 group-hover:scale-105 group-hover:rotate-[-1deg]"
-                >
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <img
                     :src="service.image"
                     :alt="service.title"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"
-                  ></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
               </div>
 
@@ -71,57 +51,58 @@
                 >
                   <div class="mb-4">
                     <div
-                      class="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg mb-5 transition-transform duration-300 group-hover:scale-110"
+                      class="inline-flex items-center justify-center w-16 h-16 bg-telkom-red text-white rounded-xl shadow-xl shadow-telkom-red/20 mb-8 transition-transform duration-500 group-hover:rotate-6"
                     >
                       <font-awesome-icon
                         :icon="service.icon"
-                        class="text-2xl text-white"
+                        class="text-2xl"
                       />
                     </div>
                     <div
-                      class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2"
+                      class="text-xs font-black text-telkom-red uppercase tracking-[0.2em] mb-4"
                     >
                       {{ currentContent.serviceTypeLabel }}
                     </div>
                     <h2
-                      class="text-3xl lg:text-4xl font-bold text-gray-900 mb-3"
+                      class="text-4xl lg:text-5xl font-black text-gray-900 mb-6 tracking-tight"
                     >
                       {{ service.title }}
                     </h2>
-                    <div class="text-lg font-semibold text-gray-700 mb-4">
+                    <div class="text-xl font-bold text-gray-700 mb-6 flex items-center">
+                      <span class="w-8 h-1 bg-telkom-red mr-4"></span>
                       {{ service.subtitle }}
                     </div>
                   </div>
                   <p
-                    class="text-gray-600 text-base lg:text-lg leading-relaxed mb-6"
+                    class="text-lg text-gray-500 leading-relaxed mb-10 font-medium"
                   >
                     {{ service.description }}
                   </p>
 
                   <!-- Points List -->
-                  <ul class="space-y-3 mb-8">
-                    <li
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                    <div
                       v-for="(point, pIndex) in service.points"
                       :key="pIndex"
-                      class="flex items-start text-gray-600"
+                      class="flex items-center space-x-3 bg-white p-4 rounded-xl border border-gray-100 shadow-sm"
                     >
                       <font-awesome-icon
                         icon="check"
-                        class="text-blue-500 mt-1.5 mr-3 text-sm"
+                        class="text-telkom-red font-black"
                       />
-                      <span class="text-base font-medium">{{ point }}</span>
-                    </li>
-                  </ul>
+                      <span class="text-xs font-black text-gray-700 uppercase tracking-widest">{{ point }}</span>
+                    </div>
+                  </div>
 
                   <a
                     :href="getWhatsAppLink(service.title)"
                     target="_blank"
-                    class="inline-flex items-center text-blue-600 font-semibold group/btn border-b-2 border-transparent hover:border-blue-600 pb-1 transition-all duration-300"
+                    class="inline-block bg-zinc-900 text-white px-8 py-4 rounded-lg font-black uppercase tracking-widest text-sm transition-all hover:bg-telkom-red hover:shadow-xl"
                   >
                     {{ currentContent.cta }}
                     <font-awesome-icon
-                      icon="chevron-right"
-                      class="ml-2 w-3 h-3 transition-transform duration-300 group-hover/btn:translate-x-1"
+                      icon="arrow-right"
+                      class="ml-2"
                     />
                   </a>
                 </div>
@@ -298,7 +279,4 @@ const getWhatsAppLink = (serviceTitle) => {
 </script>
 
 <style scoped>
-.bg-grid-slate-100 {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke-width='2' stroke='%23e2e8f0'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-}
 </style>

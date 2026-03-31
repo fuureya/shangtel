@@ -2,13 +2,15 @@
   <Navbar />
 
   <!-- Hero Section with Background Image -->
-  <section class="relative h-96 flex items-center justify-center text-white">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/img/carousel/c1.jpg');">
-      <div class="absolute inset-0 bg-black opacity-50"></div>
+  <section class="relative h-[28rem] flex items-center justify-center text-white overflow-hidden bg-black">
+    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] hover:scale-110" style="background-image: url('/img/carousel/c1.jpg'); opacity: 0.6;">
     </div>
-    <div class="relative z-10 text-center">
-      <h1 class="text-5xl font-extrabold mb-4">{{ currentAboutData.hero.title }}</h1>
-      <p class="text-xl">{{ currentAboutData.hero.subtitle }}</p>
+    <div class="relative z-10 text-center px-6">
+      <div class="inline-block bg-telkom-red px-4 py-2 rounded mb-6 transform -rotate-1">
+        <span class="text-xs font-black uppercase tracking-[0.2em]">Company Profile</span>
+      </div>
+      <h1 class="text-6xl lg:text-8xl font-black mb-6 tracking-tighter leading-none">{{ currentAboutData.hero.title }}</h1>
+      <p class="text-xl lg:text-2xl font-medium text-gray-200 max-w-2xl mx-auto">{{ currentAboutData.hero.subtitle }}</p>
     </div>
   </section>
 
@@ -16,15 +18,17 @@
   <section class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <img src="@/assets/img/a1.jpg" alt="Fiber Optic" class="rounded-lg shadow-2xl w-full">
+        <div class="md:w-1/2 mb-12 md:mb-0 relative">
+          <div class="absolute -top-6 -left-6 w-32 h-32 bg-telkom-red/5 rounded-full -z-10"></div>
+          <img src="@/assets/img/a1.jpg" alt="Fiber Optic" class="rounded-2xl shadow-2xl w-full object-cover h-[400px]">
         </div>
-        <div class="md:w-1/2 md:pl-12">
-          <h2 class="text-4xl font-bold text-gray-800 mb-6">{{ currentAboutData.about.title }}</h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
+        <div class="md:w-1/2 md:pl-20">
+          <div class="w-16 h-1 bg-telkom-red mb-8"></div>
+          <h2 class="text-5xl font-black text-gray-900 mb-8 tracking-tight">{{ currentAboutData.about.title }}</h2>
+          <p class="text-xl text-gray-500 leading-relaxed mb-8 font-medium">
             {{ currentAboutData.about.paragraph1 }}
           </p>
-          <p class="text-gray-600 leading-relaxed">
+          <p class="text-lg text-gray-400 leading-relaxed font-medium">
             {{ currentAboutData.about.paragraph2 }}
           </p>
         </div>
@@ -36,24 +40,33 @@
   <section class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0">
-          <h2 class="text-4xl font-bold text-gray-800 mb-6">{{ currentAboutData.visionMission.title }}</h2>
-          <div class="mb-8">
-            <h3 class="text-2xl font-semibold text-blue-600 mb-3">{{ currentAboutData.visionMission.vision.title }}</h3>
-            <p class="text-gray-600 leading-relaxed">
+        <div class="md:w-1/2 md:pr-16 mb-12 md:mb-0">
+          <h2 class="text-5xl font-black text-gray-900 mb-10 tracking-tight">{{ currentAboutData.visionMission.title }}</h2>
+          <div class="mb-12">
+            <h3 class="text-xs font-black text-telkom-red uppercase tracking-widest mb-4 flex items-center">
+              <span class="w-8 h-px bg-telkom-red mr-3"></span>
+              {{ currentAboutData.visionMission.vision.title }}
+            </h3>
+            <p class="text-xl text-gray-500 leading-relaxed font-medium">
               {{ currentAboutData.visionMission.vision.content }}
             </p>
           </div>
           <div>
-            <h3 class="text-2xl font-semibold text-blue-600 mb-3">{{ currentAboutData.visionMission.mission.title }}
+            <h3 class="text-xs font-black text-telkom-red uppercase tracking-widest mb-6 flex items-center">
+              <span class="w-8 h-px bg-telkom-red mr-3"></span>
+              {{ currentAboutData.visionMission.mission.title }}
             </h3>
-            <ul class="text-gray-600 leading-relaxed list-disc list-inside space-y-2">
-              <li v-for="item in currentAboutData.visionMission.mission.items" :key="item">{{ item }}</li>
+            <ul class="space-y-4">
+              <li v-for="item in currentAboutData.visionMission.mission.items" :key="item" class="flex items-start">
+                <span class="w-2 h-2 bg-telkom-red rounded-full mt-2 mr-4 shrink-0"></span>
+                <span class="text-gray-500 font-medium leading-relaxed">{{ item }}</span>
+              </li>
             </ul>
           </div>
         </div>
-        <div class="md:w-1/2">
-          <img src="@/assets/img/a2.jpg" alt="Satelite" class="rounded-lg shadow-2xl w-full">
+        <div class="md:w-1/2 relative">
+          <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gray-200/50 rounded-full -z-10"></div>
+          <img src="@/assets/img/a2.jpg" alt="Satelite" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
         </div>
       </div>
     </div>
@@ -62,24 +75,25 @@
   <!-- Clients Section -->
   <section class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-gray-800 mb-12">{{ currentLanguage === 'ID' ? 'Klien Kami' : 'Our Clients' }}</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
+      <h2 class="text-5xl font-black text-gray-900 mb-4 tracking-tight">{{ currentLanguage === 'ID' ? 'Klien Kami' : 'Our Clients' }}</h2>
+      <div class="w-20 h-1.5 bg-telkom-red mx-auto mb-16"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
         <div v-for="client in displayedClients" :key="client"
-          class="flex justify-center transition-transform duration-300 ease-in-out hover:scale-110">
+          class="flex justify-center p-6 bg-gray-50 rounded-xl grayscale hover:grayscale-0 transition-all duration-500 hover:shadow-lg">
           <img :src="client" alt="Client Logo"
-            class="h-14 object-contain transition-all duration-300">
+            class="h-10 object-contain">
         </div>
       </div>
       <!-- Loading Spinner -->
       <div v-if="isLoading" class="flex justify-center items-center mt-12">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600"></div>
+        <div class="animate-spin rounded-full h-12 w-12 border-b-4 border-telkom-red"></div>
       </div>
       <!-- View More Button -->
-      <div v-if="!showAllClients && !isLoading && clientLogos.length > 6" class="mt-12">
+      <div v-if="!showAllClients && !isLoading && clientLogos.length > 6" class="mt-16">
         <button @click="loadMoreClients"
-          class="inline-flex items-center gap-3 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-transform hover:scale-105 bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500">
-          <span>{{ currentLanguage === 'ID' ? 'Lihat Lebih Lengkap' : 'View More' }}</span>
-          <i class="fas fa-arrow-right"></i>
+          class="inline-flex items-center gap-3 text-white font-black uppercase tracking-widest text-sm py-4 px-10 rounded-lg shadow-lg bg-telkom-red hover:bg-black transition-all">
+          <span>{{ currentLanguage === 'ID' ? 'Lihat Selengkapnya' : 'View More' }}</span>
+          <font-awesome-icon icon="arrow-right" />
         </button>
       </div>
     </div>

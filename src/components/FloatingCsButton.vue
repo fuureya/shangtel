@@ -91,13 +91,13 @@ onMounted(() => {
   position: relative;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  border-radius: 50%;
+  background: #E42313;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 8px 32px rgba(228, 35, 19, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
@@ -119,8 +119,8 @@ onMounted(() => {
   position: absolute;
   width: 60px;
   height: 60px;
-  border: 2px solid rgba(37, 211, 102, 0.3);
-  border-radius: 50%;
+  border: 2px solid rgba(228, 35, 19, 0.3);
+  border-radius: 1rem;
   animation: pulse 2s infinite;
 }
 
@@ -158,14 +158,17 @@ onMounted(() => {
 
 .tooltip-content {
   position: relative;
-  background: rgba(37, 211, 102, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
   color: white;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 8px;
   white-space: nowrap;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #E42313;
 }
 
 .tooltip-arrow {
@@ -174,7 +177,7 @@ onMounted(() => {
   right: 20px;
   width: 12px;
   height: 12px;
-  background: rgba(37, 211, 102, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   transform: rotate(45deg);
 }
 

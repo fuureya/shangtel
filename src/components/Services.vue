@@ -1,61 +1,39 @@
 <template>
-    <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
-        <!-- Modern Background Pattern -->
-        <div class="absolute inset-0 overflow-hidden">
-            <!-- Grid Pattern -->
-            <div
-                class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10">
-            </div>
-
-            <!-- Floating Elements -->
-            <div class="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-            <div class="absolute top-40 right-32 w-1 h-1 bg-indigo-400 rounded-full animate-ping delay-1000"></div>
-            <div class="absolute bottom-32 left-16 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping delay-2000">
-            </div>
-            <div class="absolute bottom-20 right-20 w-2 h-2 bg-cyan-400 rounded-full animate-ping delay-500"></div>
-
-            <!-- Gradient Orbs -->
-            <div
-                class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl">
-            </div>
-            <div
-                class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-3xl">
-            </div>
+    <section class="py-24 bg-white relative overflow-hidden">
+        <!-- Minimalist Background -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-            <!-- Modern Header -->
+            <!-- Header -->
             <div class="text-center mb-20">
                 <div
-                    class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-indigo-500/10 backdrop-blur-sm border border-blue-200/50 text-blue-700 text-sm font-semibold mb-8 shadow-lg">
-                    <font-awesome-icon icon="cog" class="mr-2" />
+                    class="inline-flex items-center px-4 py-2 rounded-lg bg-telkom-red/10 text-telkom-red text-xs font-black uppercase tracking-widest mb-6">
                     {{ currentServicesData.badge }}
                 </div>
-                <h2 class="text-4xl font-black text-gray-900 mb-6 tracking-tight">
-                    <span
-                        class="bg-gradient-to-r font-bold from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                        {{ currentServicesData.title }}
-                    </span>
+                <h2 class="text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight">
+                    {{ currentServicesData.title }}
                 </h2>
-                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
                     {{ currentServicesData.subtitle }}
                 </p>
 
                 <!-- Stats Row -->
                 <div ref="statsRef" class="flex justify-center items-center space-x-12 mt-12">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-blue-600">24/7</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide">Support</div>
+                        <div class="text-3xl font-black text-telkom-red">24/7</div>
+                        <div class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-1">Support</div>
                     </div>
-                    <div class="w-px h-12 bg-gray-300"></div>
+                    <div class="w-px h-10 bg-gray-200"></div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-indigo-600">{{ formatUptime(animatedUptime) }}%</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide">Uptime</div>
+                        <div class="text-3xl font-black text-gray-900">{{ formatUptime(animatedUptime) }}%</div>
+                        <div class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-1">Uptime</div>
                     </div>
-                    <div class="w-px h-12 bg-gray-300"></div>
+                    <div class="w-px h-10 bg-gray-200"></div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-purple-600">{{ formatClients(animatedClients) }}+</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide">Clients</div>
+                        <div class="text-3xl font-black text-gray-900">{{ formatClients(animatedClients) }}+</div>
+                        <div class="text-xs text-gray-400 uppercase font-bold tracking-widest mt-1">Clients</div>
                     </div>
                 </div>
             </div>
@@ -65,38 +43,33 @@
                 <swiper-slide v-for="(service, index) in currentServicesData.services" :key="index" class="h-full p-4">
                     <!-- Service Card -->
                     <div
-                        class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-blue-500/20">
+                        class="group relative h-[450px] w-full rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
                         
-                        <!-- Background Image with Overlay -->
-                        <div class="absolute inset-0 z-0">
+                        <!-- Image Container -->
+                        <div class="h-48 overflow-hidden">
                             <img :src="getImageUrl(service.image)" :alt="service.title" 
-                                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-500"></div>
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         </div>
 
-                        <!-- Content Overlay (Glassmorphism) -->
-                        <div class="absolute inset-x-4 bottom-4 z-10 p-6 rounded-3xl bg-gray-900/75 backdrop-blur-xl border border-white/10 transform transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                            <div class="flex items-center space-x-4 mb-3">
-                                <div class="w-12 h-12 rounded-xl bg-blue-600/30 flex items-center justify-center backdrop-blur-lg border border-white/30">
-                                    <font-awesome-icon :icon="getIconName(service.icon)" class="text-xl text-white" />
+                        <!-- Content -->
+                        <div class="p-8">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="w-12 h-12 rounded-lg bg-telkom-red flex items-center justify-center text-white shadow-lg shadow-telkom-red/20">
+                                    <font-awesome-icon :icon="getIconName(service.icon)" class="text-xl" />
                                 </div>
-                                <h3 class="text-xl font-bold text-white tracking-wide">
+                                <h3 class="text-xl font-black text-gray-900 leading-tight">
                                     {{ service.title }}
                                 </h3>
                             </div>
                             
-                            <p class="text-gray-200 text-sm leading-relaxed line-clamp-3 mb-4 transition-opacity duration-700">
+                            <p class="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
                                 {{ service.description }}
                             </p>
 
-                            <div class="flex items-center text-blue-400 text-xs font-bold uppercase tracking-widest mt-2">
-                                <span class="bg-blue-500/20 px-3 py-1 rounded-full border border-blue-400/30">Explore Service</span>
+                            <div class="flex items-center text-telkom-red text-xs font-black uppercase tracking-widest pt-4 border-t border-gray-50">
+                                <span>Explore Service</span>
+                                <font-awesome-icon icon="arrow-right" class="ml-2 transition-transform group-hover:translate-x-2" />
                             </div>
-                        </div>
-
-                        <!-- Corner Accent -->
-                        <div class="absolute top-6 right-6 z-10 w-12 h-12 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/20 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                           <span class="text-white font-black text-lg">0{{ index + 1 }}</span>
                         </div>
                     </div>
                 </swiper-slide>

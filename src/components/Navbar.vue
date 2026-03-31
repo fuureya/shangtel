@@ -41,7 +41,7 @@
         <!-- Language Switcher -->
         <div class="hidden lg:flex items-center">
           <button @click="toggleLanguage" class="language-button group">
-            <span class="relative z-10 flex items-center text-sm font-medium">
+            <span class="relative z-10 flex items-center text-sm font-bold">
               <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
@@ -217,14 +217,14 @@ const currentNavData = computed(() => {
   left: 50%;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  background: #E42313;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-50%);
 }
 
 .nav-link:hover {
-  color: #1d4ed8;
-  background-color: rgba(59, 130, 246, 0.05);
+  color: #E42313;
+  background-color: rgba(228, 35, 19, 0.05);
 }
 
 .nav-link:hover::before {
@@ -232,8 +232,8 @@ const currentNavData = computed(() => {
 }
 
 .nav-link.active {
-  color: #1d4ed8;
-  font-weight: 600;
+  color: #E42313;
+  font-weight: 700;
 }
 
 .nav-link.active::before {
@@ -243,36 +243,21 @@ const currentNavData = computed(() => {
 /* Language Button */
 .language-button {
   position: relative;
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  background: #E42313;
   color: white;
   padding: 0.625rem 1.25rem;
-  border-radius: 0.75rem;
-  font-weight: 500;
+  border-radius: 0.5rem;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
-}
-
-.language-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
 }
 
 .language-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.4);
-}
-
-.language-button:hover::before {
-  left: 100%;
+  background: #C31E10;
+  box-shadow: 0 4px 12px rgba(228, 35, 19, 0.2);
 }
 
 .language-button:active {
@@ -353,15 +338,15 @@ const currentNavData = computed(() => {
 }
 
 .mobile-nav-link:hover {
-  color: #1d4ed8;
-  background-color: rgba(59, 130, 246, 0.05);
+  color: #E42313;
+  background-color: rgba(228, 35, 19, 0.05);
   transform: translateX(4px);
 }
 
 .mobile-nav-link.active {
-  color: #1d4ed8;
-  font-weight: 600;
-  background-color: rgba(59, 130, 246, 0.1);
+  color: #E42313;
+  font-weight: 700;
+  background-color: rgba(228, 35, 19, 0.1);
 }
 
 .mobile-language-button {

@@ -39,21 +39,35 @@
         </div>
 
         <!-- Actions -->
-        <div class="hidden lg:flex items-center space-x-4">
+        <div class="hidden lg:flex items-center space-x-6">
           <!-- Theme Toggle -->
-          <button @click="toggleDark" class="theme-toggle-button" aria-label="Toggle Theme">
-            <font-awesome-icon v-if="isDark" icon="sun" class="text-yellow-400" />
-            <font-awesome-icon v-else icon="moon" class="text-zinc-600" />
+          <button
+            @click="toggleDark"
+            class="theme-toggle-button"
+            aria-label="Toggle Theme"
+          >
+            <div class="toggle-circle"></div>
+            <div class="theme-icons">
+              <font-awesome-icon icon="sun" />
+              <font-awesome-icon icon="moon" />
+            </div>
           </button>
 
-          <!-- Language Switcher -->
-          <button @click="toggleLanguage" class="language-button group">
-            <span class="relative z-10 flex items-center text-sm font-bold">
-              <font-awesome-icon icon="globe" class="mr-2" />
-              {{ currentLanguage }}
-              <font-awesome-icon icon="chevron-down" class="ml-2 h-3 w-3 transition-transform group-hover:rotate-180" />
-            </span>
-          </button>
+          <!-- Language Selector -->
+          <div class="relative">
+            <button
+              @click="isLangOpen = !isLangOpen"
+              class="flex items-center space-x-2 bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 px-4 py-2 rounded-lg hover:border-telkom-red transition-all duration-300"
+            >
+              <font-awesome-icon icon="globe" class="text-gray-400 dark:text-zinc-500" />
+              <span class="text-sm font-bold text-gray-700 dark:text-zinc-300">{{ currentLanguage }}</span>
+              <font-awesome-icon
+                icon="chevron-down"
+                class="text-[10px] text-gray-400 transition-transform duration-300"
+                :class="{ 'rotate-180': isLangOpen }"
+              />
+            </button>
+          </div>
         </div>
 
         <!-- Mobile menu button -->
@@ -88,7 +102,6 @@
           :class="{ 'active': isLinkActive('products') }">
           {{ currentNavData.products }}
         </router-link>
-
         <router-link to="/carrier" @click="mobileMenuOpen = false" class="mobile-nav-link"
           :class="{ 'active': isLinkActive('/carrier') }">
           {{ currentNavData.carrier }}
@@ -97,7 +110,36 @@
           :class="{ 'active': isLinkActive('contact') }">
           {{ currentNavData.contact }}
         </router-link>
-        <!-- Mobile Language Switcher -->
+      </div>
+
+      <div class="px-6 py-4 space-y-4 border-t border-gray-100 dark:border-zinc-800">
+        <!-- Mobile Theme Toggle -->
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-gray-700 dark:text-zinc-300">Theme</span>
+          <button
+            @click="toggleDark"
+            class="theme-toggle-button scale-90"
+            aria-label="Toggle Theme"
+          >
+            <div class="toggle-circle"></div>
+            <div class="theme-icons">
+              <font-awesome-icon icon="sun" />
+              <font-awesome-icon icon="moon" />
+            </div>
+          </button>
+        </div>
+
+        <!-- Mobile Language Selector -->
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-gray-700 dark:text-zinc-300">Language</span>
+          <button
+            @click="toggleLanguage"
+            class="flex items-center space-x-2 bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 px-3 py-1.5 rounded-lg"
+          >
+            <font-awesome-icon icon="globe" class="text-gray-400 dark:text-zinc-500" />
+            <span class="text-sm font-bold text-gray-700 dark:text-zinc-300">{{ currentLanguage }}</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -109,13 +151,19 @@ import { useRoute } from 'vue-router'
 import { useLanguage } from '@/composables/useLanguage.js'
 
 const mobileMenuOpen = ref(false)
+const isLangOpen = ref(false)
 const activeSection = ref('home')
 const isDark = ref(false)
 const { currentLanguage, toggleLanguage } = useLanguage()
 const route = useRoute()
 
+/* Theme Toggle Component */
 const toggleDark = () => {
   isDark.value = !isDark.value
+  updateTheme()
+}
+
+const updateTheme = () => {
   if (isDark.value) {
     document.documentElement.classList.add('dark')
     localStorage.setItem('theme', 'dark')
@@ -297,17 +345,17 @@ const currentNavData = computed(() => {
   transform: translateY(0);
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button (Dual Icon Track) */
 .theme-toggle-button {
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
+  position: relative;
+  width: 4.5rem;
+  height: 2.25rem;
   background-color: #f3f4f6;
-  border: 1px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2rem;
+  padding: 0.25rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
 }
 
 .dark .theme-toggle-button {
@@ -315,13 +363,51 @@ const currentNavData = computed(() => {
   border-color: #27272a;
 }
 
-.theme-toggle-button:hover {
-  background-color: #e5e7eb;
-  transform: rotate(-12deg);
+.theme-toggle-button .toggle-circle {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
 }
 
-.dark .theme-toggle-button:hover {
+.dark .theme-toggle-button .toggle-circle {
+  left: 2.4rem;
   background-color: #27272a;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.theme-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.theme-icons .fa-sun {
+  color: #fbbf24;
+  font-size: 0.9rem;
+}
+
+.theme-icons .fa-moon {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.dark .theme-icons .fa-sun {
+  color: #4b5563;
+}
+
+.dark .theme-icons .fa-moon {
+  color: #f1f5f9;
 }
 
 /* Mobile Menu Button */

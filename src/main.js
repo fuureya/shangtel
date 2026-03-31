@@ -28,7 +28,12 @@ import {
   faHouseSignal,
   faDatabase,
   faShieldHalved,
-  faUserTie
+  faUserTie,
+  faSun,
+  faMoon,
+  faGlobe,
+  faChevronDown,
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons'
 
 // Add icons to library
@@ -52,7 +57,12 @@ library.add(
   faHouseSignal,
   faDatabase,
   faShieldHalved,
-  faUserTie
+  faUserTie,
+  faSun,
+  faMoon,
+  faGlobe,
+  faChevronDown,
+  faArrowRight
 )
 
 import { register } from 'swiper/element/bundle';

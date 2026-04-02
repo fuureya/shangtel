@@ -36,7 +36,7 @@
               <div class="w-full lg:w-1/2">
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <img
-                    :src="service.image"
+                    :src="getImageUrl(service.image)"
                     :alt="service.title"
                     class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -148,7 +148,7 @@ const servicesData = {
           "Enterprise Technical Support",
         ],
         icon: "headset",
-        image: "/img/ly1.jpeg",
+        image: "s1.jpeg",
       },
       {
         title: "Cyber Security & Data Protection",
@@ -162,7 +162,7 @@ const servicesData = {
           "Security Monitoring",
         ],
         icon: "shield-halved",
-        image: "/img/ly2.jpeg",
+        image: "s2.jpeg",
       },
       {
         title: "IT Infrastructure & Network Design",
@@ -176,7 +176,7 @@ const servicesData = {
           "Scalable Infrastructure",
         ],
         icon: "network-wired",
-        image: "/img/ly3.jpeg",
+        image: "s3.jpeg",
       },
       {
         title: "Internet Service Provider (ISP) Solutions",
@@ -190,7 +190,7 @@ const servicesData = {
           "SLA Guarantee",
         ],
         icon: "wifi",
-        image: "/img/ly4.jpeg",
+        image: "s4.jpeg",
       },
       {
         title: "Server & Storage Solutions",
@@ -204,7 +204,7 @@ const servicesData = {
           "Server Optimization",
         ],
         icon: "database",
-        image: "/assets/img/s4.jpeg",
+        image: "s5.jpeg",
       },
       {
         title: "Enterprise IT Systems",
@@ -218,7 +218,7 @@ const servicesData = {
           "Enterprise Scalability",
         ],
         icon: "server",
-        image: "/assets/img/s3.jpeg",
+        image: "s6.jpeg",
       },
       {
         title: "Multimedia & Visual Solutions",
@@ -232,7 +232,7 @@ const servicesData = {
           "Multimedia Integration",
         ],
         icon: "desktop",
-        image: "/assets/img/s6.jpeg",
+        image: "s7.jpeg",
       },
       {
         title: "IT Strategic Consulting",
@@ -246,7 +246,7 @@ const servicesData = {
           "Cost Optimization",
         ],
         icon: "user-tie",
-        image: "/assets/img/s7.jpeg",
+        image: "s8.jpeg",
       },
     ],
   },
@@ -271,7 +271,7 @@ const servicesData = {
           "Technical Support Enterprise",
         ],
         icon: "headset",
-        image: "/img/ly1.jpeg",
+        image: "s1.jpeg",
       },
       {
         title: "Cyber Security & Perlindungan Data",
@@ -285,7 +285,7 @@ const servicesData = {
           "Pemantauan Keamanan",
         ],
         icon: "shield-halved",
-        image: "/img/ly2.jpeg",
+        image: "s2.jpeg",
       },
       {
         title: "Infrastruktur IT & Desain Jaringan",
@@ -299,7 +299,7 @@ const servicesData = {
           "Infrastruktur Terukur",
         ],
         icon: "network-wired",
-        image: "/img/ly3.jpeg",
+        image: "s3.jpeg",
       },
       {
         title: "Solusi Internet Service Provider (ISP)",
@@ -313,7 +313,7 @@ const servicesData = {
           "Jaminan SLA",
         ],
         icon: "wifi",
-        image: "/img/ly4.jpeg",
+        image: "s4.jpeg",
       },
       {
         title: "Solusi Server & Penyimpanan",
@@ -327,7 +327,7 @@ const servicesData = {
           "Optimalisasi Server",
         ],
         icon: "database",
-        image: "/assets/img/s4.jpeg",
+        image: "s5.jpeg",
       },
       {
         title: "Sistem IT Enterprise",
@@ -341,7 +341,7 @@ const servicesData = {
           "Skalabilitas Perusahaan",
         ],
         icon: "server",
-        image: "/assets/img/s3.jpeg",
+        image: "s6.jpeg",
       },
       {
         title: "Solusi Multimedia & Visual",
@@ -355,7 +355,7 @@ const servicesData = {
           "Integrasi Multimedia",
         ],
         icon: "desktop",
-        image: "/assets/img/s6.jpeg",
+        image: "s7.jpeg",
       },
       {
         title: "Konsultasi IT Strategis",
@@ -369,7 +369,7 @@ const servicesData = {
           "Optimalisasi Biaya",
         ],
         icon: "user-tie",
-        image: "/assets/img/s7.jpeg",
+        image: "s8.jpeg",
       },
     ],
   },
@@ -378,6 +378,11 @@ const servicesData = {
 const currentContent = computed(() => {
   return currentLanguage.value === "ID" ? servicesData.id : servicesData.en;
 });
+
+const getImageUrl = (name) => {
+  return new URL(`../assets/img/${name}`, import.meta.url).href;
+};
+
 
 const getWhatsAppLink = (serviceTitle) => {
   const number = "628114499096";

@@ -68,6 +68,26 @@
                 :class="{ 'rotate-180': isLangOpen }"
               />
             </button>
+            
+            <!-- Desktop Language Dropdown -->
+            <div v-if="isLangOpen" 
+              class="absolute right-0 mt-2 w-32 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-xl shadow-2xl py-2 z-50 transition-all duration-200"
+            >
+              <button 
+                @click="setLanguage('ID'); isLangOpen = false"
+                class="flex items-center w-full px-4 py-2 text-sm font-bold text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+                :class="{ 'text-telkom-red': currentLanguage === 'ID' }"
+              >
+                Indonesia
+              </button>
+              <button 
+                @click="setLanguage('ENG'); isLangOpen = false"
+                class="flex items-center w-full px-4 py-2 text-sm font-bold text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+                :class="{ 'text-telkom-red': currentLanguage === 'ENG' }"
+              >
+                English
+              </button>
+            </div>
           </div>
         </div>
 
@@ -156,7 +176,7 @@ const mobileMenuOpen = ref(false)
 const isLangOpen = ref(false)
 const activeSection = ref('home')
 const isDark = ref(false)
-const { currentLanguage, toggleLanguage } = useLanguage()
+const { currentLanguage, toggleLanguage, setLanguage } = useLanguage()
 const route = useRoute()
 
 /* Theme Toggle Component */

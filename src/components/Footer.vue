@@ -15,33 +15,31 @@
         <!-- Left Grid - Navigation & Services -->
         <div class="space-y-6">
           <div>
-            <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">Managed Services</h3>
+            <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">{{ currentFooterData.managedServices }}</h3>
             <nav class="grid grid-cols-2 gap-x-4 gap-y-3">
-              <router-link to="/" class="footer-link">Home</router-link>
-              <router-link to="/tentang-kami" class="footer-link">About</router-link>
-              <router-link to="/services" class="footer-link">Services</router-link>
-
-              <router-link :to="{ path: '/', hash: '#contact' }" class="footer-link">Contact</router-link>
+              <router-link to="/" class="footer-link">{{ currentFooterData.nav.home }}</router-link>
+              <router-link to="/tentang-kami" class="footer-link">{{ currentFooterData.nav.about }}</router-link>
+              <router-link to="/services" class="footer-link">{{ currentFooterData.nav.services }}</router-link>
+              <router-link :to="{ path: '/', hash: '#contact' }" class="footer-link">{{ currentFooterData.nav.contact }}</router-link>
             </nav>
           </div>
 
           <!-- Social Media -->
           <div class="pt-4">
-            <h4 class="text-lg font-bold text-white mb-4">Follow Us</h4>
+            <h4 class="text-lg font-bold text-white mb-4">{{ currentFooterData.followUs }}</h4>
             <div class="flex space-x-4">
               <a href="#" class="social-icon">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                 </svg>
               </a>
-              <!-- Repeat for other social icons if needed, but I'll simplify -->
             </div>
           </div>
         </div>
 
         <!-- Middle Grid - Contact Info -->
         <div class="space-y-6">
-          <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">Contact Info</h3>
+          <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">{{ currentFooterData.contactInfo }}</h3>
 
           <div class="space-y-4 text-white">
             <!-- Address -->
@@ -81,13 +79,13 @@
 
         <!-- Right Grid - Contact Form -->
         <div class="space-y-6">
-          <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">Get In Touch</h3>
+          <h3 class="text-xl font-bold text-white mb-6 border-l-4 border-telkom-red pl-4">{{ currentFooterData.getInTouch }}</h3>
 
           <form @submit.prevent="submitForm" class="space-y-4">
             <!-- Full Name -->
             <div>
               <label for="fullname" class="block text-sm font-medium text-white mb-2">
-                Full Name
+                {{ currentFooterData.form.name }}
               </label>
               <input
                 id="fullname"
@@ -95,14 +93,14 @@
                 type="text"
                 required
                 class="form-input"
-                placeholder="Enter your full name"
+                :placeholder="currentFooterData.form.namePlaceholder"
               />
             </div>
 
             <!-- Company -->
             <div>
               <label for="company" class="block text-sm font-medium text-white mb-2">
-                Company
+                {{ currentFooterData.form.company }}
               </label>
               <input
                 id="company"
@@ -110,14 +108,14 @@
                 type="text"
                 required
                 class="form-input"
-                placeholder="Enter your company name"
+                :placeholder="currentFooterData.form.companyPlaceholder"
               />
             </div>
 
             <!-- Question -->
             <div>
               <label for="question" class="block text-sm font-medium text-white mb-2">
-                Your Question
+                {{ currentFooterData.form.question }}
               </label>
               <textarea
                 id="question"
@@ -125,14 +123,14 @@
                 rows="4"
                 required
                 class="form-input resize-none"
-                placeholder="How can we help you?"
+                :placeholder="currentFooterData.form.questionPlaceholder"
               ></textarea>
             </div>
 
             <!-- Submit Button -->
             <button type="submit" class="submit-button group w-full">
               <span class="relative z-10 flex items-center justify-center">
-                Send Message
+                {{ currentFooterData.form.submit }}
                 <svg class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
@@ -154,9 +152,9 @@
             </p>
           </div>
           <div class="flex space-x-6 text-sm text-white">
-            <a href="#" class="hover:text-telkom-red transition-colors">Privacy Policy</a>
-            <a href="#" class="hover:text-telkom-red transition-colors">Terms of Service</a>
-            <a href="#" class="hover:text-telkom-red transition-colors">Sitemap</a>
+            <a href="#" class="hover:text-telkom-red transition-colors">{{ currentFooterData.privacyPolicy }}</a>
+            <a href="#" class="hover:text-telkom-red transition-colors">{{ currentFooterData.termsOfService }}</a>
+            <a href="#" class="hover:text-telkom-red transition-colors">{{ currentFooterData.sitemap }}</a>
           </div>
         </div>
       </div>
@@ -165,7 +163,64 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useLanguage } from '@/composables/useLanguage.js'
+
+const { currentLanguage } = useLanguage()
+
+const footerDataIndonesia = {
+  managedServices: "Layanan Terkelola",
+  followUs: "Ikuti Kami",
+  contactInfo: "Info Kontak",
+  getInTouch: "Hubungi Kami",
+  nav: {
+    home: "Beranda",
+    about: "Tentang",
+    services: "Layanan",
+    contact: "Kontak"
+  },
+  form: {
+    name: "Nama Lengkap",
+    namePlaceholder: "Masukkan nama lengkap Anda",
+    company: "Perusahaan",
+    companyPlaceholder: "Masukkan nama perusahaan Anda",
+    question: "Pertanyaan Anda",
+    questionPlaceholder: "Apa yang bisa kami bantu?",
+    submit: "Kirim Pesan"
+  },
+  privacyPolicy: "Kebijakan Privasi",
+  termsOfService: "Syarat Layanan",
+  sitemap: "Peta Situs"
+}
+
+const footerDataEnglish = {
+  managedServices: "Managed Services",
+  followUs: "Follow Us",
+  contactInfo: "Contact Info",
+  getInTouch: "Get In Touch",
+  nav: {
+    home: "Home",
+    about: "About",
+    services: "Services",
+    contact: "Contact"
+  },
+  form: {
+    name: "Full Name",
+    namePlaceholder: "Enter your full name",
+    company: "Company",
+    companyPlaceholder: "Enter your company name",
+    question: "Your Question",
+    questionPlaceholder: "How can we help you?",
+    submit: "Send Message"
+  },
+  privacyPolicy: "Privacy Policy",
+  termsOfService: "Terms of Service",
+  sitemap: "Sitemap"
+}
+
+const currentFooterData = computed(() => {
+  return currentLanguage.value === 'ID' ? footerDataIndonesia : footerDataEnglish
+})
 
 const form = ref({
   fullname: '',
@@ -178,7 +233,12 @@ const submitForm = () => {
   console.log('Form submitted:', form.value)
 
   // Create WhatsApp message
-  const message = `Halo saya ${form.value.fullname} berasal dari ${form.value.company}. ${form.value.question}`
+  const lang = currentLanguage.value
+  const intro = lang === 'ID' 
+    ? `Halo saya ${form.value.fullname} berasal dari ${form.value.company}.` 
+    : `Hello, I am ${form.value.fullname} from ${form.value.company}.`
+  
+  const message = `${intro} ${form.value.question}`
   const encodedMessage = encodeURIComponent(message)
   const whatsappUrl = `https://wa.me/6208114499096?text=${encodedMessage}`
 

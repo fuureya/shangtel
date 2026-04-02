@@ -20,7 +20,7 @@
               <router-link to="/" class="footer-link">Home</router-link>
               <router-link to="/tentang-kami" class="footer-link">About</router-link>
               <router-link to="/services" class="footer-link">Services</router-link>
-              <router-link to="/portfolio" class="footer-link">Portfolio</router-link>
+
               <router-link :to="{ path: '/', hash: '#contact' }" class="footer-link">Contact</router-link>
             </nav>
           </div>

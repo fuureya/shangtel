@@ -23,9 +23,7 @@
             <router-link to="/services" class="nav-link" :class="{ 'active': isLinkActive('/services') }">
               {{ currentNavData.services }}
             </router-link>
-            <router-link to="/portfolio" class="nav-link" :class="{ 'active': isLinkActive('/portfolio') }">
-              {{ currentNavData.portfolio }}
-            </router-link>
+
             <router-link :to="{ path: '/', hash: '#products' }" class="nav-link"
               :class="{ 'active': isLinkActive('products') }">
               {{ currentNavData.products }}
@@ -101,10 +99,7 @@
           :class="{ 'active': isLinkActive('/services') }">
           {{ currentNavData.services }}
         </router-link>
-        <router-link to="/portfolio" @click="mobileMenuOpen = false" class="mobile-nav-link"
-          :class="{ 'active': isLinkActive('/portfolio') }">
-          {{ currentNavData.portfolio }}
-        </router-link>
+
         <router-link :to="{ path: '/', hash: '#products' }" @click="mobileMenuOpen = false" class="mobile-nav-link"
           :class="{ 'active': isLinkActive('products') }">
           {{ currentNavData.products }}
@@ -247,7 +242,7 @@ const navDataIndonesia = {
   home: "Beranda",
   about: "Tentang",
   services: "Layanan",
-  portfolio: "Portfolio",
+
   products: "Produk",
   carrier: "Karir",
   contact: "Kontak"
@@ -257,7 +252,7 @@ const navDataEnglish = {
   home: "Home",
   about: "About",
   services: "Services",
-  portfolio: "Portfolio",
+
   products: "Products",
   carrier: "Carrier",
   contact: "Contact"
